@@ -54,7 +54,7 @@ class ConfigLoader:
 
                 items.append(line)
 
-        return sorted(set(items))
+        return items
 
     @property
     def interval_minutes(self):
@@ -91,3 +91,24 @@ class ConfigLoader:
     @property
     def minimum_score(self):
         return self.config["matching"]["minimum_score"]
+
+    @property
+    def companies_with_urls(self):
+
+        companies = []
+
+        for line in self.companies:
+
+            parts = line.split("|")
+
+            if len(parts) != 2:
+                continue
+
+            companies.append(
+                {
+                    "company": parts[0].strip(),
+                    "url": parts[1].strip(),
+                }
+            )
+
+        return companies
