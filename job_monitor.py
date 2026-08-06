@@ -1,7 +1,7 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
-from collectors.registry import CollectorRegistry
 from collectors.detector import ATSDetector
+from collectors.registry import CollectorRegistry
 from database.sqlite_db import JobDatabase
 from matcher.matcher import Matcher
 from sheets.google_sheets import GoogleSheetsClient
@@ -14,116 +14,201 @@ def main():
     logger.info("=" * 60)
     logger.info("Starting Job Monitor")
 
-    # ----------------------------
-    # Load Configuration
-    # ----------------------------
-
     config = ConfigLoader()
     config.load()
 
-    logger.info("Configuration loaded.")
-
-    # ----------------------------
-    # Initialize Database
-    # ----------------------------
-
     database = JobDatabase()
 
-    database.cleanup(config.retention_days)
+    detector = ATSDetector()
 
-    # ----------------------------
-    # Google Sheets
-    # ----------------------------
+    try:
 
-    sheets = GoogleSheetsClient(
-        config.credentials_file,
-        config.spreadsheet_name,
-        config.worksheet_name,
-    )
+        database.cleanup(
+            config.retention_days
+        )
 
-    # ----------------------------
-    # Matcher
-    # ----------------------------
+        sheets = GoogleSheetsClient(
+            config.credentials_file,
+            config.spreadsheet_name,
+            config.worksheet_name,
+        )
 
-    matcher = Matcher(
-        config.keywords,
-        config.minimum_score,
-    )
+        matcher = Matcher(
+            config.keywords,
+            config.minimum_score,
+        )
 
-    # ----------------------------
-    # Collector Registry
-    # ----------------------------
+        registry = CollectorRegistry()
 
-    registry = CollectorRegistry()
-    companies = config.companies_with_urls
+        companies = (
+            config.companies_with_urls
+        )
 
-    logger.info(f"Companies configured : {len(config.companies)}")
-    logger.info(f"Keywords configured  : {len(config.keywords)}")
-    logger.info(f"Companies configured : {len(companies)}")
+        logger.info(
+            f"Companies configured: "
+            f"{len(companies)}"
+        )
 
-    total_jobs_found = 0
-    total_jobs_added = 0
+        logger.info(
+            f"Keywords configured: "
+            f"{len(config.keywords)}"
+        )
 
-    for company_info in companies:
+        logger.info(
+            "Collectors available: "
+            + ", ".join(
+                registry.supported_platforms()
+            )
+        )
 
-        company = company_info["company"]
-        career_url = company_info["url"]
+        total_jobs_found = 0
+        total_jobs_added = 0
+        companies_checked = 0
+        companies_skipped = 0
 
-        ats = ATSDetector.detect(career_url)
+        for company_info in companies:
 
-        collector = registry.get(ats)
-
-        if collector is None:
-
-            logger.warning(
-                f"No collector implemented for ATS '{ats}' ({company})"
+            company = (
+                company_info["company"]
             )
 
-            continue
-
-        logger.info(f"Checking {company} ({ats})")
-
-        try:
-
-            jobs = collector.collect(
-                company,
-                career_url,
+            career_url = (
+                company_info["url"]
             )
 
-        except Exception as ex:
+            logger.info(
+                f"Discovering ATS: {company}"
+            )
 
-            logger.exception(f"{company} failed: {ex}")
-            continue
+            detection = detector.detect(
+                career_url
+            )
 
-        logger.info(f"Found {len(jobs)} jobs")
+            logger.info(
+                f"{company}: "
+                f"ATS={detection.ats}, "
+                f"detected_by="
+                f"{detection.detected_by}"
+            )
 
-        total_jobs_found += len(jobs)
+            collector = registry.get(
+                detection.ats
+            )
 
-        for job in jobs:
+            if collector is None:
 
-            if database.exists(job):
+                companies_skipped += 1
+
+                logger.warning(
+                    f"Skipping {company}: "
+                    f"unsupported ATS "
+                    f"'{detection.ats}'"
+                )
+
                 continue
 
-            if not matcher.is_match(job):
+            try:
+
+                jobs = collector.collect(
+                    company,
+                    detection.url,
+                )
+
+            except Exception as exc:
+
+                companies_skipped += 1
+
+                logger.exception(
+                    f"{company} collection "
+                    f"failed: {exc}"
+                )
+
                 continue
 
-            job.date_found = datetime.utcnow().isoformat()
+            companies_checked += 1
 
-            sheets.append_job(job)
+            total_jobs_found += len(jobs)
 
-            database.insert(job)
+            logger.info(
+                f"{company}: "
+                f"{len(jobs)} jobs returned"
+            )
 
-            total_jobs_added += 1
+            for job in jobs:
 
-            logger.info(f"Added: {job.company} | {job.title}")
+                if database.exists(job):
+                    continue
 
-    database.close()
+                if not matcher.is_match(job):
+                    continue
 
-    logger.info("-" * 60)
-    logger.info(f"Jobs Found : {total_jobs_found}")
-    logger.info(f"Jobs Added : {total_jobs_added}")
-    logger.info("Finished")
-    logger.info("=" * 60)
+                job.date_found = (
+                    datetime.now(
+                        timezone.utc
+                    ).isoformat()
+                )
+
+                try:
+
+                    sheets.append_job(job)
+
+                except Exception as exc:
+
+                    logger.exception(
+                        "Google Sheets write "
+                        f"failed for "
+                        f"{company} / "
+                        f"{job.title}: {exc}"
+                    )
+
+                    #
+                    # Do NOT insert it into SQLite.
+                    #
+                    # This ensures the job will be
+                    # attempted again next run.
+                    #
+
+                    continue
+
+                database.insert(job)
+
+                total_jobs_added += 1
+
+                logger.info(
+                    f"Added: "
+                    f"{job.company} | "
+                    f"{job.title}"
+                )
+
+        logger.info("-" * 60)
+
+        logger.info(
+            f"Companies checked: "
+            f"{companies_checked}"
+        )
+
+        logger.info(
+            f"Companies skipped: "
+            f"{companies_skipped}"
+        )
+
+        logger.info(
+            f"Jobs found: "
+            f"{total_jobs_found}"
+        )
+
+        logger.info(
+            f"Jobs added: "
+            f"{total_jobs_added}"
+        )
+
+    finally:
+
+        detector.close()
+        database.close()
+
+        logger.info("Finished")
+        logger.info("=" * 60)
 
 
 if __name__ == "__main__":

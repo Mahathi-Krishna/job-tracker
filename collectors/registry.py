@@ -1,11 +1,11 @@
 from collectors.greenhouse import GreenhouseCollector
 from collectors.lever import LeverCollector
+from collectors.workday import WorkdayCollector
 
 
 class CollectorRegistry:
     """
-    Registry containing the ATS collectors currently supported
-    by Job Monitor.
+    Registry of implemented ATS collectors.
     """
 
     def __init__(self):
@@ -13,9 +13,13 @@ class CollectorRegistry:
         self.collectors = {
             "greenhouse": GreenhouseCollector(),
             "lever": LeverCollector(),
+            "workday": WorkdayCollector(),
         }
 
-    def get(self, ats: str):
+    def get(
+        self,
+        ats: str,
+    ):
 
         if not ats:
             return None
@@ -24,7 +28,9 @@ class CollectorRegistry:
             ats.strip().lower()
         )
 
-    def supported_platforms(self) -> list[str]:
+    def supported_platforms(
+        self,
+    ) -> list[str]:
 
         return sorted(
             self.collectors.keys()
