@@ -1,0 +1,60 @@
+# ===========================
+# Job Monitor Configuration
+# ===========================
+
+application:
+  name: "Job Monitor"
+  version: "1.0.0"
+
+scheduler:
+  # Windows Task Scheduler should invoke the application at this interval.
+  interval_minutes: 10
+
+search:
+  countries:
+    - United States
+    - Canada
+    - United Kingdom
+    - European Union
+
+  job_types:
+    - Full-time
+    - Internship
+    - Co-op
+    - New Grad
+    - Entry Level
+
+  work_modes:
+    - Remote
+    - Hybrid
+    - On-site
+
+matching:
+  minimum_score: 60
+
+database:
+  path: "database/jobs.db"
+
+  # Automatically delete records older than this.
+  retention_days: 30
+
+logging:
+  folder: "logs"
+
+  retention_days: 7
+
+  level: "INFO"
+
+google_sheets:
+  credentials_file: "credentials.json"
+
+  spreadsheet_name: "Job Tracker"
+
+  worksheet_name: "Job Tracker"
+
+network:
+  request_timeout_seconds: 20
+
+  retry_attempts: 3
+
+  retry_backoff_seconds: 5

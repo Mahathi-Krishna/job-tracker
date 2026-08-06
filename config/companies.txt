@@ -1,0 +1,67 @@
+AMD
+Analog Devices
+Ansys
+Apple
+Arm
+Astera Labs
+Aurora
+Ayar Labs
+Blaize
+Broadcom
+Cadence
+Celestial AI
+Cerebras
+Cornami
+d-Matrix
+EnCharge AI
+Esperanto Technologies
+GlobalFoundries
+Google
+Groq
+Hailo
+Imagination Technologies
+Infineon
+Intel
+Keysight
+Lattice Semiconductor
+Lightmatter
+Marvell
+MaxLinear
+MediaTek
+Meta
+Microchip Technology
+Micron
+Microsoft
+MIPS
+Mythic
+NVIDIA
+NXP
+onsemi
+OpenAI
+Qualcomm
+Quadric
+Rambus
+Renesas
+Rivian
+Rivos
+SambaNova Systems
+Samsung Semiconductor
+Seagate
+Siemens EDA
+SiFive
+Silicon Labs
+SK hynix
+SpaceX
+STMicroelectronics
+Synopsys
+Tenstorrent
+Tesla
+Texas Instruments
+TSMC
+Untether AI
+Ventana Micro Systems
+Waymo
+Western Digital
+Wolfspeed
+xAI
+Zoox

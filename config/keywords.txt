@@ -1,0 +1,58 @@
+ASIC
+ASIC Design
+ASIC Engineer
+Backend Design
+Cache Coherency
+Cadence
+Chip Design
+Clock Tree Synthesis
+Co-op
+CPU
+CTS
+Design Verification
+DFT
+Digital Design
+Entry Level
+Floorplanning
+Formal Verification
+FPGA
+Functional Verification
+Fusion Compiler
+GDSII
+GPU
+Hardware Engineer
+ICC2
+Innovus
+Intern
+Internship
+Logic Synthesis
+Low Power
+Microarchitecture
+New Grad
+NoC
+Physical Design
+Physical Implementation
+Place and Route
+PnR
+PrimeTime
+Processor Design
+RISC-V
+RTL
+RTL Design
+RTL Engineer
+RTL-to-GDS
+SoC
+STA
+Static Timing Analysis
+SVA
+Synthesis
+Synopsys
+SystemVerilog
+Tempus
+Timing Closure
+UVM
+UPF
+Verification Engineer
+Verilog
+VHDL
+VLSI
