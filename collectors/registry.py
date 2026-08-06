@@ -3,6 +3,10 @@ from collectors.lever import LeverCollector
 
 
 class CollectorRegistry:
+    """
+    Registry containing the ATS collectors currently supported
+    by Job Monitor.
+    """
 
     def __init__(self):
 
@@ -12,4 +16,16 @@ class CollectorRegistry:
         }
 
     def get(self, ats: str):
-        return self.collectors.get(ats)
+
+        if not ats:
+            return None
+
+        return self.collectors.get(
+            ats.strip().lower()
+        )
+
+    def supported_platforms(self) -> list[str]:
+
+        return sorted(
+            self.collectors.keys()
+        )

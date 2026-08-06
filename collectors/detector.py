@@ -3,33 +3,49 @@ from urllib.parse import urlparse
 
 class ATSDetector:
     """
-    Detect the ATS platform from a company's careers URL.
+    Detect an ATS from a direct careers/ATS URL.
+
+    Network-based detection will be added separately.
     """
 
     @staticmethod
     def detect(url: str) -> str:
 
-        hostname = urlparse(url).netloc.lower()
+        if not url:
+            return "unknown"
 
-        if "greenhouse" in hostname:
+        parsed = urlparse(url)
+
+        hostname = parsed.netloc.lower()
+
+        if (
+            "greenhouse.io" in hostname
+            or "greenhouse.com" in hostname
+        ):
             return "greenhouse"
 
-        if "lever" in hostname:
+        if (
+            "lever.co" in hostname
+            or "jobs.lever.co" in hostname
+        ):
             return "lever"
 
-        if "myworkdayjobs" in hostname:
+        if "myworkdayjobs.com" in hostname:
             return "workday"
 
-        if "smartrecruiters" in hostname:
-            return "smartrecruiters"
-
-        if "ashby" in hostname:
+        if "ashbyhq.com" in hostname:
             return "ashby"
 
-        if "icims" in hostname:
+        if "smartrecruiters.com" in hostname:
+            return "smartrecruiters"
+
+        if "icims.com" in hostname:
             return "icims"
 
-        if "oracle" in hostname:
+        if (
+            "oraclecloud.com" in hostname
+            or "oracle.com" in hostname
+        ):
             return "oracle"
 
         if "successfactors" in hostname:
