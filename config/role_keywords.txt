@@ -1,0 +1,33 @@
+ASIC Design
+ASIC Engineer
+Chip Design
+Design Verification
+Verification Engineer
+Functional Verification
+Formal Verification
+RTL Design
+RTL Engineer
+Digital Design
+Physical Design
+Physical Implementation
+Backend Design
+Place and Route
+PnR
+Synthesis
+Logic Synthesis
+DFT
+Design for Test
+FPGA
+FPGA Engineer
+Hardware Engineer
+SoC Design
+SoC Verification
+CPU Design
+GPU Design
+Processor Design
+Microarchitecture
+VLSI
+Silicon Design
+Silicon Verification
+Post-Silicon Validation
+Pre-Silicon Verification
