@@ -2,289 +2,289 @@
   "AMD|https://careers.amd.com": {
     "ats": "icims",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:46:37+00:00",
-    "url": "https://careers-amd.icims.com/jobs/login?loginOnly=1&redirect=&in_iframe=1&hashed=-625942636"
+    "updated_at": "2026-08-07T14:39:24+00:00",
+    "url": "https://internal-amd.icims.com/jobs/search?back=none&redirect=search"
   },
   "Analog Devices|https://careers.analog.com": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:04+00:00",
+    "updated_at": "2026-08-07T14:39:51+00:00",
     "url": "https://careers.analog.com"
   },
   "Ansys|https://careers.ansys.com": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:05+00:00",
+    "updated_at": "2026-08-07T14:39:52+00:00",
     "url": "https://careers.ansys.com"
   },
   "Apple|https://jobs.apple.com": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:06+00:00",
+    "updated_at": "2026-08-07T14:39:54+00:00",
     "url": "https://www.apple.com/careers/us/"
   },
   "Arm|https://careers.arm.com": {
     "ats": "icims",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:47:07+00:00",
-    "url": "https://earlycareers-arm.icims.com/jobs/login?loginOnly=1&redirect=dashboard"
+    "updated_at": "2026-08-07T14:39:55+00:00",
+    "url": "https://experienced-arm.icims.com/connect"
   },
   "Astera Labs|https://www.asteralabs.com/careers": {
     "ats": "greenhouse",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:47:08+00:00",
+    "updated_at": "2026-08-07T14:39:56+00:00",
     "url": "https://boards.greenhouse.io"
   },
   "Ayar Labs|https://ayarlabs.com/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:09+00:00",
+    "updated_at": "2026-08-07T14:39:58+00:00",
     "url": "https://ayarlabs.com/careers"
   },
   "Broadcom|https://www.broadcom.com/company/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:09+00:00",
+    "updated_at": "2026-08-07T14:39:59+00:00",
     "url": "https://www.broadcom.com/company/careers"
   },
   "Cadence|https://cadence.wd1.myworkdayjobs.com": {
     "ats": "workday",
     "detected_by": "url",
-    "updated_at": "2026-08-07T04:47:09+00:00",
+    "updated_at": "2026-08-07T14:39:59+00:00",
     "url": "https://cadence.wd1.myworkdayjobs.com"
   },
   "Cerebras|https://www.cerebras.ai/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:10+00:00",
+    "updated_at": "2026-08-07T14:40:00+00:00",
     "url": "https://www.cerebras.ai/join-us"
   },
   "GlobalFoundries|https://gf.com/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:16+00:00",
+    "updated_at": "2026-08-07T14:40:02+00:00",
     "url": "https://gf.com/careers/"
   },
   "Google|https://www.google.com/about/careers/applications/jobs/results": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:17+00:00",
+    "updated_at": "2026-08-07T14:40:03+00:00",
     "url": "https://www.google.com/about/careers/applications/jobs/results"
   },
   "Groq|https://groq.com/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:17+00:00",
+    "updated_at": "2026-08-07T14:40:04+00:00",
     "url": "https://groq.com/company"
   },
   "Infineon|https://www.infineon.com/cms/en/careers": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:19+00:00",
+    "updated_at": "2026-08-07T14:40:07+00:00",
     "url": "https://www.infineon.com/cms/en/careers"
   },
   "Intel|https://jobs.intel.com": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:21+00:00",
+    "updated_at": "2026-08-07T14:40:10+00:00",
     "url": "https://jobs.intel.com"
   },
   "Keysight|https://jobs.keysight.com": {
     "ats": "icims",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:47:22+00:00",
-    "url": "https://globalcareers-keysight.icims.com/jobs/login?loginOnly=1"
+    "updated_at": "2026-08-07T14:40:12+00:00",
+    "url": "https://keysight.icims.com/icims2/servlet/icims2?module=AppInert&action=download&id=65&hashed=1382506032"
   },
   "Lattice Semiconductor|https://www.latticesemi.com/About/Careers": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:23+00:00",
+    "updated_at": "2026-08-07T14:40:13+00:00",
     "url": "https://www.latticesemi.com/About/Careers"
   },
   "Lightmatter|https://lightmatter.co/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:24+00:00",
+    "updated_at": "2026-08-07T14:40:14+00:00",
     "url": "https://lightmatter.co/people/careers/"
   },
   "Marvell|https://www.marvell.com/company/careers.html": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:25+00:00",
+    "updated_at": "2026-08-07T14:40:15+00:00",
     "url": "https://www.marvell.com/company/careers.html"
   },
   "MaxLinear|https://www.maxlinear.com/company/careers": {
     "ats": "icims",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:47:26+00:00",
+    "updated_at": "2026-08-07T14:40:17+00:00",
     "url": "https://careersus-maxlinear.icims.com/jobs/search?ss=1"
   },
   "MediaTek|https://corp.mediatek.com/careers": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:28+00:00",
+    "updated_at": "2026-08-07T14:40:19+00:00",
     "url": "https://corp.mediatek.com/careers"
   },
   "Meta|https://www.metacareers.com/jobs": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:29+00:00",
+    "updated_at": "2026-08-07T14:40:20+00:00",
     "url": "https://www.metacareers.com/jobs"
   },
   "Microchip Technology|https://careers.microchip.com": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:30+00:00",
+    "updated_at": "2026-08-07T14:40:22+00:00",
     "url": "https://careers.microchip.com"
   },
   "Micron|https://careers.micron.com": {
     "ats": "generic",
-    "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:32+00:00",
-    "url": "https://careers.micron.com"
+    "detected_by": "unknown",
+    "updated_at": "2026-08-07T14:40:24+00:00",
+    "url": "https://careers.micron.com/careers"
   },
   "Microsoft|https://jobs.careers.microsoft.com": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:35+00:00",
+    "updated_at": "2026-08-07T14:40:26+00:00",
     "url": "https://apply.careers.microsoft.com/careers"
   },
   "NVIDIA|https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite": {
     "ats": "workday",
     "detected_by": "url",
-    "updated_at": "2026-08-07T04:47:35+00:00",
+    "updated_at": "2026-08-07T14:40:26+00:00",
     "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite"
   },
   "NXP|https://www.nxp.com/company/about-nxp/careers": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:35+00:00",
+    "updated_at": "2026-08-07T14:40:26+00:00",
     "url": "https://www.nxp.com/company/about-nxp/careers"
   },
   "OpenAI|https://openai.com/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:37+00:00",
+    "updated_at": "2026-08-07T14:40:27+00:00",
     "url": "https://openai.com/careers/"
   },
   "Qualcomm|https://careers.qualcomm.com": {
     "ats": "generic",
-    "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:39+00:00",
-    "url": "https://careers.qualcomm.com"
+    "detected_by": "unknown",
+    "updated_at": "2026-08-07T14:40:30+00:00",
+    "url": "https://careers.qualcomm.com/careers"
   },
   "Rambus|https://www.rambus.com/careers": {
     "ats": "icims",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:47:40+00:00",
+    "updated_at": "2026-08-07T14:40:31+00:00",
     "url": "https://careers-rambus.icims.com/jobs/"
   },
   "Renesas|https://jobs.renesas.com": {
     "ats": "smartrecruiters",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:47:41+00:00",
+    "updated_at": "2026-08-07T14:40:31+00:00",
     "url": "https://join.smartrecruiters.com/RenesasElectronics/52cc9dd7-0f97-4350-8ce0-d571757301c5-community-sign-up"
   },
   "Rivos|https://www.rivosinc.com/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:41+00:00",
+    "updated_at": "2026-08-07T14:40:32+00:00",
     "url": "https://www.rivosinc.com/careers"
   },
   "STMicroelectronics|https://www.st.com/content/st_com/en/about/careers.html": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:48:11+00:00",
+    "updated_at": "2026-08-07T14:41:02+00:00",
     "url": "https://www.st.com/content/st_com/en/about/careers.html"
   },
   "Samsung Semiconductor|https://semiconductor.samsung.com/us/careers": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:42+00:00",
+    "updated_at": "2026-08-07T14:40:33+00:00",
     "url": "https://semiconductor.samsung.com/about-us/careers/"
   },
   "SiFive|https://www.sifive.com/careers": {
     "ats": "workday",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:47:44+00:00",
+    "updated_at": "2026-08-07T14:40:35+00:00",
     "url": "https://sifive.wd1.myworkdayjobs.com/en-US/sifivecareers"
   },
   "Siemens EDA|https://jobs.siemens.com": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:47:44+00:00",
+    "updated_at": "2026-08-07T14:40:35+00:00",
     "url": "https://jobs.siemens.com/en_US/externaljobs"
   },
   "Silicon Labs|https://www.silabs.com/about-us/careers": {
     "ats": "workday",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:47:45+00:00",
+    "updated_at": "2026-08-07T14:40:36+00:00",
     "url": "http://silabs.wd1.myworkdayjobs.com/SiliconlabsCareers"
   },
   "SpaceX|https://boards.greenhouse.io/spacex": {
     "ats": "greenhouse",
     "detected_by": "url",
-    "updated_at": "2026-08-07T04:47:45+00:00",
+    "updated_at": "2026-08-07T14:40:36+00:00",
     "url": "https://boards.greenhouse.io/spacex"
   },
   "Synopsys|https://careers.synopsys.com": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:48:11+00:00",
+    "updated_at": "2026-08-07T14:41:02+00:00",
     "url": "https://careers.synopsys.com/"
   },
   "TSMC|https://careers.tsmc.com": {
     "ats": "generic",
     "detected_by": "unknown",
-    "updated_at": "2026-08-07T04:48:16+00:00",
+    "updated_at": "2026-08-07T14:41:08+00:00",
     "url": "https://careers.tsmc.com/en_US/careers"
   },
   "Tenstorrent|https://tenstorrent.com/careers": {
     "ats": "greenhouse",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:48:12+00:00",
-    "url": "https://job-boards.greenhouse.io/tenstorrent/jobs/5188296007"
+    "updated_at": "2026-08-07T14:41:03+00:00",
+    "url": "https://job-boards.greenhouse.io/tenstorrent"
   },
   "Tesla|https://www.tesla.com/careers/search": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:48:13+00:00",
+    "updated_at": "2026-08-07T14:41:03+00:00",
     "url": "https://www.tesla.com/careers/search"
   },
   "Texas Instruments|https://careers.ti.com": {
     "ats": "oracle",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:48:14+00:00",
+    "updated_at": "2026-08-07T14:41:06+00:00",
     "url": "https://edbz.fa.us2.oraclecloud.com:443/hcmUI/CandExpStatic/js/ce-custom.js?themeNumber=default_minimal_theme_CX&themeVersion=4&brandVersion=31"
   },
   "Ventana Micro Systems|https://www.ventanamicro.com/careers": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:48:22+00:00",
+    "updated_at": "2026-08-07T14:41:13+00:00",
     "url": "https://www.ventanamicro.com/careers"
   },
   "Western Digital|https://jobs.westerndigital.com": {
     "ats": "smartrecruiters",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:48:24+00:00",
+    "updated_at": "2026-08-07T14:41:15+00:00",
     "url": "https://careers.smartrecruiters.com/WesternDigital"
   },
   "Wolfspeed|https://www.wolfspeed.com/company/careers": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:48:26+00:00",
+    "updated_at": "2026-08-07T14:41:15+00:00",
     "url": "https://www.wolfspeed.com/company/careers"
   },
   "onsemi|https://www.onsemi.com/company/careers": {
     "ats": "generic",
     "detected_by": "failed",
-    "updated_at": "2026-08-07T04:47:36+00:00",
+    "updated_at": "2026-08-07T14:40:27+00:00",
     "url": "https://www.onsemi.com/company/careers"
   },
   "xAI|https://x.ai/careers": {
     "ats": "greenhouse",
     "detected_by": "html",
-    "updated_at": "2026-08-07T04:48:27+00:00",
-    "url": "https://job-boards.greenhouse.io/xai/jobs/5202550007"
+    "updated_at": "2026-08-07T14:41:16+00:00",
+    "url": "https://job-boards.greenhouse.io/xai"
   }
 }

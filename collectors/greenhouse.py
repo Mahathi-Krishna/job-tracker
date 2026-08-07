@@ -34,17 +34,13 @@ class GreenhouseCollector(BaseCollector):
         )
 
     @staticmethod
-    def _extract_board_token(career_url: str) -> str:
-        """
-        Examples:
+    def _extract_board_token(
+        career_url: str,
+    ) -> str:
 
-        https://boards.greenhouse.io/company
-        https://job-boards.greenhouse.io/company
-
-        -> company
-        """
-
-        parsed = urlparse(career_url)
+        parsed = urlparse(
+            career_url
+        )
 
         parts = [
             part
@@ -53,12 +49,23 @@ class GreenhouseCollector(BaseCollector):
         ]
 
         if not parts:
+
             raise ValueError(
-                f"Cannot determine Greenhouse board from URL: "
+                "Greenhouse URL does not "
+                "contain a board identifier: "
                 f"{career_url}"
             )
 
-        return parts[0]
+        board = parts[0].strip()
+
+        if not board:
+
+            raise ValueError(
+                "Empty Greenhouse board "
+                f"identifier: {career_url}"
+            )
+
+        return board
 
     @staticmethod
     def _clean_html(value: str | None) -> str:

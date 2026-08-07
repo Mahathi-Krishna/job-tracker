@@ -7,6 +7,9 @@ from collectors.greenhouse import (
 from collectors.lever import (
     LeverCollector,
 )
+from collectors.smartrecruiters import (
+    SmartRecruitersCollector,
+)
 from collectors.workday import (
     WorkdayCollector,
 )
@@ -14,7 +17,9 @@ from collectors.workday import (
 
 class CollectorRegistry:
 
-    def __init__(self):
+    def __init__(
+        self,
+    ):
 
         self.collectors = {
             "ashby":
@@ -25,6 +30,9 @@ class CollectorRegistry:
 
             "lever":
                 LeverCollector(),
+
+            "smartrecruiters":
+                SmartRecruitersCollector(),
 
             "workday":
                 WorkdayCollector(),

@@ -16,17 +16,6 @@ class ATSDetectionResult:
 
 
 class ATSDetector:
-    """
-    Lightweight ATS detector.
-
-    Detection order:
-
-    1. Inspect the configured URL itself.
-    2. Follow normal HTTP redirects.
-    3. Inspect a limited amount of returned HTML for ATS URLs.
-
-    No browser or JavaScript engine is used.
-    """
 
     ATS_DOMAINS = {
         "greenhouse": (
@@ -62,6 +51,7 @@ class ATSDetector:
         timeout: int = 12,
         max_html_chars: int = 1_000_000,
     ):
+
         self.http = HttpClient(
             timeout=timeout,
             retries=2,
@@ -75,11 +65,15 @@ class ATSDetector:
         url: str,
     ) -> str | None:
 
-        hostname = urlparse(
-            url
-        ).netloc.lower()
+        hostname = (
+            urlparse(url)
+            .netloc
+            .lower()
+        )
 
-        for ats, domains in cls.ATS_DOMAINS.items():
+        for ats, domains in (
+            cls.ATS_DOMAINS.items()
+        ):
 
             for domain in domains:
 
@@ -88,14 +82,73 @@ class ATSDetector:
 
         return None
 
+    @staticmethod
+    def normalize_url(
+        ats: str,
+        url: str,
+    ) -> str:
+
+        if ats == "greenhouse":
+
+            parsed = urlparse(url)
+
+            path_parts = [
+                part
+                for part in parsed.path.split("/")
+                if part
+            ]
+
+            #
+            # Greenhouse commonly exposes:
+            #
+            # /company
+            # /company/jobs/123
+            #
+            # We only want the company board.
+            #
+
+            if path_parts:
+
+                board = path_parts[0]
+
+                return (
+                    f"{parsed.scheme}://"
+                    f"{parsed.netloc}/"
+                    f"{board}"
+                )
+
+        if ats == "smartrecruiters":
+
+            parsed = urlparse(url)
+
+            path_parts = [
+                part
+                for part in parsed.path.split("/")
+                if part
+            ]
+
+            #
+            # careers.smartrecruiters.com/Company
+            #
+
+            if (
+                "careers.smartrecruiters.com"
+                in parsed.netloc.lower()
+                and path_parts
+            ):
+
+                return (
+                    "https://careers."
+                    "smartrecruiters.com/"
+                    f"{path_parts[0]}"
+                )
+
+        return url
+
     def detect(
         self,
         career_url: str,
     ) -> ATSDetectionResult:
-
-        # --------------------------------
-        # 1. Direct URL
-        # --------------------------------
 
         direct = self.detect_from_url(
             career_url
@@ -105,13 +158,12 @@ class ATSDetector:
 
             return ATSDetectionResult(
                 ats=direct,
-                url=career_url,
+                url=self.normalize_url(
+                    direct,
+                    career_url,
+                ),
                 detected_by="url",
             )
-
-        # --------------------------------
-        # 2. Fetch careers page
-        # --------------------------------
 
         try:
 
@@ -123,7 +175,7 @@ class ATSDetector:
         except Exception as exc:
 
             logger.warning(
-                f"ATS discovery failed for "
+                "ATS discovery failed for "
                 f"{career_url}: {exc}"
             )
 
@@ -135,30 +187,29 @@ class ATSDetector:
 
         final_url = response.url
 
-        # --------------------------------
-        # 3. Redirect destination
-        # --------------------------------
-
-        redirected = self.detect_from_url(
-            final_url
+        redirected = (
+            self.detect_from_url(
+                final_url
+            )
         )
 
         if redirected:
 
             return ATSDetectionResult(
                 ats=redirected,
-                url=final_url,
+                url=self.normalize_url(
+                    redirected,
+                    final_url,
+                ),
                 detected_by="redirect",
             )
 
-        # --------------------------------
-        # 4. HTML inspection
-        # --------------------------------
-
-        content_type = response.headers.get(
-            "Content-Type",
-            "",
-        ).lower()
+        content_type = (
+            response.headers.get(
+                "Content-Type",
+                "",
+            ).lower()
+        )
 
         if "html" not in content_type:
 
@@ -168,13 +219,15 @@ class ATSDetector:
                 detected_by="unknown",
             )
 
-        html = response.text[
-            : self.max_html_chars
+        page_html = response.text[
+            :self.max_html_chars
         ]
 
-        detected = self._detect_from_html(
-            html,
-            final_url,
+        detected = (
+            self._detect_from_html(
+                page_html,
+                final_url,
+            )
         )
 
         if detected:
@@ -188,26 +241,30 @@ class ATSDetector:
 
     def _detect_from_html(
         self,
-        html: str,
+        page_html: str,
         base_url: str,
     ) -> ATSDetectionResult | None:
 
-        # Extract URLs from href/src attributes.
         candidates = re.findall(
             r"""(?:href|src)\s*=\s*["']([^"']+)["']""",
-            html,
+            page_html,
             flags=re.IGNORECASE,
         )
 
-        # Also search raw HTML because some ATS
-        # addresses appear inside JavaScript/config.
         candidates.extend(
             re.findall(
                 r"""https?://[^\s"'<>\\]+""",
-                html,
+                page_html,
                 flags=re.IGNORECASE,
             )
         )
+
+        #
+        # Prefer useful careers URLs over
+        # random JS/assets/login links.
+        #
+
+        scored_candidates = []
 
         for candidate in candidates:
 
@@ -225,15 +282,76 @@ class ATSDetector:
                 absolute_url
             )
 
-            if ats:
+            if not ats:
+                continue
 
-                return ATSDetectionResult(
-                    ats=ats,
-                    url=absolute_url,
-                    detected_by="html",
+            score = 0
+
+            lower = absolute_url.lower()
+
+            if "/jobs" in lower:
+                score += 10
+
+            if "/careers" in lower:
+                score += 10
+
+            if "job-boards." in lower:
+                score += 10
+
+            if "boards." in lower:
+                score += 10
+
+            if "/search" in lower:
+                score += 5
+
+            #
+            # Strongly penalize things that
+            # aren't actual career boards.
+            #
+
+            if "/login" in lower:
+                score -= 50
+
+            if lower.endswith(".js"):
+                score -= 50
+
+            if "/static/" in lower:
+                score -= 30
+
+            scored_candidates.append(
+                (
+                    score,
+                    ats,
+                    absolute_url,
                 )
+            )
 
-        return None
+        if not scored_candidates:
+            return None
 
-    def close(self) -> None:
+        scored_candidates.sort(
+            key=lambda item: item[0],
+            reverse=True,
+        )
+
+        score, ats, url = (
+            scored_candidates[0]
+        )
+
+        if score < 0:
+            return None
+
+        return ATSDetectionResult(
+            ats=ats,
+            url=self.normalize_url(
+                ats,
+                url,
+            ),
+            detected_by="html",
+        )
+
+    def close(
+        self,
+    ) -> None:
+
         self.http.close()
