@@ -2,20 +2,50 @@ from pathlib import Path
 
 from loguru import logger
 
-LOG_DIR = Path("logs")
 
-LOG_DIR.mkdir(exist_ok=True)
+PROJECT_ROOT = (
+    Path(__file__)
+    .resolve()
+    .parent
+    .parent
+)
+
+LOG_DIR = (
+    PROJECT_ROOT
+    / "logs"
+)
+
+LOG_DIR.mkdir(
+    parents=True,
+    exist_ok=True,
+)
+
 
 logger.remove()
 
+
 logger.add(
-    LOG_DIR / "job_monitor.log",
-    rotation="1 day",
-    retention="7 days",
+    LOG_DIR
+    / "job_monitor_{time:YYYY-MM-DD}.log",
+
+    rotation="00:00",
+
+    retention="3 days",
+
     compression=None,
+
     level="INFO",
-    enqueue=True,
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}"
+
+    enqueue=False,
+
+    format=(
+        "{time:YYYY-MM-DD HH:mm:ss} "
+        "| {level:<8} "
+        "| {message}"
+    ),
 )
 
-__all__ = ["logger"]
+
+__all__ = [
+    "logger",
+]

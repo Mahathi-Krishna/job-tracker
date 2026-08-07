@@ -50,9 +50,7 @@ ats_cache:
 
 logging:
   folder: "logs"
-
-  retention_days: 7
-
+  retention_days: 3
   level: "INFO"
 
 google_sheets:

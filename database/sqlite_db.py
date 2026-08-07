@@ -28,7 +28,9 @@ DB_PATH = (
 
 class JobDatabase:
 
-    def __init__(self):
+    def __init__(
+        self,
+    ):
 
         DB_PATH.parent.mkdir(
             parents=True,
@@ -38,6 +40,19 @@ class JobDatabase:
         self.conn = sqlite3.connect(
             DB_PATH,
             timeout=10,
+        )
+
+        #
+        # WAL is reliable and prevents
+        # unnecessary full-database writes.
+        #
+
+        self.conn.execute(
+            "PRAGMA journal_mode=WAL"
+        )
+
+        self.conn.execute(
+            "PRAGMA synchronous=NORMAL"
         )
 
         self.conn.execute(
@@ -69,30 +84,22 @@ class JobDatabase:
         job: Job,
     ) -> str:
 
-        #
-        # URL is normally the most stable
-        # identifier available across ATSs.
-        #
-        # Including company prevents accidental
-        # collisions between employers.
-        #
+        if job.url.strip():
 
-        canonical = "|".join(
-            [
-                job.company
-                .strip()
-                .casefold(),
+            canonical = "|".join(
+                [
+                    job.company
+                    .strip()
+                    .casefold(),
 
-                job.url
-                .strip()
-                .casefold(),
-            ]
-        )
+                    job.url
+                    .strip()
+                    .rstrip("/")
+                    .casefold(),
+                ]
+            )
 
-        # If the URL is unavailable, fall
-        # back to identifying fields.
-
-        if not job.url.strip():
+        else:
 
             canonical = "|".join(
                 [
@@ -126,7 +133,9 @@ class JobDatabase:
     ) -> bool:
 
         job_hash = (
-            self.generate_hash(job)
+            self.generate_hash(
+                job
+            )
         )
 
         cursor = self.conn.execute(
@@ -144,23 +153,40 @@ class JobDatabase:
             is not None
         )
 
-    def insert(
+    def insert_many(
         self,
-        job: Job,
+        jobs: list[Job],
     ) -> None:
 
-        job_hash = (
-            self.generate_hash(job)
+        if not jobs:
+            return
+
+        rows = []
+
+        now = datetime.now(
+            timezone.utc
+        ).isoformat(
+            timespec="seconds"
         )
 
-        first_seen = (
-            job.date_found
-            or datetime.now(
-                timezone.utc
-            ).isoformat()
-        )
+        for job in jobs:
 
-        self.conn.execute(
+            rows.append(
+                (
+                    self.generate_hash(
+                        job
+                    ),
+                    job.job_id,
+                    job.company,
+                    job.title,
+                    job.location,
+                    job.url,
+                    job.date_found
+                    or now,
+                )
+            )
+
+        self.conn.executemany(
             """
             INSERT OR IGNORE INTO jobs (
                 job_hash,
@@ -173,18 +199,19 @@ class JobDatabase:
             )
             VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
-            (
-                job_hash,
-                job.job_id,
-                job.company,
-                job.title,
-                job.location,
-                job.url,
-                first_seen,
-            ),
+            rows,
         )
 
         self.conn.commit()
+
+    def insert(
+        self,
+        job: Job,
+    ) -> None:
+
+        self.insert_many(
+            [job]
+        )
 
     def cleanup(
         self,
@@ -208,23 +235,32 @@ class JobDatabase:
             (cutoff,),
         )
 
-        deleted = (
-            cursor.rowcount
-            if cursor.rowcount > 0
-            else 0
+        deleted = max(
+            cursor.rowcount,
+            0,
         )
 
         self.conn.commit()
 
-        # Ask SQLite to reuse deleted pages.
-        # We deliberately don't VACUUM every
-        # 10 minutes because VACUUM performs
-        # unnecessary disk work.
-
         return deleted
+
+    def checkpoint(
+        self,
+    ) -> None:
+
+        #
+        # Keep the WAL side file from
+        # growing indefinitely.
+        #
+
+        self.conn.execute(
+            "PRAGMA wal_checkpoint(TRUNCATE)"
+        )
 
     def close(
         self,
     ) -> None:
+
+        self.checkpoint()
 
         self.conn.close()

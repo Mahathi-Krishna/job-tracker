@@ -1,10 +1,11 @@
-from utils.job_validator import (
-    JobValidator,
-)
+from __future__ import annotations
+
+import time
 from datetime import (
     datetime,
     timezone,
 )
+
 from collectors.detector import (
     ATSDetectionResult,
     ATSDetector,
@@ -19,16 +20,18 @@ from matcher.matcher import Matcher
 from sheets.google_sheets import (
     GoogleSheetsClient,
 )
-from utils.ats_cache import (
-    ATSCache,
-)
+from utils.ats_cache import ATSCache
 from utils.config_loader import (
     ConfigLoader,
 )
 from utils.job_classifier import (
     JobClassifier,
 )
+from utils.job_validator import (
+    JobValidator,
+)
 from utils.logger import logger
+from utils.run_lock import RunLock
 
 
 def get_detection(
@@ -104,7 +107,9 @@ def get_detection(
     return detection
 
 
-def main():
+def run_monitor() -> None:
+
+    started = time.monotonic()
 
     logger.info(
         "=" * 60
@@ -132,6 +137,14 @@ def main():
 
     pending_jobs = []
 
+    #
+    # Prevent duplicates inside the
+    # current run before Sheets/SQLite
+    # are updated.
+    #
+
+    pending_hashes = set()
+
     try:
 
         deleted = database.cleanup(
@@ -141,9 +154,9 @@ def main():
         if deleted:
 
             logger.info(
-                f"Database cleanup: "
-                f"{deleted} old records "
-                f"removed"
+                "Database cleanup: "
+                f"{deleted} expired "
+                "records removed"
             )
 
         sheets = GoogleSheetsClient(
@@ -172,22 +185,21 @@ def main():
             config.companies_with_urls
         )
 
-        logger.info(
-            f"Companies configured: "
-            f"{len(companies)}"
-        )
-
-        total_jobs_found = 0
-        title_candidates = 0
-        enriched_jobs = 0
-        matched_jobs = 0
-
-        filtered_location = 0
-        filtered_experience = 0
-        filtered_job_type = 0
-
-        unsupported_companies = 0
-        failed_companies = 0
+        stats = {
+            "companies": 0,
+            "failed_companies": 0,
+            "listings": 0,
+            "title_candidates": 0,
+            "enriched": 0,
+            "local_duplicates": 0,
+            "sheet_duplicates": 0,
+            "run_duplicates": 0,
+            "invalid": 0,
+            "location_filtered": 0,
+            "experience_filtered": 0,
+            "job_type_filtered": 0,
+            "matched": 0,
+        }
 
         for company_info in companies:
 
@@ -223,20 +235,11 @@ def main():
 
             if collector is None:
 
-                unsupported_companies += 1
-
-                logger.info(
-                    f"{company}: "
-                    f"unsupported ATS "
-                    f"'{detection.ats}'"
-                )
-
                 continue
 
             logger.info(
                 f"Checking {company} "
-                f"({detection.ats}, "
-                f"{detection.detected_by})"
+                f"({detection.ats})"
             )
 
             try:
@@ -250,9 +253,11 @@ def main():
 
             except Exception as exc:
 
-                failed_companies += 1
+                stats[
+                    "failed_companies"
+                ] += 1
 
-                logger.exception(
+                logger.warning(
                     f"{company}: "
                     f"collection failed: "
                     f"{exc}"
@@ -260,123 +265,255 @@ def main():
 
                 continue
 
-            total_jobs_found += len(
+            stats["companies"] += 1
+
+            stats["listings"] += len(
                 jobs
             )
 
-            logger.info(
-                f"{company}: "
-                f"{len(jobs)} listings"
-            )
-
             for job in jobs:
-                #
-                # Basic sanity validation before
-                # any matching or enrichment work.
-                #
-                if not JobValidator.is_valid(
-                    job
+
+                if not (
+                    JobValidator.is_valid(
+                        job
+                    )
                 ):
+
+                    stats["invalid"] += 1
+                    continue
+
+                job_hash = (
+                    database.generate_hash(
+                        job
+                    )
+                )
+
+                if (
+                    job_hash
+                    in pending_hashes
+                ):
+
+                    stats[
+                        "run_duplicates"
+                    ] += 1
+
                     continue
 
                 if database.exists(
                     job
                 ):
+
+                    stats[
+                        "local_duplicates"
+                    ] += 1
+
                     continue
-                
-        # ------------------------------
-        # One Sheets operation
-        # ------------------------------
+
+                #
+                # Permanent deduplication.
+                #
+                # Even if SQLite forgot this
+                # posting after 30 days,
+                # Sheets still remembers it.
+                #
+
+                if sheets.contains_job(
+                    job
+                ):
+
+                    stats[
+                        "sheet_duplicates"
+                    ] += 1
+
+                    continue
+
+                #
+                # Cheap Stage 1 title filter.
+                #
+
+                if not (
+                    matcher.title_matches(
+                        job
+                    )
+                ):
+                    continue
+
+                stats[
+                    "title_candidates"
+                ] += 1
+
+                #
+                # Fetch detail only for
+                # potentially useful jobs.
+                #
+
+                if not job.description:
+
+                    try:
+
+                        job = (
+                            collector.enrich(
+                                job
+                            )
+                        )
+
+                        stats[
+                            "enriched"
+                        ] += 1
+
+                    except Exception as exc:
+
+                        logger.warning(
+                            "Enrichment failed: "
+                            f"{company} | "
+                            f"{job.title} | "
+                            f"{exc}"
+                        )
+
+                classifier.classify(
+                    job
+                )
+
+                if (
+                    job.country
+                    not in config.countries
+                    and job.country
+                    != "Unknown"
+                ):
+
+                    stats[
+                        "location_filtered"
+                    ] += 1
+
+                    continue
+
+                if (
+                    job.experience_level
+                    not in
+                    config.experience_levels
+                ):
+
+                    stats[
+                        "experience_filtered"
+                    ] += 1
+
+                    continue
+
+                if (
+                    job.job_type
+                    not in
+                    config.job_types
+                ):
+
+                    stats[
+                        "job_type_filtered"
+                    ] += 1
+
+                    continue
+
+                if not matcher.is_match(
+                    job
+                ):
+                    continue
+
+                job.date_found = (
+                    datetime.now(
+                        timezone.utc
+                    ).isoformat(
+                        timespec="seconds"
+                    )
+                )
+
+                pending_hashes.add(
+                    job_hash
+                )
+
+                pending_jobs.append(
+                    job
+                )
+
+                stats["matched"] += 1
+
+        #
+        # Google Sheets is written before
+        # SQLite. If Sheets fails, nothing
+        # is marked as processed locally.
+        #
 
         if pending_jobs:
 
             logger.info(
-                f"Writing "
+                "Writing "
                 f"{len(pending_jobs)} "
-                f"jobs to Google Sheets"
+                "new jobs to Sheets"
             )
 
             sheets.append_jobs(
                 pending_jobs
             )
 
-            # Only record jobs locally
-            # after Sheets succeeds.
+            database.insert_many(
+                pending_jobs
+            )
 
-            for job in pending_jobs:
-
-                database.insert(
-                    job
-                )
-
-                logger.info(
-                    f"Added: "
-                    f"{job.company} | "
-                    f"{job.title}"
-                )
+        elapsed = (
+            time.monotonic()
+            - started
+        )
 
         logger.info(
             "-" * 60
         )
 
         logger.info(
-            f"Listings found: "
-            f"{total_jobs_found}"
+            f"Companies checked: "
+            f"{stats['companies']}"
+        )
+
+        logger.info(
+            f"Company failures: "
+            f"{stats['failed_companies']}"
+        )
+
+        logger.info(
+            f"Listings examined: "
+            f"{stats['listings']}"
         )
 
         logger.info(
             f"Title candidates: "
-            f"{title_candidates}"
+            f"{stats['title_candidates']}"
         )
 
         logger.info(
-            f"Jobs enriched: "
-            f"{enriched_jobs}"
+            f"Descriptions fetched: "
+            f"{stats['enriched']}"
         )
 
         logger.info(
-            f"Location filtered: "
-            f"{filtered_location}"
+            f"SQLite duplicates: "
+            f"{stats['local_duplicates']}"
         )
 
         logger.info(
-            f"Experience filtered: "
-            f"{filtered_experience}"
+            f"Sheet duplicates: "
+            f"{stats['sheet_duplicates']}"
         )
 
         logger.info(
-            f"Job-type filtered: "
-            f"{filtered_job_type}"
+            f"Run duplicates: "
+            f"{stats['run_duplicates']}"
         )
 
         logger.info(
-            f"Jobs matched: "
-            f"{matched_jobs}"
-        )
-
-        logger.info(
-            f"Jobs added: "
+            f"Matched/new jobs: "
             f"{len(pending_jobs)}"
         )
 
         logger.info(
-            f"Unsupported companies: "
-            f"{unsupported_companies}"
+            f"Runtime: "
+            f"{elapsed:.1f} seconds"
         )
-
-        logger.info(
-            f"Failed companies: "
-            f"{failed_companies}"
-        )
-
-    except Exception:
-
-        logger.exception(
-            "Job Monitor terminated "
-            "with an unexpected error"
-        )
-
-        raise
 
     finally:
 
@@ -391,6 +528,37 @@ def main():
         logger.info(
             "=" * 60
         )
+
+
+def main() -> None:
+
+    lock = RunLock()
+
+    if not lock.acquire():
+
+        logger.info(
+            "Another Job Monitor run "
+            "is already active. Exiting."
+        )
+
+        return
+
+    try:
+
+        run_monitor()
+
+    except Exception:
+
+        logger.exception(
+            "Job Monitor terminated "
+            "with an unexpected error"
+        )
+
+        raise
+
+    finally:
+
+        lock.release()
 
 
 if __name__ == "__main__":
