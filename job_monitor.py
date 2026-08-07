@@ -4,6 +4,7 @@ from datetime import (
 )
 
 from collectors.detector import (
+    ATSDetectionResult,
     ATSDetector,
 )
 from collectors.registry import (
@@ -16,6 +17,9 @@ from matcher.matcher import Matcher
 from sheets.google_sheets import (
     GoogleSheetsClient,
 )
+from utils.ats_cache import (
+    ATSCache,
+)
 from utils.config_loader import (
     ConfigLoader,
 )
@@ -23,6 +27,47 @@ from utils.job_classifier import (
     JobClassifier,
 )
 from utils.logger import logger
+
+
+def get_detection(
+    company: str,
+    configured_url: str,
+    detector: ATSDetector,
+    cache: ATSCache,
+) -> ATSDetectionResult:
+
+    cached = cache.get(
+        company,
+        configured_url,
+    )
+
+    if cached:
+
+        return ATSDetectionResult(
+            ats=cached["ats"],
+            url=cached["url"],
+            detected_by="cache",
+        )
+
+    detection = detector.detect(
+        configured_url
+    )
+
+    cache.set(
+        company=company,
+        configured_url=(
+            configured_url
+        ),
+        ats=detection.ats,
+        detected_url=(
+            detection.url
+        ),
+        detected_by=(
+            detection.detected_by
+        ),
+    )
+
+    return detection
 
 
 def main():
@@ -43,6 +88,13 @@ def main():
     detector = ATSDetector()
 
     classifier = JobClassifier()
+
+    cache = ATSCache(
+        retention_days=(
+            config
+            .ats_cache_retention_days
+        )
+    )
 
     pending_jobs = []
 
@@ -95,9 +147,13 @@ def main():
         title_candidates = 0
         enriched_jobs = 0
         matched_jobs = 0
+
         filtered_location = 0
         filtered_experience = 0
         filtered_job_type = 0
+
+        unsupported_companies = 0
+        failed_companies = 0
 
         for company_info in companies:
 
@@ -107,20 +163,19 @@ def main():
                 ]
             )
 
-            career_url = (
+            configured_url = (
                 company_info[
                     "url"
                 ]
             )
 
-            logger.info(
-                f"Checking {company}"
-            )
-
-            detection = (
-                detector.detect(
-                    career_url
-                )
+            detection = get_detection(
+                company=company,
+                configured_url=(
+                    configured_url
+                ),
+                detector=detector,
+                cache=cache,
             )
 
             collector = (
@@ -131,13 +186,21 @@ def main():
 
             if collector is None:
 
-                logger.warning(
+                unsupported_companies += 1
+
+                logger.info(
                     f"{company}: "
                     f"unsupported ATS "
                     f"'{detection.ats}'"
                 )
 
                 continue
+
+            logger.info(
+                f"Checking {company} "
+                f"({detection.ats}, "
+                f"{detection.detected_by})"
+            )
 
             try:
 
@@ -149,6 +212,8 @@ def main():
                 )
 
             except Exception as exc:
+
+                failed_companies += 1
 
                 logger.exception(
                     f"{company}: "
@@ -169,18 +234,13 @@ def main():
 
             for job in jobs:
 
-                # ----------------------
-                # Already recorded
-                # ----------------------
-
                 if database.exists(
                     job
                 ):
                     continue
 
-                # ----------------------
-                # Stage 1
-                # ----------------------
+                # Stage 1:
+                # cheap title-only check.
 
                 if not (
                     matcher.title_matches(
@@ -191,10 +251,8 @@ def main():
 
                 title_candidates += 1
 
-                # ----------------------
-                # Fetch description
-                # only when needed
-                # ----------------------
+                # Fetch details only for
+                # promising jobs.
 
                 if not job.description:
 
@@ -217,16 +275,12 @@ def main():
                             f"{exc}"
                         )
 
-                # ----------------------
-                # Classification
-                # ----------------------
-
                 classifier.classify(
                     job
                 )
 
                 # ----------------------
-                # Geographic filter
+                # Country
                 # ----------------------
 
                 if (
@@ -240,7 +294,7 @@ def main():
                     continue
 
                 # ----------------------
-                # Experience filter
+                # Experience
                 # ----------------------
 
                 if (
@@ -253,7 +307,7 @@ def main():
                     continue
 
                 # ----------------------
-                # Employment filter
+                # Employment type
                 # ----------------------
 
                 if (
@@ -265,7 +319,7 @@ def main():
                     continue
 
                 # ----------------------
-                # Full relevance score
+                # Relevance
                 # ----------------------
 
                 if not matcher.is_match(
@@ -287,9 +341,9 @@ def main():
                     job
                 )
 
-        # =================================
-        # One Google Sheets batch operation
-        # =================================
+        # ------------------------------
+        # One Sheets operation
+        # ------------------------------
 
         if pending_jobs:
 
@@ -303,11 +357,8 @@ def main():
                 pending_jobs
             )
 
-            #
-            # Only mark jobs as recorded
-            # AFTER the entire Sheets
-            # operation succeeds.
-            #
+            # Only record jobs locally
+            # after Sheets succeeds.
 
             for job in pending_jobs:
 
@@ -363,6 +414,16 @@ def main():
         logger.info(
             f"Jobs added: "
             f"{len(pending_jobs)}"
+        )
+
+        logger.info(
+            f"Unsupported companies: "
+            f"{unsupported_companies}"
+        )
+
+        logger.info(
+            f"Failed companies: "
+            f"{failed_companies}"
         )
 
     except Exception:

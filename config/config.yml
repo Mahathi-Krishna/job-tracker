@@ -45,6 +45,9 @@ database:
   # Automatically delete records older than this.
   retention_days: 30
 
+ats_cache:
+  retention_days: 7
+
 logging:
   folder: "logs"
 

@@ -244,3 +244,15 @@ class ConfigLoader:
         ][
             "minimum_score"
         ]
+
+    @property
+    def ats_cache_retention_days(
+        self,
+    ):
+        return self.config.get(
+            "ats_cache",
+            {},
+        ).get(
+            "retention_days",
+            7,
+        )

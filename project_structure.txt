@@ -1,0 +1,61 @@
+C:\job-monitor\
+│
+├── job_monitor.py
+├── credentials.json
+├── requirements.txt
+│
+├── collectors\
+│   ├── __init__.py
+│   ├── base.py
+│   ├── detector.py
+│   ├── greenhouse.py
+│   ├── lever.py
+│   ├── registry.py
+│   └── workday.py
+│
+├── config\
+│   ├── config.yaml
+│   ├── companies.txt
+│   ├── keywords.txt
+│   └── role_keywords.txt
+│
+├── data\
+│   └── ats_cache.json       <- created automatically
+│
+├── database\
+│   ├── __init__.py
+│   ├── sqlite_db.py
+│   └── jobs.db              <- created automatically
+│
+├── matcher\
+│   ├── __init__.py
+│   └── matcher.py
+│
+├── models\
+│   ├── __init__.py
+│   └── job.py
+│
+├── sheets\
+│   ├── __init__.py
+│   └── google_sheets.py
+│
+├── utils\
+│   ├── __init__.py
+│   ├── ats_cache.py
+│   ├── config_loader.py
+│   ├── http_client.py
+│   ├── job_classifier.py
+│   └── logger.py
+│
+├── tests\
+│   ├── __init__.py
+│   ├── audit_company_coverage.py
+│   ├── test_career_level.py
+│   ├── test_classifier.py
+│   ├── test_detector.py
+│   ├── test_greenhouse.py
+│   ├── test_lever.py
+│   ├── test_matcher.py
+│   └── test_workday.py
+│
+└── logs\

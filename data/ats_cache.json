@@ -1,0 +1,92 @@
+{
+  "AMD|https://careers.amd.com": {
+    "ats": "icims",
+    "detected_by": "html",
+    "updated_at": "2026-08-07T02:30:40+00:00",
+    "url": "https://careers-amd.icims.com/jobs/login?loginOnly=1&redirect=&in_iframe=1&hashed=-625942636"
+  },
+  "Apple|https://jobs.apple.com": {
+    "ats": "generic",
+    "detected_by": "unknown",
+    "updated_at": "2026-08-07T02:30:41+00:00",
+    "url": "https://www.apple.com/careers/us/"
+  },
+  "Cadence|https://cadence.wd1.myworkdayjobs.com": {
+    "ats": "workday",
+    "detected_by": "url",
+    "updated_at": "2026-08-07T02:30:41+00:00",
+    "url": "https://cadence.wd1.myworkdayjobs.com"
+  },
+  "Intel|https://jobs.intel.com": {
+    "ats": "generic",
+    "detected_by": "failed",
+    "updated_at": "2026-08-07T02:30:42+00:00",
+    "url": "https://jobs.intel.com"
+  },
+  "Marvell|https://marvell.com/company/careers.html": {
+    "ats": "generic",
+    "detected_by": "failed",
+    "updated_at": "2026-08-07T02:30:42+00:00",
+    "url": "https://marvell.com/company/careers.html"
+  },
+  "Micron|https://careers.micron.com": {
+    "ats": "generic",
+    "detected_by": "failed",
+    "updated_at": "2026-08-07T02:30:44+00:00",
+    "url": "https://careers.micron.com"
+  },
+  "NVIDIA|https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite": {
+    "ats": "workday",
+    "detected_by": "url",
+    "updated_at": "2026-08-07T02:30:44+00:00",
+    "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite"
+  },
+  "OpenAI|https://openai.com/careers": {
+    "ats": "generic",
+    "detected_by": "unknown",
+    "updated_at": "2026-08-07T02:30:44+00:00",
+    "url": "https://openai.com/careers/"
+  },
+  "Qualcomm|https://careers.qualcomm.com": {
+    "ats": "generic",
+    "detected_by": "unknown",
+    "updated_at": "2026-08-07T02:30:46+00:00",
+    "url": "https://careers.qualcomm.com/careers"
+  },
+  "Siemens EDA|https://jobs.siemens.com": {
+    "ats": "generic",
+    "detected_by": "unknown",
+    "updated_at": "2026-08-07T02:30:48+00:00",
+    "url": "https://jobs.siemens.com/en_US/externaljobs"
+  },
+  "SpaceX|https://boards.greenhouse.io/spacex": {
+    "ats": "greenhouse",
+    "detected_by": "url",
+    "updated_at": "2026-08-07T02:30:48+00:00",
+    "url": "https://boards.greenhouse.io/spacex"
+  },
+  "Synopsys|https://careers.synopsys.com": {
+    "ats": "generic",
+    "detected_by": "unknown",
+    "updated_at": "2026-08-07T02:30:48+00:00",
+    "url": "https://careers.synopsys.com/"
+  },
+  "TSMC|https://careers.tsmc.com": {
+    "ats": "generic",
+    "detected_by": "unknown",
+    "updated_at": "2026-08-07T02:30:52+00:00",
+    "url": "https://careers.tsmc.com/en_US/careers"
+  },
+  "Tesla|https://www.tesla.com/careers/search": {
+    "ats": "generic",
+    "detected_by": "failed",
+    "updated_at": "2026-08-07T02:30:48+00:00",
+    "url": "https://www.tesla.com/careers/search"
+  },
+  "Texas Instruments|https://careers.ti.com": {
+    "ats": "oracle",
+    "detected_by": "html",
+    "updated_at": "2026-08-07T02:30:50+00:00",
+    "url": "https://edbz.fa.us2.oraclecloud.com:443/hcmUI/CandExpStatic/js/ce-custom.js?themeNumber=default_minimal_theme_CX&themeVersion=4&brandVersion=31"
+  }
+}
