@@ -34,7 +34,39 @@ def get_detection(
     configured_url: str,
     detector: ATSDetector,
     cache: ATSCache,
+    overrides: dict,
 ) -> ATSDetectionResult:
+
+    override = overrides.get(
+        company
+    )
+
+    if override:
+
+        ats = (
+            override.get(
+                "ats",
+                ""
+            )
+            .strip()
+            .lower()
+        )
+
+        url = (
+            override.get(
+                "url",
+                configured_url,
+            )
+            .strip()
+        )
+
+        if ats:
+
+            return ATSDetectionResult(
+                ats=ats,
+                url=url,
+                detected_by="override",
+            )
 
     cached = cache.get(
         company,
@@ -176,6 +208,9 @@ def main():
                 ),
                 detector=detector,
                 cache=cache,
+                overrides=(
+                    config.ats_overrides
+                ),
             )
 
             collector = (

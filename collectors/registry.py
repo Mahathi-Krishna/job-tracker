@@ -1,19 +1,33 @@
-from collectors.greenhouse import GreenhouseCollector
-from collectors.lever import LeverCollector
-from collectors.workday import WorkdayCollector
+from collectors.ashby import (
+    AshbyCollector,
+)
+from collectors.greenhouse import (
+    GreenhouseCollector,
+)
+from collectors.lever import (
+    LeverCollector,
+)
+from collectors.workday import (
+    WorkdayCollector,
+)
 
 
 class CollectorRegistry:
-    """
-    Registry of implemented ATS collectors.
-    """
 
     def __init__(self):
 
         self.collectors = {
-            "greenhouse": GreenhouseCollector(),
-            "lever": LeverCollector(),
-            "workday": WorkdayCollector(),
+            "ashby":
+                AshbyCollector(),
+
+            "greenhouse":
+                GreenhouseCollector(),
+
+            "lever":
+                LeverCollector(),
+
+            "workday":
+                WorkdayCollector(),
         }
 
     def get(

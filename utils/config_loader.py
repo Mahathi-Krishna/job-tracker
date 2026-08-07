@@ -26,6 +26,7 @@ class ConfigLoader:
         self.keywords = []
 
         self.role_keywords = []
+        self.ats_overrides = {}
 
     def load(self):
 
@@ -50,6 +51,20 @@ class ConfigLoader:
                 / "role_keywords.txt"
             )
         )
+
+        overrides_path = (
+            CONFIG_DIR
+            / "ats_overrides.yml"
+        )
+
+        if overrides_path.exists():
+
+            self.ats_overrides = (
+                self._load_yaml(
+                    overrides_path
+                )
+                or {}
+            )
 
     @staticmethod
     def _load_yaml(

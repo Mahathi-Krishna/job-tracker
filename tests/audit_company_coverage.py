@@ -1,4 +1,5 @@
 from collectors.detector import (
+    ATSDetectionResult,
     ATSDetector,
 )
 from collectors.registry import (
@@ -10,6 +11,81 @@ from utils.ats_cache import (
 from utils.config_loader import (
     ConfigLoader,
 )
+
+
+def resolve_company(
+    company: str,
+    configured_url: str,
+    config: ConfigLoader,
+    cache: ATSCache,
+    detector: ATSDetector,
+) -> ATSDetectionResult:
+
+    override = (
+        config.ats_overrides.get(
+            company
+        )
+    )
+
+    if override:
+
+        ats = (
+            override.get(
+                "ats",
+                ""
+            )
+            .strip()
+            .lower()
+        )
+
+        url = (
+            override.get(
+                "url",
+                configured_url,
+            )
+            .strip()
+        )
+
+        if ats:
+
+            return ATSDetectionResult(
+                ats=ats,
+                url=url,
+                detected_by="override",
+            )
+
+    cached = cache.get(
+        company,
+        configured_url,
+    )
+
+    if cached:
+
+        return ATSDetectionResult(
+            ats=cached["ats"],
+            url=cached["url"],
+            detected_by="cache",
+        )
+
+    detection = detector.detect(
+        configured_url
+    )
+
+    cache.set(
+        company=company,
+        configured_url=(
+            configured_url
+        ),
+        ats=detection.ats,
+        detected_url=(
+            detection.url
+        ),
+        detected_by=(
+            detection.detected_by
+        ),
+    )
+
+    return detection
 
 
 config = ConfigLoader()
@@ -28,24 +104,24 @@ cache = ATSCache(
 
 supported = 0
 unsupported = 0
-cached_count = 0
 
 
 try:
 
     print(
-        "=" * 90
+        "=" * 100
     )
 
     print(
         f"{'Company':<25}"
         f"{'ATS':<18}"
         f"{'Status':<15}"
-        f"{'Detection'}"
+        f"{'Detection':<15}"
+        f"Resolved URL"
     )
 
     print(
-        "=" * 90
+        "=" * 100
     )
 
     for company_info in (
@@ -64,84 +140,40 @@ try:
             ]
         )
 
-        cached = cache.get(
-            company,
-            configured_url,
+        result = resolve_company(
+            company=company,
+            configured_url=(
+                configured_url
+            ),
+            config=config,
+            cache=cache,
+            detector=detector,
         )
 
-        if cached:
-
-            ats = cached[
-                "ats"
-            ]
-
-            detected_url = (
-                cached["url"]
-            )
-
-            detected_by = (
-                "cache"
-            )
-
-            cached_count += 1
-
-        else:
-
-            detection = (
-                detector.detect(
-                    configured_url
-                )
-            )
-
-            ats = detection.ats
-
-            detected_url = (
-                detection.url
-            )
-
-            detected_by = (
-                detection.detected_by
-            )
-
-            cache.set(
-                company=company,
-                configured_url=(
-                    configured_url
-                ),
-                ats=ats,
-                detected_url=(
-                    detected_url
-                ),
-                detected_by=(
-                    detected_by
-                ),
-            )
-
         collector = registry.get(
-            ats
+            result.ats
         )
 
         if collector:
 
             status = "SUPPORTED"
-
             supported += 1
 
         else:
 
             status = "UNSUPPORTED"
-
             unsupported += 1
 
         print(
             f"{company:<25}"
-            f"{ats:<18}"
+            f"{result.ats:<18}"
             f"{status:<15}"
-            f"{detected_by}"
+            f"{result.detected_by:<15}"
+            f"{result.url}"
         )
 
     print(
-        "=" * 90
+        "=" * 100
     )
 
     print(
@@ -152,11 +184,6 @@ try:
     print(
         f"Unsupported : "
         f"{unsupported}"
-    )
-
-    print(
-        f"From cache  : "
-        f"{cached_count}"
     )
 
 finally:

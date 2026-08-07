@@ -1,0 +1,11 @@
+# Optional ATS overrides.
+#
+# Format:
+#
+# Company Name:
+#   ats: ashby
+#   url: https://jobs.ashbyhq.com/example
+#
+# Only add entries that have been verified.
+
+{}

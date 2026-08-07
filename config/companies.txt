@@ -1,15 +1,48 @@
 AMD|https://careers.amd.com
+Analog Devices|https://careers.analog.com
+Ansys|https://careers.ansys.com
 Apple|https://jobs.apple.com
+Arm|https://careers.arm.com
+Astera Labs|https://www.asteralabs.com/careers
+Ayar Labs|https://ayarlabs.com/careers
+Broadcom|https://www.broadcom.com/company/careers
 Cadence|https://cadence.wd1.myworkdayjobs.com
+Cerebras|https://www.cerebras.ai/careers
+GlobalFoundries|https://gf.com/careers
+Google|https://www.google.com/about/careers/applications/jobs/results
+Groq|https://groq.com/careers
+Infineon|https://www.infineon.com/cms/en/careers
 Intel|https://jobs.intel.com
-Marvell|https://marvell.com/company/careers.html
+Keysight|https://jobs.keysight.com
+Lattice Semiconductor|https://www.latticesemi.com/About/Careers
+Lightmatter|https://lightmatter.co/careers
+Marvell|https://www.marvell.com/company/careers.html
+MaxLinear|https://www.maxlinear.com/company/careers
+MediaTek|https://corp.mediatek.com/careers
+Meta|https://www.metacareers.com/jobs
+Microchip Technology|https://careers.microchip.com
 Micron|https://careers.micron.com
+Microsoft|https://jobs.careers.microsoft.com
 NVIDIA|https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
+NXP|https://www.nxp.com/company/about-nxp/careers
+onsemi|https://www.onsemi.com/company/careers
 OpenAI|https://openai.com/careers
 Qualcomm|https://careers.qualcomm.com
+Rambus|https://www.rambus.com/careers
+Renesas|https://jobs.renesas.com
+Rivos|https://www.rivosinc.com/careers
+Samsung Semiconductor|https://semiconductor.samsung.com/us/careers
 Siemens EDA|https://jobs.siemens.com
+SiFive|https://www.sifive.com/careers
+Silicon Labs|https://www.silabs.com/about-us/careers
 SpaceX|https://boards.greenhouse.io/spacex
+STMicroelectronics|https://www.st.com/content/st_com/en/about/careers.html
 Synopsys|https://careers.synopsys.com
+Tenstorrent|https://tenstorrent.com/careers
 Tesla|https://www.tesla.com/careers/search
 Texas Instruments|https://careers.ti.com
 TSMC|https://careers.tsmc.com
+Ventana Micro Systems|https://www.ventanamicro.com/careers
+Western Digital|https://jobs.westerndigital.com
+Wolfspeed|https://www.wolfspeed.com/company/careers
+xAI|https://x.ai/careers
