@@ -170,9 +170,41 @@ try:
 
             failed += 1
 
+            exception_name = (
+                type(exc).__name__
+            )
+
+            message = str(exc)
+
+            if "404" in message:
+                failure_type = "BAD_URL"
+
+            elif "400" in message:
+                failure_type = "BAD_REQUEST"
+
+            elif "403" in message:
+                failure_type = "BLOCKED"
+
+            elif "429" in message:
+                failure_type = "RATE_LIMIT"
+
+            elif (
+                "timeout" in message.lower()
+            ):
+                failure_type = "TIMEOUT"
+
+            elif isinstance(
+                exc,
+                ValueError,
+            ):
+                failure_type = "BAD_CONFIG"
+
+            else:
+                failure_type = exception_name
+
             error = (
-                f"{type(exc).__name__}: "
-                f"{str(exc)[:80]}"
+                f"{failure_type}: "
+                f"{message[:70]}"
             )
 
             print(

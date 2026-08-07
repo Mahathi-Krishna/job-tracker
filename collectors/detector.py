@@ -312,11 +312,39 @@ class ATSDetector:
             if "/login" in lower:
                 score -= 50
 
-            if lower.endswith(".js"):
-                score -= 50
+            #
+            # Assets are not career endpoints.
+            # Never allow them to become the
+            # resolved ATS URL.
+            #
+
+            asset_extensions = (
+                ".js",
+                ".css",
+                ".png",
+                ".jpg",
+                ".jpeg",
+                ".svg",
+                ".gif",
+                ".woff",
+                ".woff2",
+            )
+
+            clean_path = (
+                urlparse(
+                    absolute_url
+                )
+                .path
+                .lower()
+            )
+
+            if clean_path.endswith(
+                asset_extensions
+            ):
+                continue
 
             if "/static/" in lower:
-                score -= 30
+                continue
 
             scored_candidates.append(
                 (

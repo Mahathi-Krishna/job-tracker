@@ -8,4 +8,31 @@
 #
 # Only add entries that have been verified.
 
-{}
+# Verified/manual ATS endpoints.
+#
+# Manual overrides take precedence over
+# automatic detection and cache.
+
+NVIDIA:
+  ats: workday
+  url: https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
+
+SiFive:
+  ats: workday
+  url: https://sifive.wd1.myworkdayjobs.com/sifivecareers
+
+SpaceX:
+  ats: greenhouse
+  url: https://boards.greenhouse.io/spacex
+
+Tenstorrent:
+  ats: greenhouse
+  url: https://job-boards.greenhouse.io/tenstorrent
+
+Western Digital:
+  ats: smartrecruiters
+  url: https://careers.smartrecruiters.com/WesternDigital
+
+xAI:
+  ats: greenhouse
+  url: https://job-boards.greenhouse.io/xai

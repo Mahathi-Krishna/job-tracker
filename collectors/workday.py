@@ -58,11 +58,34 @@ class WorkdayCollector(BaseCollector):
         if not path_parts:
 
             raise ValueError(
-                "Missing Workday career "
-                f"site: {career_url}"
+                "Missing Workday career site: "
+                f"{career_url}"
             )
 
-        site = path_parts[0]
+        #
+        # Workday URLs may contain a locale:
+        #
+        # /en-US/sifivecareers
+        # /en-US/External
+        #
+        # The career site is the component
+        # AFTER the locale.
+        #
+
+        locale_pattern = re.compile(
+            r"^[a-z]{2}-[A-Z]{2}$"
+        )
+
+        if (
+            len(path_parts) >= 2
+            and locale_pattern.match(
+                path_parts[0]
+            )
+        ):
+            site = path_parts[1]
+
+        else:
+            site = path_parts[0]
 
         base_url = (
             f"{parsed.scheme}://"
@@ -78,7 +101,7 @@ class WorkdayCollector(BaseCollector):
             tenant,
             site,
         )
-
+    
     def _jobs_endpoint(
         self,
         base_url: str,
