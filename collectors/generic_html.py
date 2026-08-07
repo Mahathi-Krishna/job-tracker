@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from urllib.parse import urljoin
+from urllib.parse import parse_qs, urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
@@ -12,34 +12,66 @@ from utils.http_client import HttpClient
 
 class GenericHTMLCollector(BaseCollector):
     """
-    Conservative collector for public HTML career pages.
+    Conservative fallback collector for public HTML career pages.
 
-    It does NOT execute JavaScript and does NOT attempt
-    to bypass authentication or access controls.
+    Only extracts links that appear to represent individual
+    job postings.
 
-    It only extracts links that are already present in
-    the returned public HTML.
+    No JavaScript execution, authentication, or access-control
+    bypassing is performed.
     """
 
-    JOB_TERMS = (
-        "/job/",
-        "/jobs/",
-        "/career/",
-        "/careers/",
-        "jobid=",
-        "job_id=",
-        "job-id=",
-        "requisition",
-    )
+    GENERIC_TITLES = {
+        "jobs",
+        "careers",
+        "career",
+        "view jobs",
+        "view open roles",
+        "open roles",
+        "search jobs",
+        "search roles",
+        "all jobs",
+        "find jobs",
+        "find a job",
+        "apply",
+        "apply now",
+        "learn more",
+        "find out more",
+        "students",
+        "locations",
+        "teams",
+        "life at apple",
+        "work at apple",
+        "benefits",
+        "careers at apple",
+        "skip to main content",
+        "local nav open menu",
+        "local nav close menu",
+        "click here",
+        "register your profile",
+        "register your profile on tsmc talent pool",
+        "talent pool",
+        "join our talent community",
+        "join talent community",
+    }
 
-    IGNORE_TERMS = (
+    REJECT_PATH_TERMS = (
+        "/benefits",
+        "/locations",
+        "/teams",
+        "/students",
+        "/life-at-",
+        "/work-at-",
+        "/culture",
+        "/about",
+        "/talentcommunity",
+        "/talent-community",
         "/login",
         "/signin",
         "/sign-in",
         "/register",
         "/profile",
-        "/talent-community",
-        "/connect",
+        "/search",
     )
 
     def __init__(
@@ -57,25 +89,6 @@ class GenericHTMLCollector(BaseCollector):
             max_html_chars
         )
 
-    @classmethod
-    def _looks_like_job_url(
-        cls,
-        url: str,
-    ) -> bool:
-
-        lower = url.lower()
-
-        if any(
-            term in lower
-            for term in cls.IGNORE_TERMS
-        ):
-            return False
-
-        return any(
-            term in lower
-            for term in cls.JOB_TERMS
-        )
-
     @staticmethod
     def _clean_text(
         value: str,
@@ -86,6 +99,256 @@ class GenericHTMLCollector(BaseCollector):
             " ",
             value,
         ).strip()
+
+    @classmethod
+    def _valid_title(
+        cls,
+        title: str,
+    ) -> bool:
+
+        if not title:
+            return False
+
+        title = cls._clean_text(
+            title
+        )
+
+        if len(title) < 4:
+            return False
+
+        if len(title) > 180:
+            return False
+
+        if (
+            title.casefold()
+            in cls.GENERIC_TITLES
+        ):
+            return False
+
+        lower = title.casefold()
+
+        reject_phrases = (
+            "talent pool",
+            "talent community",
+            "register your profile",
+        )
+
+        if any(
+            phrase in lower
+            for phrase in reject_phrases
+        ):
+            return False
+
+        return True
+
+    @classmethod
+    def _looks_like_job_url(
+        cls,
+        url: str,
+    ) -> bool:
+
+        parsed = urlparse(
+            url
+        )
+
+        path = parsed.path.lower()
+
+        asset_extensions = (
+            ".mp4",
+            ".webm",
+            ".mov",
+            ".avi",
+            ".jpg",
+            ".jpeg",
+            ".png",
+            ".gif",
+            ".svg",
+            ".css",
+            ".js",
+            ".pdf",
+        )
+
+        if path.endswith(
+            asset_extensions
+        ):
+            return False
+
+        query = parse_qs(
+            parsed.query
+        )
+
+        full = url.lower()
+
+        #
+        # Explicit non-job pages.
+        #
+
+        for term in (
+            cls.REJECT_PATH_TERMS
+        ):
+
+            if term in path:
+                return False
+
+        #
+        # Strong job identifiers.
+        #
+
+        query_keys = {
+            key.casefold()
+            for key in query
+        }
+
+        if query_keys & {
+            "jobid",
+            "job_id",
+            "job-id",
+            "job",
+            "jobreqid",
+            "requisitionid",
+            "reqid",
+        }:
+            return True
+
+        #
+        # Category/listing pages are not
+        # individual job postings.
+        #
+
+        category_patterns = (
+            "/category/",
+            "/categories/",
+            "/job-category/",
+            "/job-categories/",
+        )
+
+        if any(
+            pattern in path
+            for pattern in category_patterns
+        ):
+            return False
+
+        #
+        # Common individual-job URL
+        # structures.
+        #
+
+        strong_patterns = (
+            "/job/",
+            "/jobdetail",
+            "/job-detail/",
+            "/jobs/",
+            "/position/",
+            "/positions/",
+            "/opening/",
+            "/openings/",
+            "/requisition/",
+        )
+
+        if any(
+            pattern in path
+            for pattern
+            in strong_patterns
+        ):
+
+            #
+            # Reject the category/search
+            # roots themselves.
+            #
+
+            stripped = (
+                path.rstrip("/")
+            )
+
+            if stripped in {
+                "/job",
+                "/jobs",
+                "/career/job",
+                "/career/jobs",
+                "/careers/job",
+                "/careers/jobs",
+            }:
+                return False
+
+            return True
+
+        #
+        # Some career systems encode a
+        # numeric posting ID deep in the
+        # URL.
+        #
+        # Example:
+        # /job/location/title/44408/96150977248
+        #
+
+        if re.search(
+            r"/\d{4,}(?:/|$)",
+            path,
+        ):
+            return True
+
+        #
+        # A careers/search page alone is
+        # NOT an individual posting.
+        #
+
+        if (
+            "/careers" in full
+            and not re.search(
+                r"/\d{4,}",
+                path,
+            )
+        ):
+            return False
+
+        return False
+
+    @staticmethod
+    def _extract_job_id(
+        url: str,
+    ) -> str:
+
+        parsed = urlparse(
+            url
+        )
+
+        query = parse_qs(
+            parsed.query
+        )
+
+        for key in (
+            "jobId",
+            "jobid",
+            "job_id",
+            "job-id",
+            "jobReqId",
+            "requisitionId",
+            "reqId",
+        ):
+
+            values = query.get(
+                key
+            )
+
+            if values:
+                return str(
+                    values[0]
+                )
+
+        #
+        # Fall back to final substantial
+        # numeric URL component.
+        #
+
+        numbers = re.findall(
+            r"/(\d{4,})(?:/|$)",
+            parsed.path,
+        )
+
+        if numbers:
+            return numbers[-1]
+
+        return ""
 
     def collect(
         self,
@@ -111,7 +374,6 @@ class GenericHTMLCollector(BaseCollector):
         )
 
         if "html" not in content_type:
-
             return []
 
         page_html = response.text[
@@ -132,10 +394,13 @@ class GenericHTMLCollector(BaseCollector):
             href=True,
         ):
 
-            href = anchor.get(
-                "href",
-                "",
-            ).strip()
+            href = (
+                anchor.get(
+                    "href",
+                    "",
+                )
+                .strip()
+            )
 
             if not href:
                 continue
@@ -152,7 +417,10 @@ class GenericHTMLCollector(BaseCollector):
             ):
                 continue
 
-            if absolute_url in seen_urls:
+            if (
+                absolute_url
+                in seen_urls
+            ):
                 continue
 
             title = self._clean_text(
@@ -162,31 +430,11 @@ class GenericHTMLCollector(BaseCollector):
                 )
             )
 
-            #
-            # Empty/generic anchors aren't
-            # useful job postings.
-            #
-
-            if (
-                not title
-                or len(title) < 3
+            if not (
+                self._valid_title(
+                    title
+                )
             ):
-                continue
-
-            lower_title = (
-                title.casefold()
-            )
-
-            if lower_title in {
-                "jobs",
-                "careers",
-                "view jobs",
-                "search jobs",
-                "all jobs",
-                "apply",
-                "apply now",
-                "learn more",
-            }:
                 continue
 
             seen_urls.add(
@@ -198,7 +446,11 @@ class GenericHTMLCollector(BaseCollector):
                     company=company,
                     title=title,
                     url=absolute_url,
-                    job_id="",
+                    job_id=(
+                        self._extract_job_id(
+                            absolute_url
+                        )
+                    ),
                     location="Unknown",
                     country="",
                     work_mode="Unknown",
@@ -243,16 +495,14 @@ class GenericHTMLCollector(BaseCollector):
         if "html" not in content_type:
             return job
 
+        page_html = response.text[
+            :self.max_html_chars
+        ]
+
         soup = BeautifulSoup(
-            response.text[
-                :self.max_html_chars
-            ],
+            page_html,
             "lxml",
         )
-
-        #
-        # Remove page chrome/noise.
-        #
 
         for element in soup(
             [
@@ -262,8 +512,10 @@ class GenericHTMLCollector(BaseCollector):
                 "footer",
                 "header",
                 "noscript",
+                "form",
             ]
         ):
+
             element.decompose()
 
         text = soup.get_text(

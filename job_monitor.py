@@ -1,8 +1,10 @@
+from utils.job_validator import (
+    JobValidator,
+)
 from datetime import (
     datetime,
     timezone,
 )
-
 from collectors.detector import (
     ATSDetectionResult,
     ATSDetector,
@@ -268,114 +270,20 @@ def main():
             )
 
             for job in jobs:
+                #
+                # Basic sanity validation before
+                # any matching or enrichment work.
+                #
+                if not JobValidator.is_valid(
+                    job
+                ):
+                    continue
 
                 if database.exists(
                     job
                 ):
                     continue
-
-                # Stage 1:
-                # cheap title-only check.
-
-                if not (
-                    matcher.title_matches(
-                        job
-                    )
-                ):
-                    continue
-
-                title_candidates += 1
-
-                # Fetch details only for
-                # promising jobs.
-
-                if not job.description:
-
-                    try:
-
-                        job = (
-                            collector.enrich(
-                                job
-                            )
-                        )
-
-                        enriched_jobs += 1
-
-                    except Exception as exc:
-
-                        logger.warning(
-                            f"Enrichment failed: "
-                            f"{company} | "
-                            f"{job.title} | "
-                            f"{exc}"
-                        )
-
-                classifier.classify(
-                    job
-                )
-
-                # ----------------------
-                # Country
-                # ----------------------
-
-                if (
-                    job.country
-                    not in config.countries
-                    and job.country
-                    != "Unknown"
-                ):
-
-                    filtered_location += 1
-                    continue
-
-                # ----------------------
-                # Experience
-                # ----------------------
-
-                if (
-                    job.experience_level
-                    not in
-                    config.experience_levels
-                ):
-
-                    filtered_experience += 1
-                    continue
-
-                # ----------------------
-                # Employment type
-                # ----------------------
-
-                if (
-                    job.job_type
-                    not in config.job_types
-                ):
-
-                    filtered_job_type += 1
-                    continue
-
-                # ----------------------
-                # Relevance
-                # ----------------------
-
-                if not matcher.is_match(
-                    job
-                ):
-                    continue
-
-                matched_jobs += 1
-
-                job.date_found = (
-                    datetime.now(
-                        timezone.utc
-                    ).isoformat(
-                        timespec="seconds"
-                    )
-                )
-
-                pending_jobs.append(
-                    job
-                )
-
+                
         # ------------------------------
         # One Sheets operation
         # ------------------------------
