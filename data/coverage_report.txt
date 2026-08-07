@@ -1,0 +1,50 @@
+JOB MONITOR COVERAGE REPORT
+================================================================================
+* AMD                       icims              UNSUPPORTED  cache      https://internal-amd.icims.com/jobs/search?back=none&redirect=search
+  Analog Devices            generic            SUPPORTED    cache      https://careers.analog.com
+  Ansys                     generic            SUPPORTED    cache      https://careers.ansys.com
+* Apple                     generic            SUPPORTED    cache      https://www.apple.com/careers/us/
+* Arm                       icims              UNSUPPORTED  cache      https://experienced-arm.icims.com/connect
+* Astera Labs               greenhouse         SUPPORTED    override   https://job-boards.greenhouse.io/asteralabs
+  Ayar Labs                 generic            SUPPORTED    cache      https://ayarlabs.com/careers
+* Broadcom                  generic            SUPPORTED    cache      https://www.broadcom.com/company/careers
+* Cadence                   workday            SUPPORTED    override   https://cadence.wd1.myworkdayjobs.com/External_Careers
+* Cerebras                  generic            SUPPORTED    cache      https://www.cerebras.ai/join-us
+  GlobalFoundries           generic            SUPPORTED    cache      https://gf.com/careers/
+* Google                    generic            SUPPORTED    cache      https://www.google.com/about/careers/applications/jobs/results
+  Groq                      generic            SUPPORTED    cache      https://groq.com/company
+  Infineon                  generic            SUPPORTED    cache      https://www.infineon.com/cms/en/careers
+* Intel                     generic            SUPPORTED    cache      https://jobs.intel.com
+  Keysight                  icims              UNSUPPORTED  cache      https://keysight.icims.com/icims2/servlet/icims2?module=AppInert&action=download&id=65&hashed=1382506032
+  Lattice Semiconductor     generic            SUPPORTED    cache      https://www.latticesemi.com/About/Careers
+* Lightmatter               generic            SUPPORTED    cache      https://lightmatter.co/people/careers/
+* Marvell                   generic            SUPPORTED    cache      https://www.marvell.com/company/careers.html
+  MaxLinear                 icims              UNSUPPORTED  cache      https://careersus-maxlinear.icims.com/jobs/search?ss=1
+  MediaTek                  generic            SUPPORTED    cache      https://corp.mediatek.com/careers
+* Meta                      generic            SUPPORTED    cache      https://www.metacareers.com/jobs
+  Microchip Technology      generic            SUPPORTED    cache      https://careers.microchip.com
+* Micron                    generic            SUPPORTED    cache      https://careers.micron.com
+* Microsoft                 generic            SUPPORTED    cache      https://apply.careers.microsoft.com/careers
+* NVIDIA                    workday            SUPPORTED    override   https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
+  NXP                       generic            SUPPORTED    cache      https://www.nxp.com/company/about-nxp/careers
+  onsemi                    generic            SUPPORTED    cache      https://www.onsemi.com/company/careers
+* OpenAI                    generic            SUPPORTED    cache      https://openai.com/careers/
+* Qualcomm                  generic            SUPPORTED    cache      https://careers.qualcomm.com
+  Rambus                    icims              UNSUPPORTED  cache      https://careers-rambus.icims.com/jobs/
+  Renesas                   smartrecruiters    SUPPORTED    cache      https://join.smartrecruiters.com/RenesasElectronics/52cc9dd7-0f97-4350-8ce0-d571757301c5-community-sign-up
+* Rivos                     generic            SUPPORTED    cache      https://www.rivosinc.com/careers
+* Samsung Semiconductor     generic            SUPPORTED    cache      https://semiconductor.samsung.com/about-us/careers/
+  Siemens EDA               generic            SUPPORTED    cache      https://jobs.siemens.com/en_US/externaljobs
+* SiFive                    workday            SUPPORTED    override   https://sifive.wd1.myworkdayjobs.com/sifivecareers
+* Silicon Labs              workday            SUPPORTED    override   https://silabs.wd1.myworkdayjobs.com/SiliconlabsCareers
+* SpaceX                    greenhouse         SUPPORTED    override   https://boards.greenhouse.io/spacex
+  STMicroelectronics        generic            SUPPORTED    cache      https://www.st.com/content/st_com/en/about/careers.html
+* Synopsys                  generic            SUPPORTED    override   https://careers.synopsys.com/
+* Tenstorrent               greenhouse         SUPPORTED    override   https://job-boards.greenhouse.io/tenstorrent
+* Tesla                     generic            SUPPORTED    cache      https://www.tesla.com/careers/search
+* Texas Instruments         oracle             UNSUPPORTED  cache      https://edbz.fa.us2.oraclecloud.com:443
+* TSMC                      generic            SUPPORTED    override   https://careers.tsmc.com/en_US/careers
+  Ventana Micro Systems     generic            SUPPORTED    cache      https://www.ventanamicro.com/careers
+  Western Digital           smartrecruiters    SUPPORTED    override   https://careers.smartrecruiters.com/WesternDigital
+  Wolfspeed                 generic            SUPPORTED    cache      https://www.wolfspeed.com/company/careers
+  xAI                       greenhouse         SUPPORTED    override   https://job-boards.greenhouse.io/xai

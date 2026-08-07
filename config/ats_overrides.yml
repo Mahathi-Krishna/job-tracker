@@ -36,3 +36,23 @@ Western Digital:
 xAI:
   ats: greenhouse
   url: https://job-boards.greenhouse.io/xai
+
+Astera Labs:
+  ats: greenhouse
+  url: https://job-boards.greenhouse.io/asteralabs
+
+Cadence:
+  ats: workday
+  url: https://cadence.wd1.myworkdayjobs.com/External_Careers
+
+Silicon Labs:
+  ats: workday
+  url: https://silabs.wd1.myworkdayjobs.com/SiliconlabsCareers
+
+Synopsys:
+  ats: generic
+  url: https://careers.synopsys.com/
+
+TSMC:
+  ats: generic
+  url: https://careers.tsmc.com/en_US/careers

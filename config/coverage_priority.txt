@@ -1,0 +1,27 @@
+NVIDIA
+AMD
+Intel
+Apple
+Qualcomm
+Broadcom
+Cadence
+Synopsys
+Arm
+Marvell
+Texas Instruments
+Micron
+Samsung Semiconductor
+TSMC
+Astera Labs
+SiFive
+Silicon Labs
+Tenstorrent
+Rivos
+Cerebras
+Lightmatter
+SpaceX
+Tesla
+Google
+Microsoft
+Meta
+OpenAI
