@@ -1,6 +1,9 @@
 from collectors.ashby import (
     AshbyCollector,
 )
+from collectors.generic_html import (
+    GenericHTMLCollector,
+)
 from collectors.greenhouse import (
     GreenhouseCollector,
 )
@@ -24,6 +27,9 @@ class CollectorRegistry:
         self.collectors = {
             "ashby":
                 AshbyCollector(),
+
+            "generic":
+                GenericHTMLCollector(),
 
             "greenhouse":
                 GreenhouseCollector(),

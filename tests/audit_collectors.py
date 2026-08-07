@@ -99,6 +99,7 @@ cache = ATSCache(
 
 
 working = 0
+empty = 0
 failed = 0
 unsupported = 0
 
@@ -217,12 +218,17 @@ try:
 
             continue
 
-        working += 1
+        if jobs:
+            working += 1
+            result_text = "WORKING"
+        else:
+            empty += 1
+            result_text = "EMPTY"
 
         print(
             f"{company:<25}"
             f"{result.ats:<20}"
-            f"{'WORKING':<15}"
+            f"{result_text:<15}"
             f"{len(jobs):<10}"
             f"{result.url}"
         )
@@ -233,6 +239,10 @@ try:
 
     print(
         f"Working     : {working}"
+    )
+
+    print(
+        f"Empty       : {empty}"
     )
 
     print(
