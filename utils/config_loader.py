@@ -271,3 +271,33 @@ class ConfigLoader:
             "retention_days",
             7,
         )
+
+    @property
+    def dry_run(
+        self,
+    ) -> bool:
+
+        return bool(
+            self.config.get(
+                "application",
+                {},
+            ).get(
+                "dry_run",
+                True,
+            )
+        )
+
+    @property
+    def dry_run_report_limit(
+        self,
+    ) -> int:
+
+        return int(
+            self.config.get(
+                "application",
+                {},
+            ).get(
+                "dry_run_report_limit",
+                200,
+            )
+        )

@@ -24,6 +24,9 @@ from utils.ats_cache import ATSCache
 from utils.config_loader import (
     ConfigLoader,
 )
+from utils.dry_run_reporter import (
+    DryRunReporter,
+)
 from utils.job_classifier import (
     JobClassifier,
 )
@@ -111,6 +114,9 @@ def run_monitor() -> None:
 
     started = time.monotonic()
 
+    config = ConfigLoader()
+    config.load()
+
     logger.info(
         "=" * 60
     )
@@ -119,8 +125,14 @@ def run_monitor() -> None:
         "Starting Job Monitor"
     )
 
-    config = ConfigLoader()
-    config.load()
+    logger.info(
+        "Mode: "
+        + (
+            "DRY RUN"
+            if config.dry_run
+            else "PRODUCTION"
+        )
+    )
 
     database = JobDatabase()
 
@@ -135,13 +147,14 @@ def run_monitor() -> None:
         )
     )
 
-    pending_jobs = []
+    reporter = DryRunReporter(
+        limit=(
+            config
+            .dry_run_report_limit
+        )
+    )
 
-    #
-    # Prevent duplicates inside the
-    # current run before Sheets/SQLite
-    # are updated.
-    #
+    pending_jobs = []
 
     pending_hashes = set()
 
@@ -158,6 +171,18 @@ def run_monitor() -> None:
                 f"{deleted} expired "
                 "records removed"
             )
+
+        #
+        # We still connect to Sheets during
+        # a dry run.
+        #
+        # Reasons:
+        #   1. Verify credentials.
+        #   2. Exclude jobs already present
+        #      in the permanent tracker.
+        #
+        # We simply don't WRITE to it.
+        #
 
         sheets = GoogleSheetsClient(
             config.credentials_file,
@@ -189,15 +214,16 @@ def run_monitor() -> None:
             "companies": 0,
             "failed_companies": 0,
             "listings": 0,
-            "title_candidates": 0,
-            "enriched": 0,
+            "invalid": 0,
             "local_duplicates": 0,
             "sheet_duplicates": 0,
             "run_duplicates": 0,
-            "invalid": 0,
+            "title_candidates": 0,
+            "enriched": 0,
             "location_filtered": 0,
             "experience_filtered": 0,
             "job_type_filtered": 0,
+            "score_filtered": 0,
             "matched": 0,
         }
 
@@ -265,9 +291,13 @@ def run_monitor() -> None:
 
                 continue
 
-            stats["companies"] += 1
+            stats[
+                "companies"
+            ] += 1
 
-            stats["listings"] += len(
+            stats[
+                "listings"
+            ] += len(
                 jobs
             )
 
@@ -279,7 +309,10 @@ def run_monitor() -> None:
                     )
                 ):
 
-                    stats["invalid"] += 1
+                    stats[
+                        "invalid"
+                    ] += 1
+
                     continue
 
                 job_hash = (
@@ -309,14 +342,6 @@ def run_monitor() -> None:
 
                     continue
 
-                #
-                # Permanent deduplication.
-                #
-                # Even if SQLite forgot this
-                # posting after 30 days,
-                # Sheets still remembers it.
-                #
-
                 if sheets.contains_job(
                     job
                 ):
@@ -328,7 +353,8 @@ def run_monitor() -> None:
                     continue
 
                 #
-                # Cheap Stage 1 title filter.
+                # Stage 1:
+                # title only.
                 #
 
                 if not (
@@ -336,6 +362,7 @@ def run_monitor() -> None:
                         job
                     )
                 ):
+
                     continue
 
                 stats[
@@ -343,8 +370,9 @@ def run_monitor() -> None:
                 ] += 1
 
                 #
-                # Fetch detail only for
-                # potentially useful jobs.
+                # Only candidate jobs get
+                # potentially expensive
+                # detail requests.
                 #
 
                 if not job.description:
@@ -373,6 +401,14 @@ def run_monitor() -> None:
                 classifier.classify(
                     job
                 )
+
+                #
+                # Country filtering.
+                #
+                # Unknown remains allowed
+                # because some ATSs don't
+                # expose enough location data.
+                #
 
                 if (
                     job.country
@@ -414,6 +450,11 @@ def run_monitor() -> None:
                 if not matcher.is_match(
                     job
                 ):
+
+                    stats[
+                        "score_filtered"
+                    ] += 1
+
                     continue
 
                 job.date_found = (
@@ -432,21 +473,54 @@ def run_monitor() -> None:
                     job
                 )
 
-                stats["matched"] += 1
+                stats[
+                    "matched"
+                ] += 1
+
+                if config.dry_run:
+
+                    reporter.add(
+                        job
+                    )
 
         #
-        # Google Sheets is written before
-        # SQLite. If Sheets fails, nothing
-        # is marked as processed locally.
+        # ============================
+        # Output
+        # ============================
         #
 
-        if pending_jobs:
+        if config.dry_run:
+
+            report_path = (
+                reporter.write()
+            )
+
+            logger.info(
+                "DRY RUN: no jobs were "
+                "written to Google Sheets "
+                "or SQLite."
+            )
+
+            logger.info(
+                "Dry-run report: "
+                f"{report_path}"
+            )
+
+        elif pending_jobs:
 
             logger.info(
                 "Writing "
                 f"{len(pending_jobs)} "
-                "new jobs to Sheets"
+                "new jobs to Google Sheets"
             )
+
+            #
+            # Sheets first.
+            #
+            # If this fails, SQLite remains
+            # untouched so the jobs can be
+            # retried next run.
+            #
 
             sheets.append_jobs(
                 pending_jobs
@@ -481,13 +555,8 @@ def run_monitor() -> None:
         )
 
         logger.info(
-            f"Title candidates: "
-            f"{stats['title_candidates']}"
-        )
-
-        logger.info(
-            f"Descriptions fetched: "
-            f"{stats['enriched']}"
+            f"Invalid listings: "
+            f"{stats['invalid']}"
         )
 
         logger.info(
@@ -506,8 +575,38 @@ def run_monitor() -> None:
         )
 
         logger.info(
+            f"Title candidates: "
+            f"{stats['title_candidates']}"
+        )
+
+        logger.info(
+            f"Descriptions fetched: "
+            f"{stats['enriched']}"
+        )
+
+        logger.info(
+            f"Location filtered: "
+            f"{stats['location_filtered']}"
+        )
+
+        logger.info(
+            f"Experience filtered: "
+            f"{stats['experience_filtered']}"
+        )
+
+        logger.info(
+            f"Job-type filtered: "
+            f"{stats['job_type_filtered']}"
+        )
+
+        logger.info(
+            f"Score filtered: "
+            f"{stats['score_filtered']}"
+        )
+
+        logger.info(
             f"Matched/new jobs: "
-            f"{len(pending_jobs)}"
+            f"{stats['matched']}"
         )
 
         logger.info(

@@ -121,18 +121,83 @@ class JobClassifier:
 
     @staticmethod
     def _normalize(
-        text: str | None,
+        text,
     ) -> str:
 
-        if not text:
+        if text is None:
             return ""
+
+        if isinstance(
+            text,
+            str,
+        ):
+
+            value = text
+
+        elif isinstance(
+            text,
+            dict,
+        ):
+
+            #
+            # Prefer meaningful textual
+            # values from structured ATS data.
+            #
+
+            parts = []
+
+            for key in (
+                "label",
+                "name",
+                "value",
+                "text",
+                "id",
+            ):
+
+                candidate = (
+                    text.get(key)
+                )
+
+                if isinstance(
+                    candidate,
+                    str,
+                ) and candidate.strip():
+
+                    parts.append(
+                        candidate
+                    )
+
+            value = " ".join(
+                parts
+            )
+
+        elif isinstance(
+            text,
+            (
+                list,
+                tuple,
+                set,
+            ),
+        ):
+
+            value = " ".join(
+                str(item)
+                for item in text
+                if item is not None
+            )
+
+        else:
+
+            value = str(
+                text
+            )
 
         return re.sub(
             r"\s+",
             " ",
-            text.lower(),
+            value.lower(),
         ).strip()
-
+    
     @staticmethod
     def _contains_phrase(
         text: str,
@@ -253,14 +318,18 @@ class JobClassifier:
         job: Job,
     ) -> str:
 
-        text = self._normalize(
-            " ".join(
-                [
-                    job.title or "",
-                    job.location or "",
-                    job.description or "",
-                ]
-            )
+        text = " ".join(
+            [
+                self._normalize(
+                    job.title
+                ),
+                self._normalize(
+                    job.location
+                ),
+                self._normalize(
+                    job.description
+                ),
+            ]
         )
 
         if self._contains_phrase(
@@ -307,14 +376,18 @@ class JobClassifier:
         Career level is handled separately.
         """
 
-        text = self._normalize(
-            " ".join(
-                [
-                    job.title or "",
-                    job.job_type or "",
-                    job.description or "",
-                ]
-            )
+        text = " ".join(
+            [
+                self._normalize(
+                    job.title
+                ),
+                self._normalize(
+                    job.job_type
+                ),
+                self._normalize(
+                    job.description
+                ),
+            ]
         )
 
         for term in (
@@ -366,13 +439,15 @@ class JobClassifier:
             job.title
         )
 
-        text = self._normalize(
-            " ".join(
-                [
-                    job.title or "",
-                    job.description or "",
-                ]
-            )
+        text = " ".join(
+            [
+                self._normalize(
+                    job.title
+                ),
+                self._normalize(
+                    job.description
+                ),
+            ]
         )
 
         # Seniority in the title is strong

@@ -57,6 +57,50 @@ class SmartRecruitersCollector(
 
         return parts[0]
 
+    @staticmethod
+    def _extract_employment_type(
+        value,
+    ) -> str:
+
+        if not value:
+            return "Unknown"
+
+        if isinstance(
+            value,
+            str,
+        ):
+            return value.strip()
+
+        if isinstance(
+            value,
+            dict,
+        ):
+
+            #
+            # SmartRecruiters may represent
+            # employment type as an object.
+            #
+
+            for key in (
+                "label",
+                "name",
+                "value",
+                "id",
+            ):
+
+                candidate = (
+                    value.get(key)
+                )
+
+                if isinstance(
+                    candidate,
+                    str,
+                ) and candidate.strip():
+
+                    return candidate.strip()
+
+        return "Unknown"
+
     def collect(
         self,
         company: str,
@@ -170,11 +214,10 @@ class SmartRecruitersCollector(
                     location=location,
                     country="",
                     work_mode="Unknown",
-                    job_type=(
+                    job_type=self._extract_employment_type(
                         item.get(
                             "typeOfEmployment"
                         )
-                        or "Unknown"
                     ),
                     experience_level=(
                         "Unknown"

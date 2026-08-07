@@ -6,9 +6,21 @@ application:
   name: "Job Monitor"
   version: "1.0.0"
 
+  # true:
+  #   Search/filter jobs but DO NOT write
+  #   to Google Sheets or SQLite.
+  #
+  # false:
+  #   Normal production operation.
+  dry_run: true
+
+  # During a dry run, limit the number of
+  # matching jobs printed to the report.
+  dry_run_report_limit: 200
+
 scheduler:
   # Windows Task Scheduler should invoke the application at this interval.
-  interval_minutes: 10
+  interval_minutes: 60
 
 search:
   countries:
