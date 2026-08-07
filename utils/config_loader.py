@@ -216,6 +216,16 @@ class ConfigLoader:
         ]
 
     @property
+    def experience_levels(
+        self,
+    ):
+        return self.config[
+            "search"
+        ][
+            "experience_levels"
+        ]
+
+    @property
     def work_modes(
         self,
     ):

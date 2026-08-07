@@ -21,13 +21,20 @@ search:
     - Full-time
     - Internship
     - Co-op
+    - Unknown
+
+  experience_levels:
+    - Student
     - New Grad
     - Entry Level
+    # - Senior
+    - Unknown
 
   work_modes:
     - Remote
     - Hybrid
     - On-site
+    - Unknown
 
 matching:
   minimum_score: 60

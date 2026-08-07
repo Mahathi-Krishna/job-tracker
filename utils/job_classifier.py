@@ -7,7 +7,13 @@ from models.job import Job
 
 class JobClassifier:
     """
-    Lightweight rule-based classification.
+    Lightweight rule-based job classifier.
+
+    Classifies:
+      - country
+      - work mode
+      - employment type
+      - experience level
 
     No ML models or external APIs are used.
     """
@@ -82,21 +88,50 @@ class JobClassifier:
         "northern ireland",
     }
 
+    SENIOR_TERMS = {
+        "senior",
+        "sr",
+        "sr.",
+        "staff",
+        "principal",
+        "lead",
+        "manager",
+        "director",
+        "distinguished",
+        "fellow",
+        "architect",
+    }
+
+    ENTRY_TERMS = {
+        "entry level",
+        "entry-level",
+        "early career",
+        "junior",
+        "junior engineer",
+    }
+
+    NEW_GRAD_TERMS = {
+        "new grad",
+        "new graduate",
+        "recent graduate",
+        "university graduate",
+        "graduate engineer",
+        "graduate hardware engineer",
+    }
+
     @staticmethod
-    def _normalize(text: str | None) -> str:
+    def _normalize(
+        text: str | None,
+    ) -> str:
 
         if not text:
             return ""
 
-        text = text.lower()
-
-        text = re.sub(
+        return re.sub(
             r"\s+",
             " ",
-            text,
-        )
-
-        return text.strip()
+            text.lower(),
+        ).strip()
 
     @staticmethod
     def _contains_phrase(
@@ -106,7 +141,9 @@ class JobClassifier:
 
         pattern = (
             r"(?<![a-z0-9])"
-            + re.escape(phrase.lower())
+            + re.escape(
+                phrase.lower()
+            )
             + r"(?![a-z0-9])"
         )
 
@@ -123,35 +160,25 @@ class JobClassifier:
         location: str,
     ) -> str:
 
-        text = self._normalize(location)
+        text = self._normalize(
+            location
+        )
 
         if not text:
             return "Unknown"
 
-        # -------------------------
-        # United States
-        # -------------------------
-
-        if (
+        if any(
             self._contains_phrase(
                 text,
+                term,
+            )
+            for term in (
                 "united states",
-            )
-            or self._contains_phrase(
-                text,
                 "usa",
-            )
-            or self._contains_phrase(
-                text,
                 "u.s.",
             )
         ):
             return "United States"
-
-        # Workday often returns locations such as:
-        #
-        # US, CA, Santa Clara
-        # US, TX, Austin
 
         if re.search(
             r"(^|[,/\s])us([,/\s]|$)",
@@ -163,17 +190,16 @@ class JobClassifier:
         tokens = {
             token.lower()
             for token in re.findall(
-                r"\b[a-zA-Z]{2}\b",
+                r"\b[A-Za-z]{2}\b",
                 location,
             )
         }
 
-        if tokens & self.US_STATE_CODES:
+        if (
+            tokens
+            & self.US_STATE_CODES
+        ):
             return "United States"
-
-        # -------------------------
-        # Canada
-        # -------------------------
 
         if self._contains_phrase(
             text,
@@ -181,14 +207,9 @@ class JobClassifier:
         ):
             return "Canada"
 
-        if re.search(
-            r"(^|[,/\s])can([,/\s]|$)",
-            text,
-            flags=re.IGNORECASE,
+        for province in (
+            self.CANADIAN_PROVINCES
         ):
-            return "Canada"
-
-        for province in self.CANADIAN_PROVINCES:
 
             if self._contains_phrase(
                 text,
@@ -196,12 +217,11 @@ class JobClassifier:
             ):
                 return "Canada"
 
-        if tokens & self.CANADIAN_PROVINCE_CODES:
+        if (
+            tokens
+            & self.CANADIAN_PROVINCE_CODES
+        ):
             return "Canada"
-
-        # -------------------------
-        # United Kingdom
-        # -------------------------
 
         for term in self.UK_TERMS:
 
@@ -217,10 +237,6 @@ class JobClassifier:
             flags=re.IGNORECASE,
         ):
             return "United Kingdom"
-
-        # -------------------------
-        # European Union
-        # -------------------------
 
         for country in self.EU_COUNTRIES:
 
@@ -253,15 +269,13 @@ class JobClassifier:
         ):
             return "Hybrid"
 
-        remote_terms = [
+        for term in (
             "remote",
             "work from home",
             "work-from-home",
             "home based",
             "home-based",
-        ]
-
-        for term in remote_terms:
+        ):
 
             if self._contains_phrase(
                 text,
@@ -269,13 +283,11 @@ class JobClassifier:
             ):
                 return "Remote"
 
-        onsite_terms = [
+        for term in (
             "on-site",
             "onsite",
             "on site",
-        ]
-
-        for term in onsite_terms:
+        ):
 
             if self._contains_phrase(
                 text,
@@ -289,6 +301,11 @@ class JobClassifier:
         self,
         job: Job,
     ) -> str:
+        """
+        Employment type only.
+
+        Career level is handled separately.
+        """
 
         text = self._normalize(
             " ".join(
@@ -300,17 +317,11 @@ class JobClassifier:
             )
         )
 
-        # Order matters.
-        # Co-op should be checked before
-        # generic full-time terms.
-
-        coop_terms = [
+        for term in (
             "co-op",
             "coop",
             "co op",
-        ]
-
-        for term in coop_terms:
+        ):
 
             if self._contains_phrase(
                 text,
@@ -318,13 +329,11 @@ class JobClassifier:
             ):
                 return "Co-op"
 
-        internship_terms = [
+        for term in (
             "internship",
             "intern",
             "summer intern",
-        ]
-
-        for term in internship_terms:
+        ):
 
             if self._contains_phrase(
                 text,
@@ -332,45 +341,13 @@ class JobClassifier:
             ):
                 return "Internship"
 
-        new_grad_terms = [
-            "new grad",
-            "new graduate",
-            "recent graduate",
-            "graduate engineer",
-            "university graduate",
-        ]
-
-        for term in new_grad_terms:
-
-            if self._contains_phrase(
-                text,
-                term,
-            ):
-                return "New Grad"
-
-        entry_terms = [
-            "entry level",
-            "entry-level",
-            "early career",
-            "junior engineer",
-        ]
-
-        for term in entry_terms:
-
-            if self._contains_phrase(
-                text,
-                term,
-            ):
-                return "Entry Level"
-
-        full_time_terms = [
-            "full time",
+        for term in (
             "full-time",
-            "regular",
+            "full time",
+            "regular full time",
+            "regular full-time",
             "permanent",
-        ]
-
-        for term in full_time_terms:
+        ):
 
             if self._contains_phrase(
                 text,
@@ -380,21 +357,94 @@ class JobClassifier:
 
         return "Unknown"
 
+    def classify_experience_level(
+        self,
+        job: Job,
+    ) -> str:
+
+        title = self._normalize(
+            job.title
+        )
+
+        text = self._normalize(
+            " ".join(
+                [
+                    job.title or "",
+                    job.description or "",
+                ]
+            )
+        )
+
+        # Seniority in the title is strong
+        # evidence and takes precedence.
+
+        for term in self.SENIOR_TERMS:
+
+            if self._contains_phrase(
+                title,
+                term,
+            ):
+                return "Senior"
+
+        for term in self.NEW_GRAD_TERMS:
+
+            if self._contains_phrase(
+                text,
+                term,
+            ):
+                return "New Grad"
+
+        for term in self.ENTRY_TERMS:
+
+            if self._contains_phrase(
+                text,
+                term,
+            ):
+                return "Entry Level"
+
+        if any(
+            self._contains_phrase(
+                title,
+                term,
+            )
+            for term in (
+                "intern",
+                "internship",
+                "co-op",
+                "coop",
+            )
+        ):
+            return "Student"
+
+        return "Unknown"
+
     def classify(
         self,
         job: Job,
     ) -> Job:
 
-        job.country = self.classify_country(
-            job.location
+        job.country = (
+            self.classify_country(
+                job.location
+            )
         )
 
         job.work_mode = (
-            self.classify_work_mode(job)
+            self.classify_work_mode(
+                job
+            )
         )
 
         job.job_type = (
-            self.classify_job_type(job)
+            self.classify_job_type(
+                job
+            )
+        )
+
+        job.experience_level = (
+            self.classify_experience_level(
+                job
+            )
         )
 
         return job

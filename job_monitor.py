@@ -44,11 +44,21 @@ def main():
 
     classifier = JobClassifier()
 
+    pending_jobs = []
+
     try:
 
-        database.cleanup(
+        deleted = database.cleanup(
             config.retention_days
         )
+
+        if deleted:
+
+            logger.info(
+                f"Database cleanup: "
+                f"{deleted} old records "
+                f"removed"
+            )
 
         sheets = GoogleSheetsClient(
             config.credentials_file,
@@ -57,9 +67,15 @@ def main():
         )
 
         matcher = Matcher(
-            keywords=config.keywords,
-            role_keywords=config.role_keywords,
-            minimum_score=config.minimum_score,
+            keywords=(
+                config.keywords
+            ),
+            role_keywords=(
+                config.role_keywords
+            ),
+            minimum_score=(
+                config.minimum_score
+            ),
         )
 
         registry = (
@@ -79,7 +95,9 @@ def main():
         title_candidates = 0
         enriched_jobs = 0
         matched_jobs = 0
-        total_jobs_added = 0
+        filtered_location = 0
+        filtered_experience = 0
+        filtered_job_type = 0
 
         for company_info in companies:
 
@@ -116,7 +134,7 @@ def main():
                 logger.warning(
                     f"{company}: "
                     f"unsupported ATS "
-                    f"{detection.ats}"
+                    f"'{detection.ats}'"
                 )
 
                 continue
@@ -151,28 +169,32 @@ def main():
 
             for job in jobs:
 
-                # ------------------------
-                # Already written?
-                # ------------------------
+                # ----------------------
+                # Already recorded
+                # ----------------------
 
-                if database.exists(job):
+                if database.exists(
+                    job
+                ):
                     continue
 
-                # ------------------------
-                # Stage 1:
-                # cheap title filter
-                # ------------------------
+                # ----------------------
+                # Stage 1
+                # ----------------------
 
-                if not matcher.title_matches(
-                    job
+                if not (
+                    matcher.title_matches(
+                        job
+                    )
                 ):
                     continue
 
                 title_candidates += 1
 
-                # ------------------------
-                # Enrich only candidates
-                # ------------------------
+                # ----------------------
+                # Fetch description
+                # only when needed
+                # ----------------------
 
                 if not job.description:
 
@@ -189,46 +211,62 @@ def main():
                     except Exception as exc:
 
                         logger.warning(
-                            f"Could not enrich "
+                            f"Enrichment failed: "
                             f"{company} | "
-                            f"{job.title}: "
+                            f"{job.title} | "
                             f"{exc}"
                         )
 
-                # ------------------------
+                # ----------------------
                 # Classification
-                # ------------------------
+                # ----------------------
 
                 classifier.classify(
                     job
                 )
 
-                # ------------------------
-                # Country filter
-                # ------------------------
+                # ----------------------
+                # Geographic filter
+                # ----------------------
 
                 if (
                     job.country
                     not in config.countries
+                    and job.country
+                    != "Unknown"
                 ):
 
-                    # Unknown is intentionally
-                    # allowed through for now.
-                    #
-                    # Some ATS listings don't
-                    # provide enough location
-                    # information until detail
-                    # parsing improves.
+                    filtered_location += 1
+                    continue
 
-                    if (
-                        job.country
-                        != "Unknown"
-                    ):
-                        continue
+                # ----------------------
+                # Experience filter
+                # ----------------------
 
-                # ------------------------
-                # Full matching
-                # ------------------------
+                if (
+                    job.experience_level
+                    not in
+                    config.experience_levels
+                ):
+
+                    filtered_experience += 1
+                    continue
+
+                # ----------------------
+                # Employment filter
+                # ----------------------
+
+                if (
+                    job.job_type
+                    not in config.job_types
+                ):
+
+                    filtered_job_type += 1
+                    continue
+
+                # ----------------------
+                # Full relevance score
+                # ----------------------
 
                 if not matcher.is_match(
                     job
@@ -237,51 +275,49 @@ def main():
 
                 matched_jobs += 1
 
-                # ------------------------
-                # Timestamp
-                # ------------------------
-
                 job.date_found = (
                     datetime.now(
                         timezone.utc
-                    ).isoformat()
+                    ).isoformat(
+                        timespec="seconds"
+                    )
                 )
 
-                # ------------------------
-                # Sheets first
-                # ------------------------
+                pending_jobs.append(
+                    job
+                )
 
-                try:
+        # =================================
+        # One Google Sheets batch operation
+        # =================================
 
-                    sheets.append_job(
-                        job
-                    )
+        if pending_jobs:
 
-                except Exception as exc:
+            logger.info(
+                f"Writing "
+                f"{len(pending_jobs)} "
+                f"jobs to Google Sheets"
+            )
 
-                    logger.exception(
-                        f"Sheet write failed: "
-                        f"{company} | "
-                        f"{job.title}: "
-                        f"{exc}"
-                    )
+            sheets.append_jobs(
+                pending_jobs
+            )
 
-                    continue
+            #
+            # Only mark jobs as recorded
+            # AFTER the entire Sheets
+            # operation succeeds.
+            #
 
-                # ------------------------
-                # Mark processed only
-                # after Sheets succeeds
-                # ------------------------
+            for job in pending_jobs:
 
                 database.insert(
                     job
                 )
 
-                total_jobs_added += 1
-
                 logger.info(
                     f"Added: "
-                    f"{company} | "
+                    f"{job.company} | "
                     f"{job.title}"
                 )
 
@@ -305,14 +341,38 @@ def main():
         )
 
         logger.info(
+            f"Location filtered: "
+            f"{filtered_location}"
+        )
+
+        logger.info(
+            f"Experience filtered: "
+            f"{filtered_experience}"
+        )
+
+        logger.info(
+            f"Job-type filtered: "
+            f"{filtered_job_type}"
+        )
+
+        logger.info(
             f"Jobs matched: "
             f"{matched_jobs}"
         )
 
         logger.info(
             f"Jobs added: "
-            f"{total_jobs_added}"
+            f"{len(pending_jobs)}"
         )
+
+    except Exception:
+
+        logger.exception(
+            "Job Monitor terminated "
+            "with an unexpected error"
+        )
+
+        raise
 
     finally:
 
