@@ -1,3 +1,7 @@
+from utils.title_filter import (
+    TitleFilter,
+)
+
 from __future__ import annotations
 
 import time
@@ -205,6 +209,41 @@ def run_monitor() -> None:
         registry = (
             CollectorRegistry()
         )
+
+        #
+        # Give high-volume collectors a
+        # lightweight title pre-filter.
+        #
+
+        title_filter = TitleFilter(
+            keywords=(
+                config.keywords
+            ),
+            role_keywords=(
+                config.role_keywords
+            ),
+        )
+
+
+        workday_collector = (
+            registry.get(
+                "workday"
+            )
+        )
+
+
+        if (
+            workday_collector
+            is not None
+            and hasattr(
+                workday_collector,
+                "set_title_filter",
+            )
+        ):
+
+            workday_collector.set_title_filter(
+                title_filter
+            )
 
         companies = (
             config.companies_with_urls
