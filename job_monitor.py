@@ -233,6 +233,7 @@ def run_monitor() -> None:
         for collector_name in (
             "workday",
             "amd",
+            "arm",
         ):
 
             collector = registry.get(

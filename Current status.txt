@@ -1,0 +1,146 @@
+Current project status
+
+Based on everything we've implemented and tested so far, I would classify the companies like this:
+
+Company	Status	Collector / source	Notes
+AMD	✅ Working	AMD/Jibe JSON	Public /api/jobs; canonical URLs fixed
+Intel	✅ Working	Workday	/External; validated
+Micron	✅ Working	Workday	/External; URLs fixed and validated
+NVIDIA	✅ Working	Workday	Large inventory; optimized title pre-filter
+Cadence	✅ Working	Workday	Override validated
+Silicon Labs	✅ Working	Workday	Override validated
+SiFive	✅ Working	Workday	Job-ID extraction fixed
+Astera Labs	✅ Working	Greenhouse	Override validated
+SpaceX	✅ Working	Existing specialized collector	Produced real jobs in dry runs
+Tenstorrent	✅ Working	Existing collector	Produced relevant jobs
+Renesas	✅ Working	SmartRecruiters	Structured-country handling fixed
+TSMC	⚠️ Partial	Generic HTML	Genuine postings found, but not guaranteed complete
+Synopsys	⚠️ Partial	Generic HTML	Genuine postings, but incomplete inventory
+Arm	⚠️ Unresolved	Radancy/TalentBrew	Individual jobs work; complete pagination not proven
+Qualcomm	⚠️ Unresolved	Workday investigation	Discovered /External endpoint returns total: 0
+Apple	⚠️ Unresolved	Generic	Only tiny/incomplete coverage; not production-quality
+OpenAI	⚠️ Unresolved	Generic	Generic collector returned zero actual postings
+
+
+Remaining milestones
+
+I would restructure the remaining work into five milestones, rather than allowing Milestone 9 to expand indefinitely.
+
+Milestone 9.7B — Priority Semiconductor Coverage II
+
+Next batch:
+
+Broadcom, Marvell, Texas Instruments, Samsung Semiconductor, NXP
+
+These are high-value targets for RTL/DV/PD/ASIC roles.
+
+For each we'll perform backend discovery first and prefer Workday/Jibe/etc. reuse.
+
+We should also quickly check Qualcomm again only if discovery reveals an obvious active backend. Otherwise leave it unresolved.
+
+Milestone 9.7C — Priority Technology & Silicon Employers
+
+Then:
+
+Apple, Tesla, Google, Microsoft, Meta, OpenAI
+
+Plus other silicon/accelerator companies already in companies.txt.
+
+The goal is not necessarily 100% coverage. We'll take easy, reliable integrations and leave difficult sources unsupported rather than introducing fragile scraping.
+
+Milestone 9.8 — Final Coverage Audit & Freeze
+
+This is important.
+
+We'll run the complete company audit again and produce a final matrix:
+
+WORKING
+PARTIAL
+UNSUPPORTED
+FAILED
+
+Then freeze collector development for v1.
+
+At this point we stop adding companies regardless of whether every employer works.
+
+We'll also remove/disable experimental overrides such as Arm and ensure AMD/Intel/Micron/etc. are correctly configured.
+
+Milestone 9.9 — Final Dry Run & First Production Write
+
+Then one final end-to-end run using everything we've added.
+
+First:
+
+dry_run: true
+
+We'll inspect:
+
+actual matches,
+new AMD/Intel/Micron results,
+geography filtering,
+working URLs,
+IDs,
+duplicates,
+runtime,
+company failures.
+
+If clean:
+
+dry_run: false
+
+and run once manually.
+
+That will be the first actual population of your Google Job Tracker.
+
+Milestone 10 — Windows Task Scheduler & Production Operation
+
+Finally we'll configure Windows Task Scheduler for the hourly run.
+
+We'll make it:
+
+Every 1 hour
+        ↓
+only while laptop is available
+        ↓
+don't start overlapping instances
+        ↓
+job_monitor.py
+        ↓
+find new jobs
+        ↓
+Google Sheet
+
+We'll also create a simple .bat or PowerShell launcher so Task Scheduler reliably activates the virtual environment and runs from the correct working directory.
+
+Then we'll test:
+
+scheduled execution;
+laptop restart;
+missed runs;
+stale lock recovery;
+log rotation;
+30-day SQLite cleanup;
+duplicate prevention;
+network outage recovery.
+
+That finishes v1.
+
+After v1 — optional Milestone 11
+
+I would not block launch on this, but later we can revisit:
+
+Arm, Qualcomm, Synopsys, Apple, OpenAI and any failed priority companies, plus smarter incremental scanning and performance improvements.
+
+This also gives us a natural place to add features such as email notifications or a "New / Reviewed / Applied / Rejected" workflow without destabilizing the core monitor.
+
+Recommendation from here
+
+We have already spent enough time on Arm. Its two returned candidates are structurally correct, but coverage remains unproven.
+
+Leave Arm without an override and move on.
+
+The next implementation should therefore be:
+
+Milestone 9.7B — Broadcom, Marvell, Texas Instruments, Samsung Semiconductor & NXP Coverage
+
+After 9.7B and 9.7C, we freeze coverage and get this tool running in production.

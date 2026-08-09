@@ -30,6 +30,17 @@ class ArmCollector(BaseCollector):
 
         self.max_pages = max_pages
 
+        self.title_filter = None
+
+    def set_title_filter(
+        self,
+        title_filter,
+    ) -> None:
+
+        self.title_filter = (
+            title_filter
+        )
+
     @staticmethod
     def _clean(
         value: str | None,
@@ -50,19 +61,130 @@ class ArmCollector(BaseCollector):
     ) -> str:
 
         #
-        # Arm URLs commonly contain numeric
-        # identifiers near the end.
+        # Arm/Radancy URLs look like:
+        #
+        # /job/austin/title/
+        # 33099/97584421536
+        #
+        # 33099 = organization ID
+        # final number = posting ID
         #
 
+        match = re.search(
+            r"/(\d{6,})(?:[/?#]|$)",
+            url.rstrip("/"),
+        )
+
         numbers = re.findall(
-            r"/(\d{4,})(?:/|$)",
-            url,
+            r"/(\d+)",
+            url.rstrip("/"),
         )
 
         if numbers:
+
             return numbers[-1]
 
+        if match:
+
+            return match.group(1)
+
         return ""
+
+    @classmethod
+    def _extract_location(
+        cls,
+        card,
+        title: str,
+    ) -> str:
+
+        #
+        # Prefer explicit location elements.
+        #
+
+        location_selectors = (
+            ".job-card__location",
+            ".job-location",
+            ".location",
+            "[class*='location']",
+        )
+
+        for selector in (
+            location_selectors
+        ):
+
+            element = card.select_one(
+                selector
+            )
+
+            if element:
+
+                value = cls._clean(
+                    element.get_text(
+                        " ",
+                        strip=True,
+                    )
+                )
+
+                if value:
+
+                    return value
+
+        #
+        # Fall back to card text, but strip
+        # the title and common category/
+        # description elements first.
+        #
+
+        card_copy = BeautifulSoup(
+            str(card),
+            "lxml",
+        )
+
+        for element in (
+            card_copy.select(
+                ".job-card__title,"
+                ".job-card__intro,"
+                ".content-description,"
+                "button,"
+                "a"
+            )
+        ):
+
+            element.decompose()
+
+        value = cls._clean(
+            card_copy.get_text(
+                " ",
+                strip=True,
+            )
+        )
+
+        if value:
+
+            return value
+
+        return "Unknown"
+
+    def _page_url(
+        self,
+        page: int,
+    ) -> str:
+
+        if page <= 1:
+
+            return self.SEARCH_URL
+
+        #
+        # Arm/TalentBrew exposes pagination
+        # as:
+        #
+        # /search-jobs&p=2
+        #
+
+        return (
+            f"{self.SEARCH_URL}"
+            f"&p={page}"
+        )
 
     def collect(
         self,
@@ -74,16 +196,21 @@ class ArmCollector(BaseCollector):
 
         seen_urls = set()
 
+        previous_urls = None
+
         for page in range(
             1,
             self.max_pages + 1,
         ):
 
+            page_url = (
+                self._page_url(
+                    page
+                )
+            )
+
             response = self.http.get(
-                self.SEARCH_URL,
-                params={
-                    "page": page,
-                },
+                page_url,
                 allow_redirects=True,
             )
 
@@ -92,12 +219,29 @@ class ArmCollector(BaseCollector):
                 "lxml",
             )
 
-            page_count = 0
+            #
+            # Arm explicitly marks individual
+            # results with job-card.
+            #
 
-            for anchor in soup.find_all(
-                "a",
-                href=True,
-            ):
+            cards = soup.select(
+                ".job-card"
+            )
+
+            if not cards:
+
+                break
+
+            current_urls = set()
+
+            for card in cards:
+
+                anchor = card.select_one(
+                    "a[href*='/job/']"
+                )
+
+                if anchor is None:
+                    continue
 
                 href = (
                     anchor.get(
@@ -107,12 +251,7 @@ class ArmCollector(BaseCollector):
                     .strip()
                 )
 
-                #
-                # Arm individual postings
-                # use /job/... URLs.
-                #
-
-                if "/job/" not in href:
+                if not href:
                     continue
 
                 url = urljoin(
@@ -120,37 +259,23 @@ class ArmCollector(BaseCollector):
                     href,
                 )
 
+                current_urls.add(
+                    url
+                )
+
                 if url in seen_urls:
                     continue
 
-                title = self._clean(
-                    anchor.get_text(
-                        " ",
-                        strip=True,
+                title_element = (
+                    card.select_one(
+                        ".job-card__title"
                     )
                 )
 
-                if not title:
-                    continue
+                if title_element:
 
-                if title.casefold() in {
-                    "view job",
-                    "apply",
-                    "apply now",
-                    "save job",
-                }:
-                    continue
-
-                parent = (
-                    anchor.find_parent(
-                        "li"
-                    )
-                )
-
-                if parent:
-
-                    text = self._clean(
-                        parent.get_text(
+                    title = self._clean(
+                        title_element.get_text(
                             " ",
                             strip=True,
                         )
@@ -158,44 +283,41 @@ class ArmCollector(BaseCollector):
 
                 else:
 
-                    text = title
-
-                #
-                # Try to derive location
-                # from surrounding text.
-                #
-
-                location = text
-
-                if title in location:
-
-                    location = (
-                        location.replace(
-                            title,
-                            "",
-                            1,
+                    title = self._clean(
+                        anchor.get_text(
+                            " ",
+                            strip=True,
                         )
                     )
 
-                #
-                # Remove common page/card
-                # labels.
-                #
+                if not title:
+                    continue
 
-                location = re.sub(
-                    r"\bSave Job\b",
-                    "",
-                    location,
-                    flags=re.IGNORECASE,
-                )
+                if (
+                    self.title_filter
+                    is not None
+                    and not
+                    self.title_filter.matches(
+                        title
+                    )
+                ):
 
-                location = self._clean(
-                    location
-                )
+                    seen_urls.add(
+                        url
+                    )
+
+                    continue
 
                 job_id = (
                     self._extract_job_id(
                         url
+                    )
+                )
+
+                location = (
+                    self._extract_location(
+                        card,
+                        title,
                     )
                 )
 
@@ -204,10 +326,7 @@ class ArmCollector(BaseCollector):
                     title=title,
                     url=url,
                     job_id=job_id,
-                    location=(
-                        location
-                        or "Unknown"
-                    ),
+                    location=location,
                     country="",
                     work_mode="Unknown",
                     job_type="Unknown",
@@ -215,7 +334,7 @@ class ArmCollector(BaseCollector):
                         "Unknown"
                     ),
                     ats_platform=(
-                        "Arm Careers"
+                        "Arm Radancy"
                     ),
                     keywords=[],
                     score=0,
@@ -231,9 +350,29 @@ class ArmCollector(BaseCollector):
                     url
                 )
 
-                page_count += 1
+            #
+            # Defensive pagination stop.
+            #
+            # If another page gives exactly
+            # the same posting URLs, the
+            # pagination parameter wasn't
+            # honored. Stop instead of
+            # requesting 50 copies.
+            #
 
-            if page_count == 0:
+            if (
+                previous_urls is not None
+                and current_urls
+                == previous_urls
+            ):
+
+                break
+
+            previous_urls = (
+                current_urls
+            )
+
+            if not current_urls:
                 break
 
         return jobs
@@ -253,6 +392,47 @@ class ArmCollector(BaseCollector):
             "lxml",
         )
 
+        #
+        # Try likely job-description
+        # containers first.
+        #
+
+        selectors = (
+            ".job-description",
+            ".job-description__content",
+            ".job-detail",
+            "[class*='job-description']",
+        )
+
+        for selector in selectors:
+
+            element = soup.select_one(
+                selector
+            )
+
+            if element:
+
+                description = (
+                    self._clean(
+                        element.get_text(
+                            " ",
+                            strip=True,
+                        )
+                    )
+                )
+
+                if description:
+
+                    job.description = (
+                        description
+                    )
+
+                    return job
+
+        #
+        # Conservative fallback.
+        #
+
         for element in soup(
             [
                 "script",
@@ -267,12 +447,10 @@ class ArmCollector(BaseCollector):
 
             element.decompose()
 
-        job.description = (
-            self._clean(
-                soup.get_text(
-                    " ",
-                    strip=True,
-                )
+        job.description = self._clean(
+            soup.get_text(
+                " ",
+                strip=True,
             )
         )
 
