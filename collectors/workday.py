@@ -342,9 +342,16 @@ class WorkdayCollector(BaseCollector):
                     or ""
                 )
 
-                public_url = urljoin(
-                    f"{base_url}/{site}/",
-                    external_path,
+                normalized_path = (
+                    external_path
+                    if external_path.startswith("/")
+                    else "/" + external_path
+                )
+
+                public_url = (
+                    f"{base_url}/"
+                    f"{site}"
+                    f"{normalized_path}"
                 )
 
                 job_id = self._extract_job_id(

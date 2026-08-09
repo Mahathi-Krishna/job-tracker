@@ -56,3 +56,7 @@ Synopsys:
 TSMC:
   ats: generic
   url: https://careers.tsmc.com/en_US/careers
+
+Micron:
+  ats: workday
+  url: https://micron.wd1.myworkdayjobs.com/External
