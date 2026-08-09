@@ -19,6 +19,9 @@ from collectors.workday import (
 from collectors.synopsys import (
     SynopsysCollector,
 )
+from collectors.arm import (
+    ArmCollector,
+)
 
 class CollectorRegistry:
 
@@ -47,6 +50,9 @@ class CollectorRegistry:
 
             "synopsys":
                 SynopsysCollector(),
+
+            "arm":
+                ArmCollector(),
         }
 
     def get(
