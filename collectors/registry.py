@@ -16,7 +16,9 @@ from collectors.smartrecruiters import (
 from collectors.workday import (
     WorkdayCollector,
 )
-
+from collectors.synopsys import (
+    SynopsysCollector,
+)
 
 class CollectorRegistry:
 
@@ -42,6 +44,9 @@ class CollectorRegistry:
 
             "workday":
                 WorkdayCollector(),
+
+            "synopsys":
+                SynopsysCollector(),
         }
 
     def get(
