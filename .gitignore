@@ -22,3 +22,8 @@ env/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Data files
+data/
+ats_cache.json
+*_report.txt

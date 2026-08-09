@@ -49,6 +49,72 @@ class JobClassifier:
         "sweden",
     }
 
+    COUNTRY_CODE_MAP = {
+        # -------------------------
+        # Allowed countries
+        # -------------------------
+
+        "us": "United States",
+        "usa": "United States",
+
+        "ca": "Canada",
+
+        "gb": "United Kingdom",
+        "uk": "United Kingdom",
+
+        # -------------------------
+        # European Union
+        # -------------------------
+
+        "at": "European Union",
+        "be": "European Union",
+        "bg": "European Union",
+        "hr": "European Union",
+        "cy": "European Union",
+        "cz": "European Union",
+        "dk": "European Union",
+        "ee": "European Union",
+        "fi": "European Union",
+        "fr": "European Union",
+        "de": "European Union",
+        "gr": "European Union",
+        "hu": "European Union",
+        "ie": "European Union",
+        "it": "European Union",
+        "lv": "European Union",
+        "lt": "European Union",
+        "lu": "European Union",
+        "mt": "European Union",
+        "nl": "European Union",
+        "pl": "European Union",
+        "pt": "European Union",
+        "ro": "European Union",
+        "sk": "European Union",
+        "si": "European Union",
+        "es": "European Union",
+        "se": "European Union",
+
+        # -------------------------
+        # Other countries
+        # -------------------------
+
+        "in": "India",
+        "cn": "China",
+        "tw": "Taiwan",
+        "il": "Israel",
+        "sg": "Singapore",
+        "jp": "Japan",
+        "kr": "South Korea",
+        "tr": "Turkey",
+        "br": "Brazil",
+        "mx": "Mexico",
+        "au": "Australia",
+        "nz": "New Zealand",
+        "rs": "Serbia",
+        "ch": "Switzerland",
+        "no": "Norway",
+    }
+
     OTHER_COUNTRIES = {
         "india",
         "china",
@@ -549,11 +615,44 @@ class JobClassifier:
         job: Job,
     ) -> Job:
 
-        job.country = (
-            self.classify_country(
-                job.location
+        country_code = (
+            job.metadata.get(
+                "country_code",
+                "",
             )
         )
+
+        country_code = (
+            str(country_code)
+            .strip()
+            .lower()
+        )
+
+
+        if (
+            country_code
+            in self.COUNTRY_CODE_MAP
+        ):
+
+            job.country = (
+                self.COUNTRY_CODE_MAP[
+                    country_code
+                ]
+            )
+
+        else:
+
+            #
+            # Collectors without structured
+            # country information continue using
+            # our existing location classifier.
+            #
+
+            job.country = (
+                self.classify_country(
+                    job.location
+                )
+            )
 
         job.work_mode = (
             self.classify_work_mode(

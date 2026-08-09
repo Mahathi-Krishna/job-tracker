@@ -160,6 +160,32 @@ class SmartRecruitersCollector(
                     or {}
                 )
 
+                #
+                # SmartRecruiters provides a structured
+                # country code such as:
+                #
+                # us -> United States
+                # in -> India
+                # it -> Italy
+                # jp -> Japan
+                #
+                # Preserve it so JobClassifier does not
+                # need to guess from city/state text.
+                #
+
+                country_code = (
+                    location_data.get(
+                        "country"
+                    )
+                    or ""
+                )
+
+                country_code = (
+                    str(country_code)
+                    .strip()
+                    .lower()
+                )
+
                 location_parts = [
                     location_data.get(
                         "city"
@@ -240,8 +266,12 @@ class SmartRecruitersCollector(
                     {
                         "smartrecruiters_company":
                             identifier,
+
                         "smartrecruiters_id":
                             job_id,
+
+                        "country_code":
+                            country_code,
                     }
                 )
 

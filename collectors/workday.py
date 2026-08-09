@@ -177,6 +177,88 @@ class WorkdayCollector(BaseCollector):
 
         return response.json()
 
+    @staticmethod
+    def _extract_job_id(
+        posting: dict,
+        external_path: str,
+    ) -> str:
+        """
+        Extract a Workday requisition ID.
+
+        Workday's bulletFields are inconsistent
+        between tenants. Some contain the requisition
+        ID, while others contain values such as
+        'Posted 7 Days Ago'.
+
+        Prefer recognizable requisition IDs, then
+        fall back to the external posting path.
+        """
+
+        bullet_fields = (
+            posting.get("bulletFields")
+            or []
+        )
+
+        for value in bullet_fields:
+
+            value = str(value).strip()
+
+            if not value:
+                continue
+
+            #
+            # Common Workday IDs:
+            #
+            # R55703
+            # R-101291
+            # JR2022759
+            # 20658
+            #
+
+            if re.fullmatch(
+                r"(?:JR|R-?)?\d{4,}",
+                value,
+                flags=re.IGNORECASE,
+            ):
+                return value
+
+        #
+        # Fall back to URL/path.
+        #
+        # Examples:
+        #
+        # ..._JR2022759
+        # ..._R55703
+        # ..._R-101291-1
+        # ..._20658-1
+        #
+
+        filename = (
+            external_path
+            .rstrip("/")
+            .split("/")[-1]
+        )
+
+        patterns = (
+            r"_(JR\d+)(?:-\d+)?$",
+            r"_(R-\d+)(?:-\d+)?$",
+            r"_(R\d+)(?:-\d+)?$",
+            r"_(\d{4,})(?:-\d+)?$",
+        )
+
+        for pattern in patterns:
+
+            match = re.search(
+                pattern,
+                filename,
+                flags=re.IGNORECASE,
+            )
+
+            if match:
+                return match.group(1)
+
+        return ""
+
     def collect(
         self,
         company: str,
@@ -265,20 +347,10 @@ class WorkdayCollector(BaseCollector):
                     external_path,
                 )
 
-                bullet_fields = (
-                    posting.get(
-                        "bulletFields"
-                    )
-                    or []
+                job_id = self._extract_job_id(
+                    posting,
+                    external_path,
                 )
-
-                job_id = ""
-
-                if bullet_fields:
-
-                    job_id = str(
-                        bullet_fields[0]
-                    )
 
                 location = (
                     posting.get(
