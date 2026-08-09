@@ -194,9 +194,30 @@ class Matcher:
             )
         )
 
-        return len(
-            supporting
-        ) >= 2
+        generic_terms = {
+            "intern",
+            "internship",
+            "co-op",
+            "coop",
+            "new grad",
+            "entry level",
+            "hardware engineer",
+        }
+
+        domain_supporting = [
+            keyword
+            for keyword
+            in supporting
+            if keyword.casefold()
+            not in generic_terms
+        ]
+
+        return (
+            len(
+                domain_supporting
+            )
+            >= 2
+        )
 
     def score(
         self,
@@ -299,20 +320,39 @@ class Matcher:
 
         score += description_bonus
 
-        # -------------------------
-        # Fallback:
         #
-        # Some titles don't exactly
-        # match role_keywords but have
-        # multiple strong terms.
+        # Fallback matching requires multiple
+        # domain-relevant title keywords.
         #
-        # Example:
-        # UVM Verification Engineer
-        # -------------------------
+        # Generic employment terms such as
+        # Intern / Internship / Co-op must not
+        # make an unrelated role qualify.
+        #
+
+        generic_terms = {
+            "intern",
+            "internship",
+            "co-op",
+            "coop",
+            "new grad",
+            "entry level",
+            "hardware engineer",
+        }
+
+        domain_title_keywords = [
+            keyword
+            for keyword
+            in title_keywords
+            if keyword.casefold()
+            not in generic_terms
+        ]
+
 
         if (
             not title_roles
-            and len(title_keywords) >= 2
+            and len(
+                domain_title_keywords
+            ) >= 2
         ):
 
             score = max(

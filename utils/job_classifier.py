@@ -49,6 +49,25 @@ class JobClassifier:
         "sweden",
     }
 
+    OTHER_COUNTRIES = {
+        "india",
+        "china",
+        "taiwan",
+        "israel",
+        "singapore",
+        "japan",
+        "south korea",
+        "korea",
+        "turkey",
+        "brazil",
+        "mexico",
+        "australia",
+        "new zealand",
+        "serbia",
+        "switzerland",
+        "norway",
+    }
+
     US_STATE_CODES = {
         "al", "ak", "az", "ar", "ca", "co", "ct", "de",
         "fl", "ga", "hi", "id", "il", "in", "ia", "ks",
@@ -113,6 +132,7 @@ class JobClassifier:
     NEW_GRAD_TERMS = {
         "new grad",
         "new graduate",
+        "new college grad",
         "recent graduate",
         "university graduate",
         "graduate engineer",
@@ -232,6 +252,10 @@ class JobClassifier:
         if not text:
             return "Unknown"
 
+        # =====================================
+        # Explicit country names/codes first
+        # =====================================
+
         if any(
             self._contains_phrase(
                 text,
@@ -252,39 +276,9 @@ class JobClassifier:
         ):
             return "United States"
 
-        tokens = {
-            token.lower()
-            for token in re.findall(
-                r"\b[A-Za-z]{2}\b",
-                location,
-            )
-        }
-
-        if (
-            tokens
-            & self.US_STATE_CODES
-        ):
-            return "United States"
-
         if self._contains_phrase(
             text,
             "canada",
-        ):
-            return "Canada"
-
-        for province in (
-            self.CANADIAN_PROVINCES
-        ):
-
-            if self._contains_phrase(
-                text,
-                province,
-            ):
-                return "Canada"
-
-        if (
-            tokens
-            & self.CANADIAN_PROVINCE_CODES
         ):
             return "Canada"
 
@@ -311,8 +305,65 @@ class JobClassifier:
             ):
                 return "European Union"
 
-        return "Unknown"
+        # =====================================
+        # Canadian province names
+        # =====================================
 
+        for province in (
+            self.CANADIAN_PROVINCES
+        ):
+
+            if self._contains_phrase(
+                text,
+                province,
+            ):
+                return "Canada"
+
+        # =====================================
+        # State/province abbreviations
+        #
+        # CA must mean California here.
+        # Canada itself should be detected by
+        # explicit country/province information.
+        # =====================================
+
+        tokens = {
+            token.lower()
+            for token in re.findall(
+                r"\b[A-Za-z]{2}\b",
+                location,
+            )
+        }
+
+        if (
+            tokens
+            & self.US_STATE_CODES
+        ):
+            return "United States"
+
+        canadian_codes = (
+            self.CANADIAN_PROVINCE_CODES
+            - {"ca"}
+        )
+
+        if (
+            tokens
+            & canadian_codes
+        ):
+            return "Canada"
+
+        for country in (
+            self.OTHER_COUNTRIES
+        ):
+
+            if self._contains_phrase(
+                text,
+                country,
+            ):
+                return country.title()
+
+        return "Unknown"
+    
     def classify_work_mode(
         self,
         job: Job,

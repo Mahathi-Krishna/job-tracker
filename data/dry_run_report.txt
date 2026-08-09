@@ -1,66 +1,10 @@
 JOB MONITOR DRY RUN
 ========================================================================================================================
-Generated UTC: 2026-08-08T14:40:28+00:00
-Jobs shown: 149
+Generated UTC: 2026-08-08T15:30:03+00:00
+Jobs shown: 88
 ========================================================================================================================
 
 [1] Astera Labs
-Title: DFT Engineer
-Job ID: 4649842005
-Location: Tel Aviv-Yafo, Tel Aviv District, Israel
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Greenhouse
-Score: 90
-Keywords: DFT, RTL, RTL Design, STA, Static Timing Analysis, Synopsys
-Date Posted: 2026-07-31T15:21:47-04:00
-URL: https://job-boards.greenhouse.io/asteralabs/jobs/4649842005
-------------------------------------------------------------------------------------------------------------------------
-[2] Astera Labs
-Title: Junior ASIC Design Engineer
-Job ID: 4704182005
-Location: Tel Aviv-Yafo, Tel Aviv District, Israel
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Entry Level
-ATS: Greenhouse
-Score: 100
-Keywords: ASIC Design, ASIC, Digital Design, RTL, Synthesis, SystemVerilog, Verilog
-Date Posted: 2026-08-02T08:03:01-04:00
-URL: https://job-boards.greenhouse.io/asteralabs/jobs/4704182005
-------------------------------------------------------------------------------------------------------------------------
-[3] Astera Labs
-Title: Junior Design Verification Engineer
-Job ID: 4701302005
-Location: Tel Aviv-Yafo, Tel Aviv District, Israel
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Entry Level
-ATS: Greenhouse
-Score: 90
-Keywords: Design Verification, Verification Engineer, ASIC, Functional Verification, SystemVerilog, UVM, Verilog
-Date Posted: 2026-08-02T03:18:00-04:00
-URL: https://job-boards.greenhouse.io/asteralabs/jobs/4701302005
-------------------------------------------------------------------------------------------------------------------------
-[4] Astera Labs
-Title: Junior Physical Design Engineer
-Job ID: 4705844005
-Location: Tel Aviv-Yafo, Tel Aviv District, Israel
-Country: Unknown
-Work Mode: Unknown
-Job Type: Internship
-Experience: Entry Level
-ATS: Greenhouse
-Score: 90
-Keywords: Physical Design, Cadence, CTS, DFT, Floorplanning, Fusion Compiler, ICC2, Innovus, Internship, Physical Implementation, RTL, RTL-to-GDS, STA, Synthesis, Synopsys
-Date Posted: 2026-07-31T15:21:47-04:00
-URL: https://job-boards.greenhouse.io/asteralabs/jobs/4705844005
-------------------------------------------------------------------------------------------------------------------------
-[5] Astera Labs
 Title: Physical Design/CAD Engineer
 Job ID: 4679751005
 Location: San Jose, California, United States
@@ -74,7 +18,7 @@ Keywords: Physical Design, Cadence, DFT, PnR, RTL, STA, Synthesis, Synopsys, Tim
 Date Posted: 2026-08-02T13:11:00-04:00
 URL: https://job-boards.greenhouse.io/asteralabs/jobs/4679751005
 ------------------------------------------------------------------------------------------------------------------------
-[6] Astera Labs
+[2] Astera Labs
 Title: Physical Design Engineering, VP
 Job ID: 4686914005
 Location: San Jose, California, United States
@@ -88,24 +32,10 @@ Keywords: Physical Design, Cadence, DFT, Digital Design, Floorplanning, Physical
 Date Posted: 2026-07-31T15:21:47-04:00
 URL: https://job-boards.greenhouse.io/asteralabs/jobs/4686914005
 ------------------------------------------------------------------------------------------------------------------------
-[7] Astera Labs
-Title: Physical Design Student
-Job ID: 4701792005
-Location: Tel Aviv-Yafo, Tel Aviv District, Israel
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Greenhouse
-Score: 90
-Keywords: Physical Design, Cadence, Chip Design, CTS, DFT, Floorplanning, Fusion Compiler, ICC2, Innovus, Physical Implementation, STA, Static Timing Analysis, Synthesis, Synopsys, VLSI
-Date Posted: 2026-08-06T06:01:04-04:00
-URL: https://job-boards.greenhouse.io/asteralabs/jobs/4701792005
-------------------------------------------------------------------------------------------------------------------------
-[8] Cadence
+[3] Cadence
 Title: DFT Design Engineer
 Job ID: R55703
-Location: 2 Locations
+Location: AUSTIN
 Country: Unknown
 Work Mode: Unknown
 Job Type: Unknown
@@ -116,7 +46,7 @@ Keywords: DFT, ASIC, Cadence, Digital Design, SoC, Synthesis, Verilog
 Date Posted: Posted 4 Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/AUSTIN/DFT-Design-Engineer_R55703
 ------------------------------------------------------------------------------------------------------------------------
-[9] Cadence
+[4] Cadence
 Title: DFT Design Engineer
 Job ID: R55131
 Location: AUSTIN
@@ -130,7 +60,7 @@ Keywords: DFT, ASIC, Cadence, Digital Design, SoC, Synthesis, Verilog
 Date Posted: Posted 8 Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/AUSTIN/DFT-Design-Engineer_R55131
 ------------------------------------------------------------------------------------------------------------------------
-[10] Cadence
+[5] Cadence
 Title: Software Engineer II, Synthesis
 Job ID: R55632
 Location: SAN JOSE
@@ -144,7 +74,7 @@ Keywords: Synthesis, Cadence, Logic Synthesis, Physical Design, RTL, Static Timi
 Date Posted: Posted 17 Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/SAN-JOSE/Software-Engineer-II--Synthesis_R55632-1
 ------------------------------------------------------------------------------------------------------------------------
-[11] Cadence
+[6] Cadence
 Title: Mixed Signal Systems and Verification Engineer I
 Job ID: R54499
 Location: MOUNT-ROYAL (Montreal)
@@ -158,7 +88,7 @@ Keywords: Verification Engineer, Cadence, FPGA, RTL, SystemVerilog, UVM, Verilog
 Date Posted: Posted 18 Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/MOUNT-ROYAL-Montreal/Mixed-Signal-Systems-and-Verification-Engineer-II_R54499
 ------------------------------------------------------------------------------------------------------------------------
-[12] Cadence
+[7] Cadence
 Title: Intern Agentic AI Workflow Development & Validation for Digital Design (f/m/d)
 Job ID: R55597
 Location: FELDKIRCHEN (Munich)
@@ -172,7 +102,7 @@ Keywords: Digital Design, Intern, Cadence, Internship
 Date Posted: Posted 18 Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/FELDKIRCHEN-Munich/Intern-Agentic-AI-Workflow-Development---Validation-for-Digital-Design--f-m-d-_R55597
 ------------------------------------------------------------------------------------------------------------------------
-[13] Cadence
+[8] Cadence
 Title: Application Engineer I: Physical Design - Synthesis and Digital Implementation
 Job ID: R55416
 Location: BELO HORIZONTE
@@ -186,7 +116,7 @@ Keywords: Physical Design, Synthesis, Cadence, Chip Design
 Date Posted: Posted 19 Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/BELO-HORIZONTE/Application-Engineer-I--Physical-Design---Synthesis-and-Digital-Implementation_R55416
 ------------------------------------------------------------------------------------------------------------------------
-[14] Cadence
+[9] Cadence
 Title: Application Engineer II: Physical Design - Synthesis and Digital Implementation
 Job ID: R54393
 Location: BELO HORIZONTE
@@ -200,7 +130,7 @@ Keywords: Physical Design, Synthesis, Cadence, Chip Design, Digital Design, Inno
 Date Posted: Posted 19 Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/BELO-HORIZONTE/Application-Engineer-II--Physical-Design---Synthesis-and-Digital-Implementation_R54393
 ------------------------------------------------------------------------------------------------------------------------
-[15] Cadence
+[10] Cadence
 Title: Software Engineer II - Clock Tree Synthesis (CTS), Innovus R&D
 Job ID: R55345
 Location: CAMBRIDGE
@@ -214,7 +144,7 @@ Keywords: Synthesis, Clock Tree Synthesis, CTS, Innovus, Cadence, Chip Design, P
 Date Posted: Posted 29 Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/CAMBRIDGE/Software-Engineer-II_R55345
 ------------------------------------------------------------------------------------------------------------------------
-[16] Cadence
+[11] Cadence
 Title: Software Engineer II , Synthesis
 Job ID: R52773
 Location: SAN JOSE
@@ -228,10 +158,10 @@ Keywords: Synthesis, Cadence, Logic Synthesis, Physical Design, RTL, Static Timi
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/SAN-JOSE/Sr-Principal-Software-Engineer_R52773
 ------------------------------------------------------------------------------------------------------------------------
-[17] Cadence
+[12] Cadence
 Title: Application Engineer - Physical Design (Back-End)
 Job ID: R54943
-Location: 2 Locations
+Location: PETAH TIKVA
 Country: Unknown
 Work Mode: Unknown
 Job Type: Unknown
@@ -242,10 +172,10 @@ Keywords: Physical Design, Cadence, DFT, Formal Verification, Place and Route, S
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/PETAH-TIKVA/Application-Engineer---Physical-Design--Back-End-_R54943
 ------------------------------------------------------------------------------------------------------------------------
-[18] Cadence
+[13] Cadence
 Title: Physical Design Engineer II (PNR/Physical Verification/STA/EMIR)
 Job ID: R53457
-Location: 2 Locations
+Location: TORONTO 02
 Country: Unknown
 Work Mode: Unknown
 Job Type: Unknown
@@ -256,7 +186,7 @@ Keywords: Physical Design, PnR, STA, Cadence, Clock Tree Synthesis, Low Power, P
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/TORONTO-02/Physical-Design-Engineer--PNR-Physical-Verification-STA-EMIR-_R53457
 ------------------------------------------------------------------------------------------------------------------------
-[19] Cadence
+[14] Cadence
 Title: Application Engineer - Physical Design (Back-End)
 Job ID: R54944
 Location: PETAH TIKVA
@@ -270,7 +200,7 @@ Keywords: Physical Design, Cadence, DFT, Formal Verification, Place and Route, S
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/PETAH-TIKVA/Application-Engineer---Physical-Design--Back-End-_R54944
 ------------------------------------------------------------------------------------------------------------------------
-[20] Cadence
+[15] Cadence
 Title: Intern: Application Engineering - Formal Verification
 Job ID: R54887
 Location: BELO HORIZONTE
@@ -284,7 +214,7 @@ Keywords: Formal Verification, Intern, Cadence, Chip Design, Functional Verifica
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/BELO-HORIZONTE/Intern--Application-Engineering---Formal-Verification_R54887
 ------------------------------------------------------------------------------------------------------------------------
-[21] Cadence
+[16] Cadence
 Title: Application Engineer II: Digital Design - Synthesis & Implementation
 Job ID: R53904
 Location: BELO HORIZONTE
@@ -298,7 +228,7 @@ Keywords: Digital Design, Synthesis, Cadence, Chip Design, Innovus, Physical Imp
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/BELO-HORIZONTE/Application-Engineer-II--Digital-Design---Synthesis---Implementation_R53904
 ------------------------------------------------------------------------------------------------------------------------
-[22] Cadence
+[17] Cadence
 Title: Functional Verification Engineer - Applied ML
 Job ID: R53822
 Location: PETAH TIKVA
@@ -312,21 +242,7 @@ Keywords: Verification Engineer, Functional Verification, ASIC, Cadence, Design 
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/PETAH-TIKVA/Applied-ML---Lead-Functional-Verification-Engineer_R53822
 ------------------------------------------------------------------------------------------------------------------------
-[23] Cadence
-Title: Analog/Mixed-Signal IC Design Co-Op/Intern  (Summer 2026) / Stage/Co-Op en Conception de CI Analogiques/Signal Mixte (Été  2026)
-Job ID: R53993
-Location: MOUNT-ROYAL (Montreal)
-Country: Unknown
-Work Mode: Unknown
-Job Type: Co-op
-Experience: Student
-ATS: Workday
-Score: 65
-Keywords: Co-op, Intern, Cadence, Synthesis
-Date Posted: Posted 30+ Days Ago
-URL: https://cadence.wd1.myworkdayjobs.com/job/MOUNT-ROYAL-Montreal/Analog-Mixed-Signal-IC-Design-Co-Op-Intern---Summer-2026----Stage-Co-Op-en-Conception-de-CI-Analogiques-Signal-Mixte--t--2026-_R53993-2
-------------------------------------------------------------------------------------------------------------------------
-[24] Cadence
+[18] Cadence
 Title: Application Engineer II: Digital Design - Synthesis & Implementation
 Job ID: R53775
 Location: BELO HORIZONTE
@@ -340,7 +256,7 @@ Keywords: Digital Design, Synthesis, Cadence, Chip Design, FPGA, Innovus, Physic
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/BELO-HORIZONTE/Application-Engineer-II--Digital-Design---Synthesis---Implementation_R53775
 ------------------------------------------------------------------------------------------------------------------------
-[25] Cadence
+[19] Cadence
 Title: Applied ML – Functional Verification Engineer
 Job ID: R53573
 Location: SAN JOSE
@@ -354,7 +270,7 @@ Keywords: Verification Engineer, Functional Verification, ASIC, Cadence, Design 
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/SAN-JOSE/Applied-ML---Functional-Verification-Engineer_R53573
 ------------------------------------------------------------------------------------------------------------------------
-[26] Cadence
+[20] Cadence
 Title: Applied ML – Functional Verification Engineer
 Job ID: R53564
 Location: SAN JOSE
@@ -368,133 +284,7 @@ Keywords: Verification Engineer, Functional Verification, ASIC, Cadence, Design 
 Date Posted: Posted 30+ Days Ago
 URL: https://cadence.wd1.myworkdayjobs.com/job/SAN-JOSE/Applied-ML---Functional-Verification-Engineer_R53564
 ------------------------------------------------------------------------------------------------------------------------
-[27] NVIDIA
-Title: Verification Engineer - HWPM
-Job ID: JR2000528
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, ASIC, GPU, Microarchitecture, RTL, RTL Design, SoC, SystemVerilog, UVM, Verilog, VLSI
-Date Posted: Posted Today
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Verification-Engineer---HWPM_JR2000528
-------------------------------------------------------------------------------------------------------------------------
-[28] NVIDIA
-Title: PCIe IP Verification Engineer
-Job ID: JR2019919
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, ASIC, ASIC Design, GPU, SoC, SystemVerilog, UVM, Verilog
-Date Posted: Posted Today
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/PCIe-IP-Verification-Engineer_JR2019919-1
-------------------------------------------------------------------------------------------------------------------------
-[29] NVIDIA
-Title: IP Verification Engineer - GPU Core Pipeline
-Job ID: JR2019962
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, GPU, ASIC, RTL, SystemVerilog, UVM, Verilog
-Date Posted: Posted Today
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/IP-Verification-Engineer---GPU-Core-Pipeline_JR2019962
-------------------------------------------------------------------------------------------------------------------------
-[30] NVIDIA
-Title: Verification Engineer - PCIE
-Job ID: JR2019560
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, ASIC, ASIC Design, GPU, SoC, SystemVerilog, UVM, Verilog
-Date Posted: Posted Today
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Verification-Engineer---PCIE_JR2019560
-------------------------------------------------------------------------------------------------------------------------
-[31] NVIDIA
-Title: Verification Engineer - GPU Fullchip
-Job ID: JR2019166
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, GPU, ASIC, ASIC Design, SoC, SystemVerilog, UVM, Verilog
-Date Posted: Posted Today
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Verification-Engineer---GPU-Fullchip_JR2019166
-------------------------------------------------------------------------------------------------------------------------
-[32] NVIDIA
-Title: Verification Engineer - GPU Fullchip
-Job ID: JR2019165
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, GPU, ASIC, ASIC Design, SoC, SystemVerilog, UVM, Verilog
-Date Posted: Posted Today
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Verification-Engineer---GPU-Fullchip_JR2019165
-------------------------------------------------------------------------------------------------------------------------
-[33] NVIDIA
-Title: GPU Core Pipeline IP Verification Engineer
-Job ID: JR2020914
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, GPU, ASIC, RTL, SystemVerilog, UVM, Verilog
-Date Posted: Posted Today
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/GPU-Core-Pipeline-IP-Verification-Engineer_JR2020914
-------------------------------------------------------------------------------------------------------------------------
-[34] NVIDIA
-Title: ASIC Design Engineer, High Speed IO
-Job ID: JR2022729
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: ASIC Design, ASIC, CPU, Digital Design, GPU, Physical Design, RTL, RTL Design, SoC, VLSI
-Date Posted: Posted Yesterday
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/ASIC-Design-Engineer--High-Speed-IO_JR2022729
-------------------------------------------------------------------------------------------------------------------------
-[35] NVIDIA
-Title: Padring Verification Engineer
-Job ID: JR2022688
-Location: Taiwan, Hsinchu
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, ASIC, DFT, GPU, Physical Design, RTL, SoC
-Date Posted: Posted Yesterday
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Taiwan-Hsinchu/Padring-Verification-Engineer_JR2022688-1
-------------------------------------------------------------------------------------------------------------------------
-[36] NVIDIA
+[21] NVIDIA
 Title: Networking Verification Engineer
 Job ID: JR2022759
 Location: US, TX, Austin
@@ -508,7 +298,7 @@ Keywords: Verification Engineer
 Date Posted: Posted 2 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-TX-Austin/Networking-Verification-Engineer_JR2022759
 ------------------------------------------------------------------------------------------------------------------------
-[37] NVIDIA
+[22] NVIDIA
 Title: Physical Design Engineer, Synthesis and Implementation
 Job ID: JR2022543
 Location: US, MA, Westford
@@ -522,35 +312,7 @@ Keywords: Physical Design, Synthesis, Cadence, Floorplanning, Fusion Compiler, G
 Date Posted: Posted 2 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-MA-Westford/Physical-Design-Engineer--Synthesis-and-Implementation_JR2022543-1
 ------------------------------------------------------------------------------------------------------------------------
-[38] NVIDIA
-Title: IC Test Program Validation and Verification Engineer
-Job ID: JR2018715
-Location: Israel, Yokneam
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 75
-Keywords: Verification Engineer, DFT
-Date Posted: Posted 2 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Yokneam/IC-Test-Program-Validation-and-Verification-Engineer_JR2018715
-------------------------------------------------------------------------------------------------------------------------
-[39] NVIDIA
-Title: ASIC Verification Engineer
-Job ID: JR2018695
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, ASIC, Formal Verification, FPGA, Functional Verification, GPU, RTL, SoC, UVM, Verilog
-Date Posted: Posted 2 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/ASIC-Verification-Engineer_JR2018695
-------------------------------------------------------------------------------------------------------------------------
-[40] NVIDIA
+[23] NVIDIA
 Title: ASIC Verification Engineer
 Job ID: JR2008448
 Location: US, CA, Santa Clara
@@ -564,123 +326,11 @@ Keywords: Verification Engineer, ASIC, GPU, SoC, SystemVerilog, UVM
 Date Posted: Posted 3 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Verification-Engineer_JR2008448
 ------------------------------------------------------------------------------------------------------------------------
-[41] NVIDIA
-Title: ASIC Physical Design Engineer
-Job ID: JR2022692
-Location: Taiwan, Hsinchu
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Entry Level
-ATS: Workday
-Score: 100
-Keywords: Physical Design, ASIC, Cadence, DFT, Digital Design, Formal Verification, RTL, STA, Synthesis, Synopsys, Timing Closure
-Date Posted: Posted 3 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Taiwan-Hsinchu/ASIC-Physical-Design-Engineer_JR2022692
-------------------------------------------------------------------------------------------------------------------------
-[42] NVIDIA
-Title: Physical Design Backend Engineer
-Job ID: JR2021981
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, Cadence, Design Verification, Place and Route, PnR, STA, Synthesis, Synopsys, Timing Closure
-Date Posted: Posted 3 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Yokneam/Physical-Design-Backend-Engineer_JR2021981
-------------------------------------------------------------------------------------------------------------------------
-[43] NVIDIA
-Title: Chip Design Engineer
-Job ID: JR2022434
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 85
-Keywords: Chip Design, Design Verification, Verification Engineer, Verilog
-Date Posted: Posted 3 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Beer-Sheva/Chip-Design-Engineer_JR2022434
-------------------------------------------------------------------------------------------------------------------------
-[44] NVIDIA
-Title: Chip Design Engineer
-Job ID: JR2016289
-Location: Israel, Tel Aviv
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 75
-Keywords: Chip Design, Verification Engineer
-Date Posted: Posted 3 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Chip-Design-Engineer_JR2016289
-------------------------------------------------------------------------------------------------------------------------
-[45] NVIDIA
-Title: CAD Developer, IR, Timing and Physical Design Optimization
-Job ID: JR2022316
-Location: China, Shanghai
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Entry Level
-ATS: Workday
-Score: 90
-Keywords: Physical Design, ASIC, DFT, RTL, Synthesis, VLSI
-Date Posted: Posted 5 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/China-Shanghai/CAD-Developer--IR--Timing-and-Physical-Design-Optimization_JR2022316
-------------------------------------------------------------------------------------------------------------------------
-[46] NVIDIA
-Title: DFT Verification Engineer
-Job ID: JR2022621
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, DFT, ASIC, GPU, RTL, Static Timing Analysis
-Date Posted: Posted 5 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/DFT-Verification-Engineer_JR2022621
-------------------------------------------------------------------------------------------------------------------------
-[47] NVIDIA
-Title: ASIC Design Engineer, Clocks
-Job ID: JR2020494
-Location: China, Shanghai
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: ASIC Design, ASIC, DFT, GPU, Logic Synthesis, Low Power, RTL, RTL Design, SoC, Synthesis, Verilog
-Date Posted: Posted 5 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/China-Shanghai/ASIC-Design-Engineer--Clocks_JR2020494
-------------------------------------------------------------------------------------------------------------------------
-[48] NVIDIA
-Title: SOC Clocks RTL Design Engineer
-Job ID: JR2022321
-Location: 3 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: RTL Design, RTL, SoC, Design Verification, DFT, Physical Design, Physical Implementation, Synthesis, SystemVerilog, Verilog
-Date Posted: Posted 7 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/SOC-Clocks-RTL-Design-Engineer_JR2022321
-------------------------------------------------------------------------------------------------------------------------
-[49] NVIDIA
+[24] NVIDIA
 Title: System Software Engineer - GPU and SOC
 Job ID: JR2015886
-Location: 2 Locations
-Country: Unknown
+Location: US CA Santa Clara
+Country: United States
 Work Mode: Unknown
 Job Type: Unknown
 Experience: Unknown
@@ -690,77 +340,21 @@ Keywords: GPU, SoC
 Date Posted: Posted 8 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/System-Software-Engineer---GPU-and-SOC_JR2015886
 ------------------------------------------------------------------------------------------------------------------------
-[50] NVIDIA
-Title: SOC Design Engineer
-Job ID: JR2022433
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: SoC Design, SoC, ASIC, Chip Design, DFT, GPU, Physical Design, RTL, RTL Design, Synthesis, Verilog
-Date Posted: Posted 8 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/SOC-Design-Engineer_JR2022433
-------------------------------------------------------------------------------------------------------------------------
-[51] NVIDIA
-Title: Physical Design Engineer
-Job ID: JR2022233
-Location: Israel, Tel Aviv
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, Cadence, Design Verification, Place and Route, PnR, STA, Synthesis, Synopsys, Timing Closure
-Date Posted: Posted 8 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Physical-Design-Engineer_JR2022233
-------------------------------------------------------------------------------------------------------------------------
-[52] NVIDIA
-Title: Physical Design Engineer
-Job ID: JR2022207
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, GPU, Place and Route, Synthesis, Timing Closure
-Date Posted: Posted 8 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Physical-Design-Engineer_JR2022207
-------------------------------------------------------------------------------------------------------------------------
-[53] NVIDIA
-Title: Chip Design Engineer
-Job ID: JR2021923
-Location: Israel, Tel Aviv
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 85
-Keywords: Chip Design, RTL, RTL Design, Synthesis
-Date Posted: Posted 10 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Chip-Design-Engineer_JR2021923
-------------------------------------------------------------------------------------------------------------------------
-[54] NVIDIA
+[25] NVIDIA
 Title: GPU Verification Engineer - New College Grad 2026
 Job ID: JR2022102
 Location: US, MA, Westford
 Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 100
 Keywords: Verification Engineer, GPU, ASIC, ASIC Design, CPU, FPGA
 Date Posted: Posted 11 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-MA-Westford/GPU-Verification-Engineer---New-College-Grad-2026_JR2022102
 ------------------------------------------------------------------------------------------------------------------------
-[55] NVIDIA
+[26] NVIDIA
 Title: Post-Silicon Validation and Methodology Engineer
 Job ID: JR2018268
 Location: US, CA, Santa Clara
@@ -774,7 +368,7 @@ Keywords: Post-Silicon Validation, CPU, DFT, GPU, Hardware Engineer, Microarchit
 Date Posted: Posted 11 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Post-Silicon-Validation-and-Methodology-Engineer_JR2018268
 ------------------------------------------------------------------------------------------------------------------------
-[56] NVIDIA
+[27] NVIDIA
 Title: ASIC Verification Engineer
 Job ID: JR2022280
 Location: US, CA, Santa Clara
@@ -788,49 +382,7 @@ Keywords: Verification Engineer, ASIC, ASIC Design, Design Verification, Formal 
 Date Posted: Posted 11 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Verification-Engineer_JR2022280
 ------------------------------------------------------------------------------------------------------------------------
-[57] NVIDIA
-Title: ASIC Design and STA Engineer
-Job ID: JR2021789
-Location: 2 Locations
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: ASIC Design, ASIC, STA, Cadence, DFT, GPU, Physical Design, PrimeTime, RTL, Synopsys
-Date Posted: Posted 14 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/ASIC-Design-and-STA-Engineer_JR2021789-1
-------------------------------------------------------------------------------------------------------------------------
-[58] NVIDIA
-Title: Interconnect Hardware Engineer - Networking
-Job ID: JR2017507
-Location: Denmark, Roskilde
-Country: European Union
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 70
-Keywords: Hardware Engineer
-Date Posted: Posted 15 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Denmark-Roskilde/Interconnect-Hardware-Engineer---Networking_JR2017507
-------------------------------------------------------------------------------------------------------------------------
-[59] NVIDIA
-Title: Physical Design Backend Engineer
-Job ID: JR2015705
-Location: Israel, Yokneam
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, Cadence, Design Verification, Place and Route, PnR, STA, Synthesis, Synopsys, Timing Closure
-Date Posted: Posted 16 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Yokneam/Physical-Design-Backend-Engineer_JR2015705
-------------------------------------------------------------------------------------------------------------------------
-[60] NVIDIA
+[28] NVIDIA
 Title: Applied Research Engineer, Chip Design
 Job ID: JR2021814
 Location: US, CA, Santa Clara
@@ -844,39 +396,39 @@ Keywords: Chip Design, ASIC, ASIC Design, Formal Verification, RTL
 Date Posted: Posted 16 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Applied-Research-Engineer--Chip-Design_JR2021814
 ------------------------------------------------------------------------------------------------------------------------
-[61] NVIDIA
+[29] NVIDIA
 Title: ASIC Physical Design and Timing Engineer - New College Grad 2026
 Job ID: JR2013177
 Location: US, CA, Santa Clara
 Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 100
 Keywords: Physical Design, ASIC, CTS, Floorplanning, GPU, STA, Static Timing Analysis, Synthesis
 Date Posted: Posted 17 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Timing-Engineer---New-College-Grad-2026_JR2013177
 ------------------------------------------------------------------------------------------------------------------------
-[62] NVIDIA
+[30] NVIDIA
 Title: Software R&D Engineer, VLSI Physical Design - New College Grad 2026
 Job ID: JR2019330
-Location: 2 Locations
-Country: Unknown
+Location: US TX Austin
+Country: United States
 Work Mode: Hybrid
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 90
 Keywords: Physical Design, VLSI, CTS, GPU, ICC2, Innovus, Place and Route, PrimeTime, Tempus
 Date Posted: Posted 17 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-TX-Austin/Software-R-D-Engineer--VLSI-Physical-Design---New-College-Grad-2026_JR2019330
 ------------------------------------------------------------------------------------------------------------------------
-[63] NVIDIA
+[31] NVIDIA
 Title: Software Engineer, GPU Design Automation
 Job ID: JR2017504
-Location: 5 Locations
-Country: Unknown
+Location: US CA Santa Clara
+Country: United States
 Work Mode: Unknown
 Job Type: Unknown
 Experience: Unknown
@@ -886,7 +438,7 @@ Keywords: GPU Design, GPU, ASIC, ASIC Design
 Date Posted: Posted 17 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Software-Engineer--GPU-Design-Automation_JR2017504
 ------------------------------------------------------------------------------------------------------------------------
-[64] NVIDIA
+[32] NVIDIA
 Title: SOC Design Engineer, ASIC Tools and Methodology Development
 Job ID: JR2008177
 Location: US, TX, Austin
@@ -900,7 +452,7 @@ Keywords: SoC Design, ASIC, SoC, Digital Design, GPU, RTL, Synthesis, Verilog
 Date Posted: Posted 17 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-TX-Austin/ASIC-Design-Engineer--Hardware-Tools-and-Methodology-Development_JR2008177
 ------------------------------------------------------------------------------------------------------------------------
-[65] NVIDIA
+[33] NVIDIA
 Title: ASIC Verification Engineer
 Job ID: JR2015873
 Location: US, TX, Austin
@@ -914,7 +466,7 @@ Keywords: Verification Engineer, ASIC, ASIC Design, Design Verification, RTL, Sy
 Date Posted: Posted 17 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-TX-Austin/ASIC-Verification-Engineer_JR2015873
 ------------------------------------------------------------------------------------------------------------------------
-[66] NVIDIA
+[34] NVIDIA
 Title: ASIC Design Engineer - Hardware
 Job ID: JR2019840
 Location: US, TX, Austin
@@ -928,63 +480,7 @@ Keywords: ASIC Design, ASIC, Chip Design, DFT, GPU, Microarchitecture, Physical 
 Date Posted: Posted 17 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-TX-Austin/ASIC-Design-Engineer---Hardware_JR2019840
 ------------------------------------------------------------------------------------------------------------------------
-[67] NVIDIA
-Title: DFT ATPG Engineer
-Job ID: JR1998055
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 85
-Keywords: DFT, ASIC, ASIC Design, Chip Design
-Date Posted: Posted 17 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Yokneam/DFT-ATPG-Engineer_JR1998055
-------------------------------------------------------------------------------------------------------------------------
-[68] NVIDIA
-Title: Chip Design and Verification Engineer
-Job ID: JR2009523
-Location: Israel, Tel Aviv
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 70
-Keywords: Chip Design, Verification Engineer
-Date Posted: Posted 18 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Chip-Design-and-Verification-Engineer_JR2009523
-------------------------------------------------------------------------------------------------------------------------
-[69] NVIDIA
-Title: Network Solution Verification Engineer
-Job ID: JR2021397
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 75
-Keywords: Verification Engineer, Synthesis
-Date Posted: Posted 19 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Network-Solution-Verification-Engineer_JR2021397
-------------------------------------------------------------------------------------------------------------------------
-[70] NVIDIA
-Title: Chip Design Verification Engineer
-Job ID: JR2013845
-Location: Israel, Tel Aviv
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Chip Design, Design Verification, Verification Engineer, GPU, RTL, RTL Design, UVM, Verilog
-Date Posted: Posted 21 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Chip-Design-Verification-Engineer_JR2013845
-------------------------------------------------------------------------------------------------------------------------
-[71] NVIDIA
+[35] NVIDIA
 Title: ASIC Design Engineer - New College Grad 2026
 Job ID: JR2021534
 Location: US, CA, Santa Clara
@@ -998,21 +494,7 @@ Keywords: ASIC Design, ASIC, Cache Coherency, CPU, DFT, Logic Synthesis, Low Pow
 Date Posted: Posted 22 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Design-Engineer---New-College-Grad-2026_JR2021534
 ------------------------------------------------------------------------------------------------------------------------
-[72] NVIDIA
-Title: DFT Verification Engineer
-Job ID: JR2020895
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 80
-Keywords: Verification Engineer, DFT, RTL, SoC
-Date Posted: Posted 22 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Taiwan-Taipei/DFT-Verification-Engineer_JR2020895
-------------------------------------------------------------------------------------------------------------------------
-[73] NVIDIA
+[36] NVIDIA
 Title: ASIC Design Engineer
 Job ID: JR2015189
 Location: US, CA, Santa Clara
@@ -1026,35 +508,7 @@ Keywords: ASIC Design, ASIC, GPU, Logic Synthesis, Microarchitecture, RTL, RTL D
 Date Posted: Posted 24 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Design-Engineer_JR2015189-1
 ------------------------------------------------------------------------------------------------------------------------
-[74] NVIDIA
-Title: Physical Design Engineer
-Job ID: JR2021133
-Location: Israel, Tel Aviv
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, GPU, Hardware Engineer, PnR, RTL
-Date Posted: Posted 24 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Physical-Design-Engineer_JR2021133
-------------------------------------------------------------------------------------------------------------------------
-[75] NVIDIA
-Title: DFT Verification Engineer
-Job ID: JR2020801
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, DFT, Chip Design, Design Verification, RTL, RTL Design, SoC, Verilog
-Date Posted: Posted 24 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/DFT-Verification-Engineer_JR2020801
-------------------------------------------------------------------------------------------------------------------------
-[76] NVIDIA
+[37] NVIDIA
 Title: Applied AI Engineer - VLSI Design
 Job ID: JR2019190
 Location: US, CA, Santa Clara
@@ -1068,7 +522,7 @@ Keywords: VLSI, Chip Design, GPU
 Date Posted: Posted 25 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Applied-AI-Engineer---VLSI-Design_JR2019190
 ------------------------------------------------------------------------------------------------------------------------
-[77] NVIDIA
+[38] NVIDIA
 Title: DFT Methodology Engineer
 Job ID: JR2020884
 Location: US, CA, Santa Clara
@@ -1082,53 +536,25 @@ Keywords: DFT, GPU, Physical Design, RTL, RTL Design, SoC, STA
 Date Posted: Posted 26 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/DFT-Methodology-Engineer_JR2020884
 ------------------------------------------------------------------------------------------------------------------------
-[78] NVIDIA
-Title: Product Test Hardware Engineer
-Job ID: JR2020594
-Location: Taiwan, Hsinchu
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 75
-Keywords: Hardware Engineer, GPU
-Date Posted: Posted 26 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Taiwan-Hsinchu/Product-Test-Hardware-Engineer_JR2020594
-------------------------------------------------------------------------------------------------------------------------
-[79] NVIDIA
-Title: SoC Verification Engineer
-Job ID: JR2020901
-Location: Taiwan, Taipei
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, SoC Verification, SoC, DFT, Digital Design, RTL
-Date Posted: Posted 26 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Taiwan-Taipei/SoC-Verification-Engineer_JR2020901
-------------------------------------------------------------------------------------------------------------------------
-[80] NVIDIA
+[39] NVIDIA
 Title: Formal Verification Engineer - New College Grad 2026
 Job ID: JR2013065
-Location: 2 Locations
-Country: Unknown
+Location: US TX Austin
+Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 90
 Keywords: Verification Engineer, Formal Verification, CPU, GPU, RTL, Verilog
 Date Posted: Posted 29 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-TX-Austin/Formal-Verification-Engineer---New-College-Grad-2026_JR2013065
 ------------------------------------------------------------------------------------------------------------------------
-[81] NVIDIA
+[40] NVIDIA
 Title: ASIC Design Efficiency Engineer
 Job ID: JR1998928
-Location: 3 Locations
-Country: Unknown
+Location: US CA Santa Clara
+Country: United States
 Work Mode: Unknown
 Job Type: Unknown
 Experience: Unknown
@@ -1138,7 +564,7 @@ Keywords: ASIC Design, ASIC, GPU, Low Power, RTL, Synthesis, SystemVerilog, VLSI
 Date Posted: Posted 29 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Design-Efficiency-Engineer_JR1998928
 ------------------------------------------------------------------------------------------------------------------------
-[82] NVIDIA
+[41] NVIDIA
 Title: Verification Engineer, Emulation and Prototyping
 Job ID: JR2021189
 Location: US, CA, Santa Clara
@@ -1152,11 +578,11 @@ Keywords: Verification Engineer, ASIC, Cadence, CPU, FPGA, GPU, RTL, SoC, Synthe
 Date Posted: Posted 29 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Verification-Engineer--Emulation-and-Prototyping_JR2021189
 ------------------------------------------------------------------------------------------------------------------------
-[83] NVIDIA
+[42] NVIDIA
 Title: Custom SOC IP Verification Engineer
 Job ID: JR2020783
-Location: 2 Locations
-Country: Unknown
+Location: US CA Santa Clara
+Country: United States
 Work Mode: Unknown
 Job Type: Unknown
 Experience: Unknown
@@ -1166,63 +592,35 @@ Keywords: Verification Engineer, SoC, ASIC, ASIC Design, Design Verification, Fo
 Date Posted: Posted 30 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Custom-SOC-IP-Verification-Engineer_JR2020783
 ------------------------------------------------------------------------------------------------------------------------
-[84] NVIDIA
-Title: ATE and SLT Hardware Engineer
-Job ID: JR2020058
-Location: US, CA, Santa Clara
-Country: United States
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 75
-Keywords: Hardware Engineer, GPU
-Date Posted: Posted 30 Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ATE-and-SLT-Hardware-Engineer_JR2020058
-------------------------------------------------------------------------------------------------------------------------
-[85] NVIDIA
+[43] NVIDIA
 Title: Formal Verification Engineer - New College Grad 2026
 Job ID: JR2020837
 Location: US, CA, Santa Clara
 Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 90
 Keywords: Verification Engineer, Formal Verification, CPU, Digital Design, GPU, Microarchitecture, RTL, SoC, SystemVerilog, Verilog
 Date Posted: Posted 30 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Formal-Verification-Engineer---New-College-Grad-2026_JR2020837
 ------------------------------------------------------------------------------------------------------------------------
-[86] NVIDIA
+[44] NVIDIA
 Title: ASIC Design Engineer - New College Grad 2026
 Job ID: JR2020309
 Location: US, CA, Santa Clara
 Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 100
 Keywords: ASIC Design, ASIC, GPU, Logic Synthesis, RTL, RTL Design, SoC, Synthesis, Verilog, VLSI
 Date Posted: Posted 30 Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Design-Engineer---New-College-Grad-2026_JR2020309
 ------------------------------------------------------------------------------------------------------------------------
-[87] NVIDIA
-Title: Chip Design Engineer
-Job ID: JR2013081
-Location: Israel, Tel Aviv
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 85
-Keywords: Chip Design, RTL, RTL Design, Synthesis
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Chip-Design-Engineer_JR2013081
-------------------------------------------------------------------------------------------------------------------------
-[88] NVIDIA
+[45] NVIDIA
 Title: ASIC Verification Engineer - New College Grad 2026
 Job ID: JR2020640
 Location: US, CA, Santa Clara
@@ -1236,315 +634,77 @@ Keywords: Verification Engineer, ASIC, ASIC Design, Digital Design, GPU, RTL, RT
 Date Posted: Posted 30+ Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Verification-Engineer---New-College-Grad-2026_JR2020640
 ------------------------------------------------------------------------------------------------------------------------
-[89] NVIDIA
-Title: Chip Design Verification Engineer
-Job ID: JR2013523
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 80
-Keywords: Chip Design, Design Verification, Verification Engineer, UVM, Verilog
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Yokneam/Chip-Design-Verification-Engineer_JR2013523
-------------------------------------------------------------------------------------------------------------------------
-[90] NVIDIA
-Title: Chip Design Engineer
-Job ID: JR2019549
-Location: 2 Locations
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Chip Design, ASIC, ASIC Design, Microarchitecture, RTL
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Chip-Design-Engineer_JR2019549
-------------------------------------------------------------------------------------------------------------------------
-[91] NVIDIA
-Title: Verification Engineer - Networking IPs
-Job ID: JR2020605
-Location: 2 Locations
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, Formal Verification, FPGA, GPU, SoC, UVM
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Verification-Engineer---Networking-IPs_JR2020605
-------------------------------------------------------------------------------------------------------------------------
-[92] NVIDIA
-Title: ASIC Verification Engineer
-Job ID: JR2020484
-Location: 2 Locations
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, ASIC, CPU, FPGA, GPU, RTL, SoC, UVM, Verilog
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Hyderabad/ASIC-Verification-Engineer_JR2020484
-------------------------------------------------------------------------------------------------------------------------
-[93] NVIDIA
-Title: Verification Engineer - Memory Subsystem
-Job ID: JR2020145
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, ASIC, Cache Coherency, GPU, UVM
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Verification-Engineer---Memory-Subsystem_JR2020145
-------------------------------------------------------------------------------------------------------------------------
-[94] NVIDIA
-Title: Physical Design Engineer
-Job ID: JR2020529
-Location: Taiwan, Hsinchu
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, Cadence, DFT, Floorplanning, GPU, ICC2, Innovus, RTL, Synopsys, Timing Closure, VLSI
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Taiwan-Hsinchu/Physical-Design-Engineer_JR2020529
-------------------------------------------------------------------------------------------------------------------------
-[95] NVIDIA
-Title: Verification Engineer, Performance
-Job ID: JR2014531
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, CPU, GPU, SoC, Verilog
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Verification-Engineer--Performance_JR2014531
-------------------------------------------------------------------------------------------------------------------------
-[96] NVIDIA
-Title: Physical Design CAD Engineer
-Job ID: JR2010794
-Location: 2 Locations
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, Cadence, Innovus, Place and Route, STA, Synthesis, Synopsys, Tempus
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Yokneam/Physical-Design-CAD-Engineer_JR2010794
-------------------------------------------------------------------------------------------------------------------------
-[97] NVIDIA
+[46] NVIDIA
 Title: DFT Engineer - New College Grad
 Job ID: JR2016865
 Location: US, CA, Santa Clara
 Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Entry Level
+Experience: New Grad
 ATS: Workday
 Score: 90
 Keywords: DFT, GPU, RTL, STA, VLSI
 Date Posted: Posted 30+ Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/DFT-Engineer---New-College-Grad_JR2016865
 ------------------------------------------------------------------------------------------------------------------------
-[98] NVIDIA
-Title: ASIC Physical Design Engineer
-Job ID: JR2018952
-Location: China, Shanghai
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Entry Level
-ATS: Workday
-Score: 100
-Keywords: Physical Design, ASIC, Cadence, DFT, Digital Design, Formal Verification, RTL, STA, Synthesis, Synopsys, Timing Closure
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/China-Shanghai/ASIC-Physical-Design-Engineer_JR2018952
-------------------------------------------------------------------------------------------------------------------------
-[99] NVIDIA
-Title: DFT Engineer
-Job ID: JR2019966
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 85
-Keywords: DFT, GPU, SoC, UVM
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/DFT-Engineer_JR2019966
-------------------------------------------------------------------------------------------------------------------------
-[100] NVIDIA
-Title: ASIC Verification Engineer
-Job ID: JR2019438
-Location: China, Shanghai
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, ASIC, ASIC Design, DFT, GPU, Physical Design, RTL, SoC, UVM, Verilog
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/China-Shanghai/ASIC-Verification-Engineer_JR2019438
-------------------------------------------------------------------------------------------------------------------------
-[101] NVIDIA
-Title: Chip Design Verification Engineer
-Job ID: JR2019602
-Location: Israel, Tel Aviv
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Chip Design, Design Verification, Verification Engineer, ASIC, GPU, Verilog, VHDL
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Tel-Aviv/Chip-Design-Verification-Engineer_JR2019602
-------------------------------------------------------------------------------------------------------------------------
-[102] NVIDIA
-Title: ASIC Design Engineer
-Job ID: JR2019598
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Entry Level
-ATS: Workday
-Score: 100
-Keywords: ASIC Design, ASIC, GPU, Physical Design, RTL, SoC, Synthesis, Verilog
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/ASIC-Design-Engineer_JR2019598
-------------------------------------------------------------------------------------------------------------------------
-[103] NVIDIA
-Title: ASIC Verification Engineer
-Job ID: JR2019597
-Location: India, Hyderabad
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, ASIC, Formal Verification, FPGA, Functional Verification, GPU, RTL, SoC, UVM, Verilog
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Hyderabad/ASIC-Verification-Engineer_JR2019597
-------------------------------------------------------------------------------------------------------------------------
-[104] NVIDIA
-Title: ASIC Verification Engineer
-Job ID: JR2019596
-Location: India, Hyderabad
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: Verification Engineer, ASIC, Formal Verification, FPGA, Functional Verification, GPU, RTL, SoC, UVM, Verilog
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Hyderabad/ASIC-Verification-Engineer_JR2019596
-------------------------------------------------------------------------------------------------------------------------
-[105] NVIDIA
+[47] NVIDIA
 Title: ASIC Verification Engineer - New College Grad 2026
 Job ID: JR2012573
-Location: 2 Locations
-Country: Unknown
+Location: US TX Austin
+Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 100
 Keywords: Verification Engineer, ASIC, GPU, SoC, SystemVerilog, UVM
 Date Posted: Posted 30+ Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-TX-Austin/ASIC-Verification-Engineer---New-College-Grad-2026_JR2012573
 ------------------------------------------------------------------------------------------------------------------------
-[106] NVIDIA
+[48] NVIDIA
 Title: Formal Verification Engineer - New College Grad 2026
 Job ID: JR2019447
 Location: US, CA, Santa Clara
 Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 90
 Keywords: Verification Engineer, Formal Verification, CPU, Design Verification, GPU, RTL, Verilog
 Date Posted: Posted 30+ Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Formal-Verification-Engineer---New-College-Grad-2026_JR2019447
 ------------------------------------------------------------------------------------------------------------------------
-[107] NVIDIA
-Title: Verification Engineer, Memory Subsystem
-Job ID: JR2019261
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Verification Engineer, ASIC, ASIC Design, GPU, SystemVerilog, UVM, Verilog
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Verification-Engineer--Memory-Subsystem_JR2019261
-------------------------------------------------------------------------------------------------------------------------
-[108] NVIDIA
+[49] NVIDIA
 Title: Cell Modeling and Verification Engineer - New College Grad 2026
 Job ID: JR2011631
 Location: US, CA, Santa Clara
 Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 90
 Keywords: Verification Engineer, ASIC, DFT, Digital Design, GPU, RTL, SystemVerilog, Verilog, VLSI
 Date Posted: Posted 30+ Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Cell-Modelling-and-Verification-Engineer---New-College-Grad-2026_JR2011631
 ------------------------------------------------------------------------------------------------------------------------
-[109] NVIDIA
+[50] NVIDIA
 Title: Low Power ASIC Engineer - New College Grad 2026
 Job ID: JR2017005
 Location: US, CA, Santa Clara
 Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 100
 Keywords: ASIC Engineer, ASIC, Low Power, GPU, SoC, Synopsys, SystemVerilog, UVM, UPF, Verilog
 Date Posted: Posted 30+ Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/Low-Power-ASIC-Engineer---New-College-Grad-2026_JR2017005
 ------------------------------------------------------------------------------------------------------------------------
-[110] NVIDIA
-Title: Interconnect Hardware Engineer
-Job ID: JR2018480
-Location: Israel, Yokneam
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 75
-Keywords: Hardware Engineer, DFT
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Yokneam/Interconnect-Hardware-Engineer_JR2018480
-------------------------------------------------------------------------------------------------------------------------
-[111] NVIDIA
+[51] NVIDIA
 Title: Physical Design Engineer
 Job ID: JR2012365
 Location: US, MA, Westford
@@ -1558,105 +718,21 @@ Keywords: Physical Design, Cadence, GPU, ICC2, Innovus, Place and Route, SoC, Sy
 Date Posted: Posted 30+ Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-MA-Westford/Physical-Design-Engineer_JR2012365
 ------------------------------------------------------------------------------------------------------------------------
-[112] NVIDIA
-Title: Physical Design Signoff CAD Engineer
-Job ID: JR2018937
-Location: Israel, Yokneam
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, PrimeTime, STA, Static Timing Analysis, Timing Closure
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Israel-Yokneam/Physical-Design-Signoff-CAD-Engineer_JR2018937
-------------------------------------------------------------------------------------------------------------------------
-[113] NVIDIA
-Title: Physical Design Engineer
-Job ID: JR2018299
-Location: Taiwan, Hsinchu
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, Cadence, DFT, Floorplanning, GPU, ICC2, Innovus, RTL, Synopsys, Timing Closure, VLSI
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Taiwan-Hsinchu/Physical-Design-Engineer_JR2018299
-------------------------------------------------------------------------------------------------------------------------
-[114] NVIDIA
-Title: Physical Design Methodology Engineer
-Job ID: JR2018271
-Location: Taiwan, Hsinchu
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: Physical Design, CTS, Floorplanning, GPU, Place and Route, RTL, RTL-to-GDS, UPF
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/Taiwan-Hsinchu/Physical-Design-Methodology-Engineer_JR2018271
-------------------------------------------------------------------------------------------------------------------------
-[115] NVIDIA
-Title: Formal Verification Engineer
-Job ID: JR2017530
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 85
-Keywords: Verification Engineer, Formal Verification, Functional Verification, GPU, RTL
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/Formal-Verification-Engineer_JR2017530
-------------------------------------------------------------------------------------------------------------------------
-[116] NVIDIA
-Title: DFT Engineer - Hardware
-Job ID: JR2018054
-Location: India, Bengaluru
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 90
-Keywords: DFT, ASIC, GPU, RTL, RTL Design, Static Timing Analysis
-Date Posted: Posted 30+ Days Ago
-URL: https://nvidia.wd5.myworkdayjobs.com/job/India-Bengaluru/DFT-Engineer---Hardware_JR2018054
-------------------------------------------------------------------------------------------------------------------------
-[117] NVIDIA
+[52] NVIDIA
 Title: ASIC Physical Design Engineer, Netlisting - New College Grad 2026
 Job ID: JR2017681
-Location: 2 Locations
-Country: Unknown
+Location: US CA Santa Clara
+Country: United States
 Work Mode: Unknown
 Job Type: Unknown
-Experience: Unknown
+Experience: New Grad
 ATS: Workday
 Score: 100
 Keywords: Physical Design, ASIC, Cadence, Formal Verification, GPU, Logic Synthesis, RTL, Synthesis, Synopsys, Timing Closure
 Date Posted: Posted 30+ Days Ago
 URL: https://nvidia.wd5.myworkdayjobs.com/job/US-CA-Santa-Clara/ASIC-Physical-Design-Engineer--Netlisting---New-College-Grad-2026_JR2017681
 ------------------------------------------------------------------------------------------------------------------------
-[118] Renesas
-Title: Test Hardware Engineer
-Job ID: 744000141717070
-Location: Austin, TEXAS, us
-Country: United States
-Work Mode: Unknown
-Job Type: Full-time
-Experience: Unknown
-ATS: SmartRecruiters
-Score: 70
-Keywords: Hardware Engineer
-Date Posted: 2026-08-05T13:07:57.426Z
-URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000141717070
-------------------------------------------------------------------------------------------------------------------------
-[119] Renesas
+[53] Renesas
 Title: Engineer - Digital Design
 Job ID: 744000138599049
 Location: Bengaluru, KA, in
@@ -1670,7 +746,7 @@ Keywords: Digital Design
 Date Posted: 2026-07-20T09:44:19.530Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000138599049
 ------------------------------------------------------------------------------------------------------------------------
-[120] Renesas
+[54] Renesas
 Title: Physical Design Engineer
 Job ID: 744000133598921
 Location: Catania, it
@@ -1684,7 +760,7 @@ Keywords: Physical Design, ASIC, Clock Tree Synthesis, CTS, Floorplanning, Synth
 Date Posted: 2026-06-23T13:17:26.075Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000133598921
 ------------------------------------------------------------------------------------------------------------------------
-[121] Renesas
+[55] Renesas
 Title: HPC SoC RTL Verification Engineer/Leader
 Job ID: 744000133530302
 Location: Kodaira, jp
@@ -1698,7 +774,7 @@ Keywords: Verification Engineer, RTL, SoC, CPU, Formal Verification, GPU, SVA, S
 Date Posted: 2026-06-23T08:10:20.334Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000133530302
 ------------------------------------------------------------------------------------------------------------------------
-[122] Renesas
+[56] Renesas
 Title: AMS Verification Engineer
 Job ID: 744000132827885
 Location: Istanbul, tr
@@ -1712,7 +788,7 @@ Keywords: Verification Engineer, Cadence, SoC, Verilog, VHDL
 Date Posted: 2026-06-18T10:17:48.720Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000132827885
 ------------------------------------------------------------------------------------------------------------------------
-[123] Renesas
+[57] Renesas
 Title: Engineer, Physical Design
 Job ID: 744000129909171
 Location: Bengaluru, KA, in
@@ -1726,7 +802,7 @@ Keywords: Physical Design, Cadence, DFT, Formal Verification, GDSII, Place and R
 Date Posted: 2026-06-03T04:45:07.694Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000129909171
 ------------------------------------------------------------------------------------------------------------------------
-[124] Renesas
+[58] Renesas
 Title: Associate Digital Verification Engineer
 Job ID: 744000128424159
 Location: Istanbul, tr
@@ -1740,7 +816,7 @@ Keywords: Verification Engineer, Digital Design, SystemVerilog, Verilog
 Date Posted: 2026-05-26T08:24:01.724Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000128424159
 ------------------------------------------------------------------------------------------------------------------------
-[125] Renesas
+[59] Renesas
 Title: Clock and Reset system or PAD design leader for automotive SoC design
 Job ID: 744000118849077
 Location: Kodaira, jp
@@ -1754,7 +830,7 @@ Keywords: SoC Design, SoC, CPU, DFT
 Date Posted: 2026-04-06T10:46:51.784Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000118849077
 ------------------------------------------------------------------------------------------------------------------------
-[126] Renesas
+[60] Renesas
 Title: SoC RTL Verification Engineer/Leader
 Job ID: 744000118848597
 Location: Kodaira, jp
@@ -1768,7 +844,7 @@ Keywords: Verification Engineer, RTL, SoC, CPU, Design Verification, Formal Veri
 Date Posted: 2026-04-06T10:41:36.514Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000118848597
 ------------------------------------------------------------------------------------------------------------------------
-[127] Renesas
+[61] Renesas
 Title: DFT(SCAN, MBIST) Engineer or Leader for Automotive MCU
 Job ID: 744000083527335
 Location: Kodaira, jp
@@ -1782,11 +858,11 @@ Keywords: DFT
 Date Posted: 2025-09-23T17:58:36.448Z
 URL: https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings/744000083527335
 ------------------------------------------------------------------------------------------------------------------------
-[128] SiFive
+[62] SiFive
 Title: Intern - Design Verification Infrastructure Engineer - Platform
 Job ID: Posted 7 Days Ago
-Location: 4 Locations
-Country: Unknown
+Location: Santa Clara California United States
+Country: United States
 Work Mode: Unknown
 Job Type: Internship
 Experience: Student
@@ -1796,25 +872,11 @@ Keywords: Design Verification, Intern, Chip Design, RISC-V
 Date Posted: 
 URL: https://sifive.wd1.myworkdayjobs.com/job/Santa-Clara-California-United-States/Intern---Design-Verification-Infrastructure-Engineer---Platform_R-101291-1
 ------------------------------------------------------------------------------------------------------------------------
-[129] SiFive
-Title: CPU Design Verification Engineer
-Job ID: Posted 30 Days Ago
-Location: Hyderabad, India
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Entry Level
-ATS: Workday
-Score: 100
-Keywords: Design Verification, Verification Engineer, CPU Design, CPU, Chip Design, RISC-V, RTL, SVA, UVM, Verilog
-Date Posted: 
-URL: https://sifive.wd1.myworkdayjobs.com/job/Hyderabad-India/Senior---Staff---Sr-Staff-Engineer---Design-Verification_R-101374
-------------------------------------------------------------------------------------------------------------------------
-[130] SiFive
+[63] SiFive
 Title: Intern - Design Verification Infrastructure Engineer - Platform
 Job ID: Posted 30+ Days Ago
-Location: 4 Locations
-Country: Unknown
+Location: Santa Clara California United States
+Country: United States
 Work Mode: Unknown
 Job Type: Internship
 Experience: Student
@@ -1824,35 +886,7 @@ Keywords: Design Verification, Intern, Chip Design, RISC-V
 Date Posted: 
 URL: https://sifive.wd1.myworkdayjobs.com/job/Santa-Clara-California-United-States/Intern---Design-Verification-Infrastructure-Engineer---Platform_R-101292
 ------------------------------------------------------------------------------------------------------------------------
-[131] SiFive
-Title: RTL Design Engineer
-Job ID: Posted 30+ Days Ago
-Location: Hsinchu, Taiwan
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 100
-Keywords: RTL Design, RTL, Chip Design, CPU, Design Verification, Microarchitecture, Physical Design, Physical Implementation, RISC-V, Verilog, VHDL
-Date Posted: 
-URL: https://sifive.wd1.myworkdayjobs.com/job/Hsinchu-Taiwan/RTL-Design-Engineer_R-101289
-------------------------------------------------------------------------------------------------------------------------
-[132] SiFive
-Title: Design Verification Infrastructure Engineer - Software
-Job ID: Posted 30+ Days Ago
-Location: Hsinchu, Taiwan
-Country: Unknown
-Work Mode: Unknown
-Job Type: Unknown
-Experience: Unknown
-ATS: Workday
-Score: 80
-Keywords: Design Verification, Chip Design, RISC-V
-Date Posted: 
-URL: https://sifive.wd1.myworkdayjobs.com/job/Hsinchu-Taiwan/Design-Verification-Infrastructure-Engineer---Software_R-101101
-------------------------------------------------------------------------------------------------------------------------
-[133] Silicon Labs
+[64] Silicon Labs
 Title: Digital Design Engineer I
 Job ID: 20658
 Location: Austin
@@ -1866,7 +900,161 @@ Keywords: Digital Design, Co-op, Internship, RTL, RTL Design, SoC, Synthesis, Sy
 Date Posted: Posted Yesterday
 URL: https://silabs.wd1.myworkdayjobs.com/job/Austin/Digital-Design-Engineer-I_20658-1
 ------------------------------------------------------------------------------------------------------------------------
-[134] Tenstorrent
+[65] SpaceX
+Title: ASIC/SOC DFT Engineer (Silicon Engineering)
+Job ID: 8686199002
+Location: Austin, TX
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 100
+Keywords: DFT, ASIC, SoC, ASIC Design, Formal Verification, Physical Design, RTL, Synthesis, SystemVerilog, UPF, Verilog
+Date Posted: 2026-08-06T17:38:27-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8686199002?gh_jid=8686199002
+------------------------------------------------------------------------------------------------------------------------
+[66] SpaceX
+Title: ASIC/SOC DFT Engineer (Silicon Engineering)
+Job ID: 8686195002
+Location: Palo Alto, CA
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 100
+Keywords: DFT, ASIC, SoC, ASIC Design, Formal Verification, Physical Design, RTL, Synthesis, SystemVerilog, UPF, Verilog
+Date Posted: 2026-08-06T17:38:26-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8686195002?gh_jid=8686195002
+------------------------------------------------------------------------------------------------------------------------
+[67] SpaceX
+Title: Design Verification Engineer (Silicon Engineering)
+Job ID: 8632967002
+Location: Austin, TX
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 90
+Keywords: Design Verification, Verification Engineer, ASIC, RTL, RTL Design, SystemVerilog, UVM
+Date Posted: 2026-07-24T17:18:18-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8632967002?gh_jid=8632967002
+------------------------------------------------------------------------------------------------------------------------
+[68] SpaceX
+Title: Design Verification Engineer (Silicon Engineering)
+Job ID: 8632894002
+Location: Redmond, WA
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 90
+Keywords: Design Verification, Verification Engineer, ASIC, RTL, RTL Design, SystemVerilog, UVM
+Date Posted: 2026-07-24T17:18:18-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8632894002?gh_jid=8632894002
+------------------------------------------------------------------------------------------------------------------------
+[69] SpaceX
+Title: Design Verification Engineer (Silicon Engineering)
+Job ID: 8632395002
+Location: Irvine, CA
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 90
+Keywords: Design Verification, Verification Engineer, ASIC, RTL, RTL Design, SystemVerilog, UVM
+Date Posted: 2026-07-24T17:18:18-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8632395002?gh_jid=8632395002
+------------------------------------------------------------------------------------------------------------------------
+[70] SpaceX
+Title: Design Verification Engineer (Silicon Engineering)
+Job ID: 8632971002
+Location: Palo Alto, CA
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 90
+Keywords: Design Verification, Verification Engineer, ASIC, RTL, RTL Design, SystemVerilog, UVM
+Date Posted: 2026-07-24T17:18:18-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8632971002?gh_jid=8632971002
+------------------------------------------------------------------------------------------------------------------------
+[71] SpaceX
+Title: FPGA/ASIC Design Engineer (Silicon Engineering)
+Job ID: 8560022002
+Location: Redmond, WA
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 100
+Keywords: ASIC Design, FPGA, ASIC, Microarchitecture, RTL, RTL Design, SoC, SystemVerilog, Verilog, VHDL
+Date Posted: 2026-07-24T17:17:55-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8560022002?gh_jid=8560022002
+------------------------------------------------------------------------------------------------------------------------
+[72] SpaceX
+Title: Physical Design Engineer II (Silicon Engineering)
+Job ID: 8533679002
+Location: Palo Alto, CA
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 90
+Keywords: Physical Design, ASIC, ASIC Design, DFT, Digital Design, Floorplanning, Physical Implementation, Place and Route, RTL, STA, Static Timing Analysis, Synthesis
+Date Posted: 2026-07-24T17:17:59-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8533679002?gh_jid=8533679002
+------------------------------------------------------------------------------------------------------------------------
+[73] SpaceX
+Title: Physical Design Engineer II (Silicon Engineering)
+Job ID: 8533749002
+Location: Austin, TX
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 90
+Keywords: Physical Design, ASIC, ASIC Design, DFT, Digital Design, Floorplanning, Physical Implementation, Place and Route, RTL, STA, Static Timing Analysis, Synthesis
+Date Posted: 2026-07-24T17:17:59-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8533749002?gh_jid=8533749002
+------------------------------------------------------------------------------------------------------------------------
+[74] SpaceX
+Title: Physical Design Engineer II (Silicon Engineering)
+Job ID: 8506508002
+Location: Irvine, CA
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 90
+Keywords: Physical Design, ASIC, ASIC Design, DFT, Digital Design, Floorplanning, Physical Implementation, Place and Route, RTL, STA, Static Timing Analysis, Synthesis
+Date Posted: 2026-07-24T17:17:59-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8506508002?gh_jid=8506508002
+------------------------------------------------------------------------------------------------------------------------
+[75] SpaceX
+Title: RTL Design Engineer (Silicon Engineering)
+Job ID: 8466346002
+Location: Irvine, CA
+Country: United States
+Work Mode: Unknown
+Job Type: Full-time
+Experience: Unknown
+ATS: Greenhouse
+Score: 100
+Keywords: RTL Design, RTL, ASIC, ASIC Design, FPGA, Microarchitecture, SystemVerilog, Verilog, VHDL
+Date Posted: 2026-07-24T17:17:55-04:00
+URL: https://boards.greenhouse.io/spacex/jobs/8466346002?gh_jid=8466346002
+------------------------------------------------------------------------------------------------------------------------
+[76] Tenstorrent
 Title: AI/ML Physical Design Flow Engineer
 Job ID: 5098932007
 Location: Austin, Texas, United States; Fort Collins, Colorado, United States; Santa Clara, California, United States
@@ -1880,7 +1068,7 @@ Keywords: Physical Design, CPU, DFT, Floorplanning, Fusion Compiler, RISC-V, RTL
 Date Posted: 2026-07-14T16:16:58-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5098932007
 ------------------------------------------------------------------------------------------------------------------------
-[135] Tenstorrent
+[77] Tenstorrent
 Title: Chiplet Physical Design Engineer
 Job ID: 5045929007
 Location: United States
@@ -1894,7 +1082,7 @@ Keywords: Physical Design, Cadence, CPU, GPU, RISC-V, Synthesis, Synopsys, Timin
 Date Posted: 2026-07-14T16:16:58-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5045929007
 ------------------------------------------------------------------------------------------------------------------------
-[136] Tenstorrent
+[78] Tenstorrent
 Title: Design Verification Engineer, Automotive Robotics
 Job ID: 5064155007
 Location: Munich, Germany
@@ -1908,7 +1096,7 @@ Keywords: Design Verification, Verification Engineer, CPU, Digital Design, Forma
 Date Posted: 2026-07-30T19:04:10-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5064155007
 ------------------------------------------------------------------------------------------------------------------------
-[137] Tenstorrent
+[79] Tenstorrent
 Title: DFT Engineer
 Job ID: 5175862007
 Location: United States
@@ -1922,7 +1110,7 @@ Keywords: DFT, CPU, Formal Verification, Physical Design, RISC-V, RTL, SoC, Syno
 Date Posted: 2026-07-14T16:16:58-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5175862007
 ------------------------------------------------------------------------------------------------------------------------
-[138] Tenstorrent
+[80] Tenstorrent
 Title: DFT Engineer, Automotive Robotics
 Job ID: 5064078007
 Location: Munich, Germany
@@ -1936,21 +1124,7 @@ Keywords: DFT, CPU, Low Power, RISC-V, RTL
 Date Posted: 2026-07-14T16:16:58-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5064078007
 ------------------------------------------------------------------------------------------------------------------------
-[139] Tenstorrent
-Title: Engineer, SoC RTL Engineer
-Job ID: 5108816007
-Location: Tokyo, Japan
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Internship
-Experience: Entry Level
-ATS: Greenhouse
-Score: 100
-Keywords: RTL Engineer, RTL, SoC, ASIC, CPU, Design Verification, DFT, Digital Design, FPGA, Internship, Microarchitecture, Physical Design, RISC-V, Synthesis, SystemVerilog, Timing Closure, UVM
-Date Posted: 2026-07-14T16:16:58-04:00
-URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5108816007
-------------------------------------------------------------------------------------------------------------------------
-[140] Tenstorrent
+[81] Tenstorrent
 Title: Full-Chip Physical Design Verification Engineer
 Job ID: 5126693007
 Location: Austin, Texas, United States; Fort Collins, Colorado, United States; Santa Clara, California, United States
@@ -1964,7 +1138,7 @@ Keywords: Design Verification, Verification Engineer, Physical Design, CPU, Inno
 Date Posted: 2026-08-07T14:01:24-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5126693007
 ------------------------------------------------------------------------------------------------------------------------
-[141] Tenstorrent
+[82] Tenstorrent
 Title: Physical Design Engineer
 Job ID: 5126178007
 Location: Austin, Texas, United States; Fort Collins, Colorado, United States; Santa Clara, California, United States
@@ -1978,7 +1152,7 @@ Keywords: Physical Design, ASIC, CPU, PnR, PrimeTime, RISC-V, RTL, SoC, Synthesi
 Date Posted: 2026-08-07T12:45:45-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5126178007
 ------------------------------------------------------------------------------------------------------------------------
-[142] Tenstorrent
+[83] Tenstorrent
 Title: Physical Design Engineer: Die-to-Die Interface (RTL to GDSII)
 Job ID: 5062499007
 Location: United States
@@ -1992,7 +1166,7 @@ Keywords: Physical Design, GDSII, RTL, ASIC, Cadence, CPU, CTS, Floorplanning, P
 Date Posted: 2026-07-14T16:16:58-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5062499007
 ------------------------------------------------------------------------------------------------------------------------
-[143] Tenstorrent
+[84] Tenstorrent
 Title: Physical Design Engineer, PnR
 Job ID: 5126996007
 Location: Austin, Texas, United States; Fort Collins, Colorado, United States; Santa Clara, California, United States
@@ -2006,7 +1180,7 @@ Keywords: Physical Design, PnR, CPU, DFT, Fusion Compiler, Physical Implementati
 Date Posted: 2026-08-05T14:50:09-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5126996007
 ------------------------------------------------------------------------------------------------------------------------
-[144] Tenstorrent
+[85] Tenstorrent
 Title: Physical Design Engineer - STA
 Job ID: 4780846007
 Location: Austin, Texas, United States; Fort Collins, Colorado, United States; Santa Clara, California, United States
@@ -2020,7 +1194,7 @@ Keywords: Physical Design, STA, CPU, DFT, RISC-V, RTL, Static Timing Analysis, T
 Date Posted: 2026-07-14T16:16:58-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/4780846007
 ------------------------------------------------------------------------------------------------------------------------
-[145] Tenstorrent
+[86] Tenstorrent
 Title: Physical Design Methodology Engineer, AI HW IP
 Job ID: 5198608007
 Location: Austin, Texas, United States; Belgrade, Serbia; Toronto, Ontario, Canada
@@ -2034,7 +1208,7 @@ Keywords: Physical Design, Clock Tree Synthesis, CPU, GDSII, ICC2, Innovus, Prim
 Date Posted: 2026-08-04T18:08:03-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5198608007
 ------------------------------------------------------------------------------------------------------------------------
-[146] Tenstorrent
+[87] Tenstorrent
 Title: RISC-V CPU Microarchitecture / RTL
 Job ID: 4738082007
 Location: United States
@@ -2048,7 +1222,7 @@ Keywords: Microarchitecture, CPU, RISC-V, RTL, Design Verification, Physical Des
 Date Posted: 2026-07-14T16:16:58-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/4738082007
 ------------------------------------------------------------------------------------------------------------------------
-[147] Tenstorrent
+[88] Tenstorrent
 Title: Top Level Physical Design Engineer
 Job ID: 5108447007
 Location: Austin, Texas, United States; Fort Collins, Colorado, United States; Santa Clara, California, United States
@@ -2061,32 +1235,4 @@ Score: 90
 Keywords: Physical Design, CPU, Floorplanning, RISC-V, RTL, SoC, Timing Closure
 Date Posted: 2026-07-14T16:16:58-04:00
 URL: https://job-boards.greenhouse.io/tenstorrent/jobs/5108447007
-------------------------------------------------------------------------------------------------------------------------
-[148] Tenstorrent
-Title: Verification Engineer
-Job ID: 4653985007
-Location: Japan
-Country: Unknown
-Work Mode: Hybrid
-Job Type: Full-time
-Experience: Entry Level
-ATS: Greenhouse
-Score: 90
-Keywords: Verification Engineer, CPU, RISC-V, SoC, Verilog
-Date Posted: 2026-07-14T16:16:58-04:00
-URL: https://job-boards.greenhouse.io/tenstorrent/jobs/4653985007
-------------------------------------------------------------------------------------------------------------------------
-[149] Western Digital
-Title: Hardware Engineer
-Job ID: 744000140947335
-Location: San Jose, CA, us
-Country: United States
-Work Mode: Remote
-Job Type: Full-time
-Experience: Entry Level
-ATS: SmartRecruiters
-Score: 90
-Keywords: Hardware Engineer, ASIC, ASIC Design, ASIC Engineer, Chip Design, Digital Design, FPGA, RTL, SoC, Synthesis, SystemVerilog, Timing Closure, Verilog
-Date Posted: 2026-07-31T15:38:51.667Z
-URL: https://api.smartrecruiters.com/v1/companies/WesternDigital/postings/744000140947335
 ------------------------------------------------------------------------------------------------------------------------

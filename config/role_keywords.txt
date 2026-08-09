@@ -19,7 +19,6 @@ DFT
 Design for Test
 FPGA
 FPGA Engineer
-Hardware Engineer
 SoC Design
 SoC Verification
 CPU Design
@@ -31,3 +30,7 @@ Silicon Design
 Silicon Verification
 Post-Silicon Validation
 Pre-Silicon Verification
+ASIC Hardware Engineer
+Digital Hardware Engineer
+SoC Hardware Engineer
+Silicon Hardware Engineer

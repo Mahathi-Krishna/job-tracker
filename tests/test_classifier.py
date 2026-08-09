@@ -28,6 +28,22 @@ TESTS = [
         "Design Verification Engineer",
         "Munich, Germany",
     ),
+    (
+        "ASIC Verification Engineer",
+        "Palo Alto, CA",
+    ),
+    (
+        "ASIC Verification Engineer",
+        "India Bengaluru",
+    ),
+    (
+        "Physical Design Engineer",
+        "Israel Tel Aviv",
+    ),
+    (
+        "Physical Design Engineer",
+        "Toronto, ON, Canada",
+    ),
 ]
 
 

@@ -280,17 +280,59 @@ class WorkdayCollector(BaseCollector):
                         bullet_fields[0]
                     )
 
+                location = (
+                    posting.get(
+                        "locationsText"
+                    )
+                    or "Unknown"
+                )
+
+                #
+                # Workday sometimes returns:
+                #
+                #   "2 Locations"
+                #   "3 Locations"
+                #
+                # while externalPath contains a useful
+                # primary location:
+                #
+                # /job/US-CA-Santa-Clara/...
+                # /job/India-Bengaluru/...
+                #
+
+                if re.fullmatch(
+                    r"\d+\s+Locations?",
+                    location,
+                    flags=re.IGNORECASE,
+                ):
+
+                    path_parts = [
+                        part
+                        for part
+                        in external_path.split("/")
+                        if part
+                    ]
+
+                    if (
+                        len(path_parts) >= 2
+                        and path_parts[0].lower()
+                        == "job"
+                    ):
+
+                        location = (
+                            path_parts[1]
+                            .replace(
+                                "-",
+                                " ",
+                            )
+                        )
+
                 job = Job(
                     company=company,
                     title=title,
                     url=public_url,
                     job_id=job_id,
-                    location=(
-                        posting.get(
-                            "locationsText"
-                        )
-                        or "Unknown"
-                    ),
+                    location=location,
                     country="",
                     work_mode="Unknown",
                     job_type="Unknown",

@@ -25,6 +25,10 @@ TITLES = [
     "DFT Engineer",
     "Digital Design Engineer",
     "Senior Physical Design Engineer",
+    "Electrical Hardware Engineer",
+    "Business Operations Internship/Co-op",
+    "Silicon Engineering Internship/Co-op",
+    "ASIC Hardware Engineer",
 ]
 
 
