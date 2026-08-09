@@ -8,11 +8,6 @@
 #
 # Only add entries that have been verified.
 
-# Verified/manual ATS endpoints.
-#
-# Manual overrides take precedence over
-# automatic detection and cache.
-
 NVIDIA:
   ats: workday
   url: https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
@@ -60,3 +55,11 @@ TSMC:
 Micron:
   ats: workday
   url: https://micron.wd1.myworkdayjobs.com/External
+
+AMD:
+  ats: amd
+  url: https://careers.amd.com
+
+Intel:
+  ats: workday
+  url: https://intel.wd1.myworkdayjobs.com/External

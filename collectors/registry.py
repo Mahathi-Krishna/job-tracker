@@ -22,6 +22,9 @@ from collectors.synopsys import (
 from collectors.arm import (
     ArmCollector,
 )
+from collectors.amd import (
+    AMDCollector,
+)
 
 class CollectorRegistry:
 
@@ -53,6 +56,9 @@ class CollectorRegistry:
 
             "arm":
                 ArmCollector(),
+            
+            "amd":
+                AMDCollector(),
         }
 
     def get(

@@ -224,26 +224,32 @@ def run_monitor() -> None:
             ),
         )
 
+        #
+        # Give collectors that support early
+        # title filtering the same lightweight
+        # pre-filter.
+        #
 
-        workday_collector = (
-            registry.get(
-                "workday"
-            )
-        )
-
-
-        if (
-            workday_collector
-            is not None
-            and hasattr(
-                workday_collector,
-                "set_title_filter",
-            )
+        for collector_name in (
+            "workday",
+            "amd",
         ):
 
-            workday_collector.set_title_filter(
-                title_filter
+            collector = registry.get(
+                collector_name
             )
+
+            if (
+                collector is not None
+                and hasattr(
+                    collector,
+                    "set_title_filter",
+                )
+            ):
+
+                collector.set_title_filter(
+                    title_filter
+                )
 
         companies = (
             config.companies_with_urls
